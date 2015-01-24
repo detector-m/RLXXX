@@ -7,16 +7,49 @@
 //
 
 #import "AppDelegate.h"
+#import "RLBaseNavigationController.h"
+#import "NormalLoginVC.h"
+#import "NewsVC.h"
+
+#import "RLLocationManager.h"
 
 @interface AppDelegate ()
-
+@property (nonatomic, readwrite, strong) RLLocationManager *locationManager;
 @end
 
 @implementation AppDelegate
 
+- (void)setupWindow {
+    [UIViewController setupFix];
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+}
+
+- (void)setupRootViewController {
+    if(self.window == nil) {
+        NSAssert(self.window == nil, @"window 未初始化");
+        return;
+    }
+//    NormalLoginVC *vc = [[NormalLoginVC alloc] init];
+    NewsVC *vc = [[NewsVC alloc] init];
+    RLBaseNavigationController *nav = [[RLBaseNavigationController alloc] initWithRootViewController:vc];
+    self.window.rootViewController = nav;
+}
+
+- (void)startLocationManager {
+    if(self.locationManager == nil) {
+        self.locationManager = [[RLLocationManager alloc] init];
+        self.locationManager.location = [User sharedUser].location;
+    }
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [self startLocationManager];
+    
+    [self setupWindow];
+    [self setupRootViewController];
+    
     return YES;
 }
 
@@ -42,4 +75,28 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
++ (void)changeRootViewController:(UIViewController *)vc {
+    UIWindow *windown = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).window;
+    if(vc == nil || windown.rootViewController == vc)
+        return;
+    
+//    [[ReachabilityCtrl shared] removeAll];
+    
+    CGPoint currentCenter;
+    UIViewController *currentVC = windown.rootViewController;
+    currentCenter = currentVC.view.center;
+    
+    vc.view.center = CGPointMake(currentCenter.x, currentCenter.y-vc.view.frame.size.height);
+    
+    [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        currentVC.view.center = CGPointMake(currentCenter.x, currentCenter.y+vc.view.frame.size.height);
+        vc.view.center = currentCenter;
+        
+    } completion:^(BOOL finished) {
+        //        for(UIViewController *vc in windown.rootViewController.childViewControllers) {
+        //            [vc removeFromParentViewController];
+        //        }
+        [windown setRootViewController:vc];
+    }];
+}
 @end
