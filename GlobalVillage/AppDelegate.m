@@ -12,11 +12,13 @@
 #import "NewsVC.h"
 
 #import "RLLocationManager.h"
+#import "RLSocialShareKit.h"
 
-//#import "RLSocialShareKit.h"
+#import "TestViewController.h"
 
 @interface AppDelegate ()
 @property (nonatomic, readwrite, strong) RLLocationManager *locationManager;
+
 @end
 
 @implementation AppDelegate
@@ -34,7 +36,8 @@
         return;
     }
 //    NormalLoginVC *vc = [[NormalLoginVC alloc] init];
-    NewsVC *vc = [[NewsVC alloc] init];
+//    NewsVC *vc = [[NewsVC alloc] init];
+    TestViewController *vc = [[TestViewController alloc] init];
     RLBaseNavigationController *nav = [[RLBaseNavigationController alloc] initWithRootViewController:vc];
     self.window.rootViewController = nav;
 }
@@ -46,11 +49,18 @@
     }
 }
 
+//- (void)test {
+//    self.shareKit = [[RLSocialShareKit alloc] init];
+//    [self.shareKit registerAppWithType:2];
+//}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self startLocationManager];
     
     [self setupWindow];
     [self setupRootViewController];
+    
+//    [self test];
     
     return YES;
 }
@@ -75,6 +85,16 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    return [[RLSocialShareKit sharedShareKit] handleOpenURL:url];
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return [[RLSocialShareKit sharedShareKit] handleOpenURL:url];
 }
 
 + (void)changeRootViewController:(UIViewController *)vc {

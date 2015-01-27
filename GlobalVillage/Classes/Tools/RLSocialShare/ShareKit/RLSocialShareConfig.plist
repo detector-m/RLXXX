@@ -3,10 +3,16 @@
 <plist version="1.0">
 <dict>
 	<key>WeChatAppId</key>
-	<string>wxbe41ebca760466e</string>
+	<string>wxd930ea5d5a258f4f</string>
 	<key>WeChatAppKey</key>
 	<string>270e045bf66d6515309e13e71dceb707</string>
 	<key>WeChatRedirectURI</key>
+	<string>http://www.dqcc.com.cn</string>
+	<key>SinaWeiboAppKey</key>
+	<string>2045436852</string>
+	<key>SinaWeiboSecret</key>
 	<string></string>
+	<key>SinaWeiboRedirectURI</key>
+	<string>http://www.dqcc.com.cn</string>
 </dict>
 </plist>

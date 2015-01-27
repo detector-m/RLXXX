@@ -10,10 +10,15 @@
 
 #import "GVPopViewManager.h"
 
+#import "RLSocialShareKit.h"
+#import "RLActivityShare.h"
+
 @interface NewsDetailVC () <UIWebViewDelegate>
 @property (nonatomic, strong) UIWebView *newsDatailView;
 
 //@property (nonatomic, strong) UIActivityViewController *activityController;
+
+@property (nonatomic, strong) RLSocialShareKit *shareKit;
 @end
 
 @implementation NewsDetailVC
@@ -30,6 +35,14 @@
     [self.newsDatailView stopLoading];
     self.newsDatailView.delegate = nil;
     
+}
+
+- (void)test {
+    if(self.shareKit) {
+        return;
+    }
+    self.shareKit = [RLSocialShareKit sharedShareKit];
+    [self.shareKit registerAppWithType:2];
 }
 
 - (void)dataDoLoad {
@@ -73,34 +86,24 @@
 }
 
 - (void)clickRightItem:(UIBarButtonItem *)item {
-    [self activityViewControllerDoLoad];
-}
-
-- (void)activityViewControllerDoLoad {
+//    [self test];
+    
+    item.enabled = NO;
+    __block UIBarButtonItem *blockItem = item;
+    UIActivityViewControllerCompletionWithItemsHandler block = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *activityError) {
+        blockItem.enabled = YES;
+    };
+    RLActivityShare *activityShare = [[RLActivityShare alloc] init];
     NSArray *activityItems = [[NSArray alloc]initWithObjects:
                               NSLocalizedString(@"一款免费发送广告的APP！手机号、微信号、地球号一个都不能少！", nil),
                               @"http://www.dqcc.com.cn",
                               [UIImage imageNamed:@"qq_icon.png"], nil];
-    UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];
-    activityVC.excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeAirDrop];
+    activityShare.showVC = self;
+    activityShare.showItems = activityItems;
+    activityShare.completionHandler = block;
+    activityShare.appActivities = nil;
     
-    // 写一个bolck，用于completionHandler的初始化
-//    UIActivityViewControllerCompletionHandler myBlock = ^(NSString *activityType, BOOL completed) {
-//        NSLog(@"%@", activityType);
-//        if (completed) {
-//            NSLog(@"completed");
-//        } else
-//        {
-//            NSLog(@"cancled");
-//        }
-//        [activityVC dismissViewControllerAnimated:YES completion:Nil];
-//    };
-//    
-//    // 初始化completionHandler，当post结束之后（无论是done还是cancell）该blog都会被调用
-//    activityVC.completionHandler = myBlock;
-    
-    // 以模态方式展现出UIActivityViewController
-    [self presentViewController:activityVC animated:YES completion:Nil];
+    [activityShare showActivityViewController];
 }
 
 #pragma mark - UIWebViewDelegate

@@ -7,26 +7,30 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RLSocialShareKitDefines.h"
+#import "RLShareAppModel.h"
+#import "RLShareMessageModel.h"
 
-#ifdef DEBUG
-#ifndef DLog//(format, ...)
-#define DLog(format, ...) NSLog((@"[函数名:%s]" "[行号:%d]" format), __FUNCTION__, __LINE__, ##__VA_ARGS__);
-#endif
-#else
-#ifndef DLog
-#define DLog(...)
-#endif
-#endif
+#import "WeiboSDK.h"
+#import "WXApi.h"
 
-typedef NS_ENUM(UInt8, RLSocialShareKitType) {
-    kRLSocialShareKitTypeWeChat,
-    kRLSocialShareKitTypeWeChatTimeline,
-};
+//$(PRODUCT_NAME:rfc1034identifier) dqcc.com.cn.
 
 @interface RLSocialShareKit : NSObject
+@property (nonatomic, readonly, assign) RLSocialShareKitType type;
+@property (nonatomic, readonly, strong) id shareTarget;
 
+@property (nonatomic, readonly, strong) RLShareAppModel *shareAppInfo;
+
+@property (nonatomic, readwrite, weak) UIViewController *weChatAuthVC;
+
++ (RLSocialShareKit *)sharedShareKit;
 - (BOOL)handleOpenURL:(NSURL *)url;
 - (void)registerAppWithType:(RLSocialShareKitType)appType;
+
+- (void)targetAppAuthLogin:(RLSocialShareKitType)type;
+
+- (void)sendMessageToTargetApp:(RLShareMessageModel *)messageToShare;
 @end
 
 NSString* RLEncode(NSString * value);
