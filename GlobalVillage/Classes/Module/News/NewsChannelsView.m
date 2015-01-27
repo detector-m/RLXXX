@@ -13,6 +13,7 @@
 @property (nonatomic, readwrite, strong) UIScrollView *channelsView;
 
 @property (nonatomic, readwrite, strong) SubscribeChannelsView *subscribeChannelsView;
+@property (nonatomic, readwrite, strong) UILabel *unsubscribChannelWarnLabel;
 @property (nonatomic, readwrite, strong) UnsubscribChannelsView *unsubscribeChannelsView;
 @end
 
@@ -26,11 +27,11 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if(self = [super initWithFrame:frame]) {
-//        CGFloat widthOffset = 0;
-//        CGFloat heightOffset = 0;
         self.titleView = [[ChannelsTitleView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, kChannelsViewTitleViewHeight)];
         self.titleView.backgroundColor = [UIColor grayColor];
         [self addSubview:self.titleView];
+        
+        [self.titleView.editButton addTarget:self action:@selector(clickEditButton:) forControlEvents:UIControlEventTouchUpInside];
         
         [self channelsViewDoLoadWithFrame:frame];
     }
@@ -45,18 +46,18 @@
     [self addSubview:self.channelsView];
     
     self.subscribeChannelsView = [[SubscribeChannelsView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, kChannelsViewTitleViewHeight)];
-    [self constructSubscribe];
+    [self constructSubscribeChannels];
     [self.channelsView addSubview:self.subscribeChannelsView];
     
     heightOffset = self.subscribeChannelsView.frame.size.height;
-    UILabel *label = [ViewConstructor constructDefaultLabel:[UILabel class] withFrame:CGRectMake(0, heightOffset, frame.size.width, kChannelsViewTitleViewHeight)];
-    label.backgroundColor = [UIColor lightGrayColor];
-    label.text = NSLocalizedString(@"点击添加频道", nil);
-    [self.channelsView addSubview:label];
+    self.unsubscribChannelWarnLabel = [ViewConstructor constructDefaultLabel:[UILabel class] withFrame:CGRectMake(0, heightOffset, frame.size.width, kChannelsViewTitleViewHeight)];
+    self.unsubscribChannelWarnLabel.backgroundColor = [UIColor lightGrayColor];
+    self.unsubscribChannelWarnLabel.text = NSLocalizedString(@"点击添加频道", nil);
+    [self.channelsView addSubview:self.unsubscribChannelWarnLabel];
     
-    heightOffset += label.frame.size.height;
+    heightOffset += self.unsubscribChannelWarnLabel.frame.size.height;
     self.unsubscribeChannelsView = [[UnsubscribChannelsView alloc] initWithFrame:CGRectMake(0, heightOffset, frame.size.width, kChannelsViewTitleViewHeight)];
-    [self constructUnsubscribe];
+    [self constructUnsubscribeChannels];
     [self.channelsView addSubview:self.unsubscribeChannelsView];
     
     self.channelsView.contentSize = CGSizeMake(frame.size.width, self.subscribeChannelsView.frame.size.height+kChannelsViewTitleViewHeight + self.unsubscribeChannelsView.frame.size.height);
@@ -69,7 +70,7 @@
     return button;
 }
 
-- (void)constructSubscribe {
+- (void)constructSubscribeChannels {
     CGFloat padding = 15;
     CGFloat height = 30;
     CGFloat width = (self.frame.size.width-15*5)/4;
@@ -82,17 +83,17 @@
         y = padding*((i/4)+1) + (i/4)*height;
         frame = CGRectMake(x, y, width, height);
         UIButton *button = [self constructChannelButtonWithTitle:@"test" frame:frame];
-//        button.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 5, 5);
-        button.backgroundColor = [UIColor redColor];
+        [button addTarget:self action:@selector(clickUnsubscribeChannel:) forControlEvents:UIControlEventTouchUpInside];
         [self.subscribeChannelsView addSubview:button];
         [self.subscribeChannelsView.channels addObject:button];
     }
     
     frame = self.subscribeChannelsView.frame;
-    self.subscribeChannelsView.frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, y+padding+width);
+    frame.size.height = y+padding+height;
+    self.subscribeChannelsView.frame = frame;
 }
 
-- (void)constructUnsubscribe {
+- (void)constructUnsubscribeChannels {
     CGFloat padding = 15;
     CGFloat height = 30;
     CGFloat width = (self.frame.size.width-15*5)/4;
@@ -105,14 +106,66 @@
         y = padding*((i/4)+1) + (i/4)*height;
         frame = CGRectMake(x, y, width, height);
         UIButton *button = [self constructChannelButtonWithTitle:@"test" frame:frame];
+        [button addTarget:self action:@selector(clickSubscribeChannel:) forControlEvents:UIControlEventTouchUpInside];
         [self.unsubscribeChannelsView addSubview:button];
         [self.unsubscribeChannelsView.channels addObject:button];
     }
     
     frame = self.unsubscribeChannelsView.frame;
-//    frame.origin.x = self.subscribeChannelsView.frame.size.height + kChannelsViewTitleViewHeight;
     frame.origin.y = self.subscribeChannelsView.frame.size.height + kChannelsViewTitleViewHeight;
     frame.size.height = y+padding+width;
+    self.unsubscribeChannelsView.frame = frame;
+}
+
+- (void)clickEditButton:(UIButton *)button {
+    if([button.titleLabel.text isEqualToString:NSLocalizedString(@"编辑", nil)]) {
+        [button setTitle:NSLocalizedString(@"完成", nil) forState:UIControlStateNormal];
+    }
+    else {
+        [button setTitle:NSLocalizedString(@"编辑", nil) forState:UIControlStateNormal];
+    }
+}
+
+- (void)clickUnsubscribeChannel:(UIButton *)button {
+    [button removeTarget:self action:@selector(clickUnsubscribeChannel:) forControlEvents:UIControlEventTouchUpInside];
+    [button removeFromSuperview];
+    [self.subscribeChannelsView.channels removeObject:button];
+    
+    [button addTarget:self action:@selector(clickSubscribeChannel:) forControlEvents:UIControlEventTouchUpInside];
+    [self.unsubscribeChannelsView addSubview:button];
+    [self.unsubscribeChannelsView.channels insertObject:button atIndex:0];
+    
+    [self reloadData];
+}
+
+- (void)clickSubscribeChannel:(UIButton *)button {
+    [button removeTarget:self action:@selector(clickSubscribeChannel:) forControlEvents:UIControlEventTouchUpInside];
+    [button removeFromSuperview];
+    [self.unsubscribeChannelsView.channels removeObject:button];
+    
+    [button addTarget:self action:@selector(clickUnsubscribeChannel:) forControlEvents:UIControlEventTouchUpInside];
+    [self.subscribeChannelsView addSubview:button];
+    [self.subscribeChannelsView.channels addObject:button];
+    [self reloadData];
+}
+
+- (void)reloadData {
+    CGRect frame = self.subscribeChannelsView.frame;
+    CGFloat height = [self.subscribeChannelsView reloadData];
+    frame.size.height = height;
+    self.subscribeChannelsView.frame = frame;
+    
+    frame = self.unsubscribChannelWarnLabel.frame;
+    frame.origin.y = height;
+    self.unsubscribChannelWarnLabel.frame = frame;
+    
+    height += frame.size.height;
+    
+    frame = self.unsubscribeChannelsView.frame;
+    frame.origin.y = height;
+    height = [self.unsubscribeChannelsView reloadData];
+    frame.size.height = height;
+    
     self.unsubscribeChannelsView.frame = frame;
 }
 @end

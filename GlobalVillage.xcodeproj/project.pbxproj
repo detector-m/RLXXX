@@ -153,6 +153,7 @@
 		96DEEE641A709DD900C045DF /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DEEE631A709DD900C045DF /* NewsModel.m */; };
 		96DEEE6A1A709E1600C045DF /* NewsTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DEEE691A709E1600C045DF /* NewsTypeModel.m */; };
 		96DEEE6D1A709F9C00C045DF /* NewsBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DEEE6C1A709F9C00C045DF /* NewsBaseModel.m */; };
+		96F2B7761A77BD3200EF9B13 /* NewsChannelMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F2B7751A77BD3200EF9B13 /* NewsChannelMode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -445,6 +446,8 @@
 		96DEEE691A709E1600C045DF /* NewsTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTypeModel.m; sourceTree = "<group>"; };
 		96DEEE6B1A709F9C00C045DF /* NewsBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsBaseModel.h; sourceTree = "<group>"; };
 		96DEEE6C1A709F9C00C045DF /* NewsBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsBaseModel.m; sourceTree = "<group>"; };
+		96F2B7741A77BD3200EF9B13 /* NewsChannelMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsChannelMode.h; sourceTree = "<group>"; };
+		96F2B7751A77BD3200EF9B13 /* NewsChannelMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsChannelMode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1149,6 +1152,8 @@
 				96DEEE631A709DD900C045DF /* NewsModel.m */,
 				96123D5F1A70CA440053CA1C /* NewsSegmentModel.h */,
 				96123D601A70CA440053CA1C /* NewsSegmentModel.m */,
+				96F2B7741A77BD3200EF9B13 /* NewsChannelMode.h */,
+				96F2B7751A77BD3200EF9B13 /* NewsChannelMode.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1317,6 +1322,7 @@
 				96DEEE0A1A6E305900C045DF /* GVPopViewManager.m in Sources */,
 				96DEEDE01A6D10AB00C045DF /* Reachability.m in Sources */,
 				96DEEDEE1A6DDF5300C045DF /* GVResponseManager.m in Sources */,
+				96F2B7761A77BD3200EF9B13 /* NewsChannelMode.m in Sources */,
 				96123D921A70E0C40053CA1C /* RefreshCollectionView.m in Sources */,
 				96123DC71A70F2380053CA1C /* UIImageView+WebCache.m in Sources */,
 				96123DC61A70F2380053CA1C /* UIImageView+HighlightedWebCache.m in Sources */,

@@ -1,13 +1,13 @@
 //
-//  UnsubscribChannelsView.m
+//  NewsChannelMode.m
 //  GlobalVillage
 //
 //  Created by RivenL on 15/1/27.
 //  Copyright (c) 2015年 RivenL. All rights reserved.
 //
 
-#import "UnsubscribChannelsView.h"
+#import "NewsChannelMode.h"
 
-@implementation UnsubscribChannelsView
+@implementation NewsChannelMode
 
 @end
