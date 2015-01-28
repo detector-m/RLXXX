@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>8E3BDBCA-512A-4B78-B4FD-938BEF925AF3</string>
+	<key>IDESourceControlProjectName</key>
+	<string>GlobalVillage</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>9DD7886FE8F6D3CB60D9A4EF3295DDAAD55CC349</key>
+		<string>github.com:riven-m/RLXXX.git</string>
+		<key>9c3bc202-7c40-ff4d-a5bb-208097759062++5326</key>
+		<string>svn://www.dqcc.com.cn/ios</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>GlobalVillage/GlobalVillage.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>9DD7886FE8F6D3CB60D9A4EF3295DDAAD55CC349</key>
+		<string>../../../../GlobalVillage</string>
+		<key>9c3bc202-7c40-ff4d-a5bb-208097759062++5326</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>9c3bc202-7c40-ff4d-a5bb-208097759062++5326</key>
+		<string>svn://www.dqcc.com.cn</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>svn://www.dqcc.com.cn/ios/GlobalVillage/GlobalVillage.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>9c3bc202-7c40-ff4d-a5bb-208097759062++5326</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9DD7886FE8F6D3CB60D9A4EF3295DDAAD55CC349</string>
+			<key>IDESourceControlWCCName</key>
+			<string>GlobalVillage</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9c3bc202-7c40-ff4d-a5bb-208097759062++5326</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>
