@@ -84,6 +84,8 @@
 #if 1
     NewsChannelsVC *vc = [[NewsChannelsVC alloc] init];
     [ChangeVCController pushViewControllerByNavigationController:self.navigationController pushVC:vc];
+    
+    //tetssddded
 #endif
 }
 
