@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SegmentBarItem : UIButton
-@property (nonatomic, readonly, strong) UIImageView *itemImageView;
-@property (nonatomic, readonly, strong) UILabel *itemLabel;
+@class SegmentBar;
+@interface SegmentItemView : UIButton
+@property (nonatomic, readwrite, weak) SegmentBar *delegate;
 @end

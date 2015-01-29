@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface SegmentModel : NSObject
+@property (nonatomic, assign) NSInteger Id;
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, weak) UIView *view;
+@property (nonatomic, strong) UIView *view;
 @property (nonatomic, readonly, strong) NSMutableArray *contents;
 @end

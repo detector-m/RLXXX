@@ -15,6 +15,8 @@
 @property (nonatomic, readwrite, strong) SubscribeChannelsView *subscribeChannelsView;
 @property (nonatomic, readwrite, strong) UILabel *unsubscribChannelWarnLabel;
 @property (nonatomic, readwrite, strong) UnsubscribChannelsView *unsubscribeChannelsView;
+
+@property (nonatomic, assign) BOOL editAble;
 @end
 
 @implementation NewsChannelsView
@@ -34,6 +36,8 @@
         [self.titleView.editButton addTarget:self action:@selector(clickEditButton:) forControlEvents:UIControlEventTouchUpInside];
         
         [self channelsViewDoLoadWithFrame:frame];
+        
+        self.editAble = NO;
     }
 
     return self;
@@ -118,6 +122,7 @@
 }
 
 - (void)clickEditButton:(UIButton *)button {
+    self.editAble = !self.editAble;
     if([button.titleLabel.text isEqualToString:NSLocalizedString(@"编辑", nil)]) {
         [button setTitle:NSLocalizedString(@"完成", nil) forState:UIControlStateNormal];
     }
@@ -127,6 +132,9 @@
 }
 
 - (void)clickUnsubscribeChannel:(UIButton *)button {
+    if(!self.editAble) {
+        return;
+    }
     [button removeTarget:self action:@selector(clickUnsubscribeChannel:) forControlEvents:UIControlEventTouchUpInside];
     [button removeFromSuperview];
     [self.subscribeChannelsView.channels removeObject:button];
@@ -139,6 +147,9 @@
 }
 
 - (void)clickSubscribeChannel:(UIButton *)button {
+    if(!self.editAble) {
+        return;
+    }
     [button removeTarget:self action:@selector(clickSubscribeChannel:) forControlEvents:UIControlEventTouchUpInside];
     [button removeFromSuperview];
     [self.unsubscribeChannelsView.channels removeObject:button];

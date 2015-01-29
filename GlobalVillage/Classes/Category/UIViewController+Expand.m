@@ -151,7 +151,7 @@ const CGFloat getFixHeight()
 @end
 
 @implementation UINavigationBar (ChangeNavHeight)
-#define kDefaultNavHeight 34.0f
+#define kDefaultNavHeight 44.0f
 - (CGSize)sizeThatFits:(CGSize)size {
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
     CGSize newSize = CGSizeMake(width, kDefaultNavHeight);

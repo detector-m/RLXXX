@@ -13,6 +13,7 @@
 #import "NewsChannelsVC.h"
 
 
+#if 0
 @interface TestViewController ()
 
 @end
@@ -81,7 +82,7 @@
     [activityShare showActivityViewController];
 #endif
     
-#if 1
+#if 0
     NewsChannelsVC *vc = [[NewsChannelsVC alloc] init];
     [ChangeVCController pushViewControllerByNavigationController:self.navigationController pushVC:vc];
 #endif
@@ -91,3 +92,45 @@
     [[RLSocialShareKit sharedShareKit] sendMessageToTargetApp:message];
 }
 @end
+
+#endif
+
+#if 1
+#import "SegmentBar.h"
+@interface TestViewController () <SegmentBarDataSource>
+@property (nonatomic, strong) SegmentBar *bar;
+@end
+
+@implementation TestViewController
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    if([[UIDevice currentDevice].systemVersion floatValue] >= 7.0){
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.bar = [[SegmentBar alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 90)];
+    self.bar.dataSource = self;
+    [self.view addSubview:self.bar];
+}
+
+- (NSInteger)itemViewsNumberOfSegmentBar:(SegmentBar *)segmentBar {
+    return 10;
+}
+
+- (CGFloat)itemWidthOfSegmentBar:(SegmentBar *)segmentBar forIndex:(NSInteger)index {
+    return 90;
+}
+
+- (SegmentItemView *)itemView:(SegmentBar *)sgementBar forIndex:(NSInteger)index {
+    SegmentItemView *item = nil;
+    if((item = [sgementBar dequeueReusableItemView]) == nil) {
+        item = (SegmentItemView *)[ViewConstructor constructDefaultButton:[SegmentItemView class] withFrame:CGRectZero];
+    }
+    
+    [item setTitle:[NSString stringWithFormat:@"button%ld", (long)index] forState:UIControlStateNormal];
+    item.delegate = self.bar;
+    
+    return item;
+}
+@end
+#endif

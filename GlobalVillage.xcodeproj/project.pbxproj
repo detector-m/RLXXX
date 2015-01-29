@@ -12,11 +12,9 @@
 		96123D611A70CA440053CA1C /* NewsSegmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96123D601A70CA440053CA1C /* NewsSegmentModel.m */; };
 		96123D801A70E0860053CA1C /* EGORefreshTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96123D6C1A70E0860053CA1C /* EGORefreshTableFooterView.m */; };
 		96123D811A70E0860053CA1C /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96123D6E1A70E0860053CA1C /* EGORefreshTableHeaderView.m */; };
-		96123D821A70E0860053CA1C /* SegmentBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 96123D731A70E0860053CA1C /* SegmentBar.m */; };
-		96123D831A70E0860053CA1C /* SegmentBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 96123D751A70E0860053CA1C /* SegmentBarItem.m */; };
-		96123D841A70E0860053CA1C /* SegmentContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96123D771A70E0860053CA1C /* SegmentContentView.m */; };
+		96123D831A70E0860053CA1C /* SegmentItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96123D751A70E0860053CA1C /* SegmentItemView.m */; };
+		96123D841A70E0860053CA1C /* SegmentContentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96123D771A70E0860053CA1C /* SegmentContentsView.m */; };
 		96123D851A70E0860053CA1C /* SegmentNaviVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 96123D791A70E0860053CA1C /* SegmentNaviVC.m */; };
-		96123D861A70E0860053CA1C /* SegmentNaviCtrlModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96123D7B1A70E0860053CA1C /* SegmentNaviCtrlModel.m */; };
 		96123D871A70E0860053CA1C /* SegmentPageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96123D7D1A70E0860053CA1C /* SegmentPageTableView.m */; };
 		96123D881A70E0860053CA1C /* SegmentPageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96123D7F1A70E0860053CA1C /* SegmentPageTableViewCell.m */; };
 		96123D921A70E0C40053CA1C /* RefreshCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96123D8C1A70E0C40053CA1C /* RefreshCollectionView.m */; };
@@ -76,6 +74,13 @@
 		96C1C09A1A777A7D003E7C07 /* UnsubscribChannelsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C1C0991A777A7D003E7C07 /* UnsubscribChannelsView.m */; };
 		96C1C0A01A7793BA003E7C07 /* NewsChannelsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C1C09F1A7793BA003E7C07 /* NewsChannelsVC.m */; };
 		96C1C0A31A7793C9003E7C07 /* NewsChannelsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C1C0A21A7793C9003E7C07 /* NewsChannelsView.m */; };
+		96D8FFA51A789FFB0041C8D8 /* Segment.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D8FFA41A789FFB0041C8D8 /* Segment.m */; };
+		96D8FFA81A78A02C0041C8D8 /* SegmentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D8FFA71A78A02C0041C8D8 /* SegmentItem.m */; };
+		96D8FFAB1A78A0400041C8D8 /* SegmentContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D8FFAA1A78A0400041C8D8 /* SegmentContent.m */; };
+		96D8FFB11A78A4700041C8D8 /* SegmentBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D8FFB01A78A4700041C8D8 /* SegmentBar.m */; };
+		96D8FFB41A79BFFF0041C8D8 /* SegmentsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D8FFB31A79BFFF0041C8D8 /* SegmentsTableView.m */; };
+		96D8FFB71A7A1D4B0041C8D8 /* NewsTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D8FFB61A7A1D4B0041C8D8 /* NewsTitle.png */; };
+		96D8FFBB1A7A21BC0041C8D8 /* NewsTitle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96D8FFB91A7A21BC0041C8D8 /* NewsTitle@2x.png */; };
 		96DEBFBB1A7377920014EA9D /* RLColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DEBFB41A7377920014EA9D /* RLColor.m */; };
 		96DEBFBC1A7377920014EA9D /* RLImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DEBFB61A7377920014EA9D /* RLImage.m */; };
 		96DEBFBD1A7377920014EA9D /* RLTextSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DEBFB81A7377920014EA9D /* RLTextSize.m */; };
@@ -178,16 +183,12 @@
 		96123D6D1A70E0860053CA1C /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
 		96123D6E1A70E0860053CA1C /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
 		96123D6F1A70E0860053CA1C /* EGOViewCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOViewCommon.h; sourceTree = "<group>"; };
-		96123D721A70E0860053CA1C /* SegmentBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentBar.h; sourceTree = "<group>"; };
-		96123D731A70E0860053CA1C /* SegmentBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentBar.m; sourceTree = "<group>"; };
-		96123D741A70E0860053CA1C /* SegmentBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentBarItem.h; sourceTree = "<group>"; };
-		96123D751A70E0860053CA1C /* SegmentBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentBarItem.m; sourceTree = "<group>"; };
-		96123D761A70E0860053CA1C /* SegmentContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentContentView.h; sourceTree = "<group>"; };
-		96123D771A70E0860053CA1C /* SegmentContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentContentView.m; sourceTree = "<group>"; };
+		96123D741A70E0860053CA1C /* SegmentItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentItemView.h; sourceTree = "<group>"; };
+		96123D751A70E0860053CA1C /* SegmentItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentItemView.m; sourceTree = "<group>"; };
+		96123D761A70E0860053CA1C /* SegmentContentsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentContentsView.h; sourceTree = "<group>"; };
+		96123D771A70E0860053CA1C /* SegmentContentsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentContentsView.m; sourceTree = "<group>"; };
 		96123D781A70E0860053CA1C /* SegmentNaviVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentNaviVC.h; sourceTree = "<group>"; };
 		96123D791A70E0860053CA1C /* SegmentNaviVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentNaviVC.m; sourceTree = "<group>"; };
-		96123D7A1A70E0860053CA1C /* SegmentNaviCtrlModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentNaviCtrlModel.h; sourceTree = "<group>"; };
-		96123D7B1A70E0860053CA1C /* SegmentNaviCtrlModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentNaviCtrlModel.m; sourceTree = "<group>"; };
 		96123D7C1A70E0860053CA1C /* SegmentPageTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentPageTableView.h; sourceTree = "<group>"; };
 		96123D7D1A70E0860053CA1C /* SegmentPageTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentPageTableView.m; sourceTree = "<group>"; };
 		96123D7E1A70E0860053CA1C /* SegmentPageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentPageTableViewCell.h; sourceTree = "<group>"; };
@@ -297,6 +298,18 @@
 		96C1C09F1A7793BA003E7C07 /* NewsChannelsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsChannelsVC.m; sourceTree = "<group>"; };
 		96C1C0A11A7793C9003E7C07 /* NewsChannelsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsChannelsView.h; sourceTree = "<group>"; };
 		96C1C0A21A7793C9003E7C07 /* NewsChannelsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsChannelsView.m; sourceTree = "<group>"; };
+		96D8FFA31A789FFB0041C8D8 /* Segment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Segment.h; sourceTree = "<group>"; };
+		96D8FFA41A789FFB0041C8D8 /* Segment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Segment.m; sourceTree = "<group>"; };
+		96D8FFA61A78A02C0041C8D8 /* SegmentItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentItem.h; sourceTree = "<group>"; };
+		96D8FFA71A78A02C0041C8D8 /* SegmentItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentItem.m; sourceTree = "<group>"; };
+		96D8FFA91A78A0400041C8D8 /* SegmentContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentContent.h; sourceTree = "<group>"; };
+		96D8FFAA1A78A0400041C8D8 /* SegmentContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentContent.m; sourceTree = "<group>"; };
+		96D8FFAF1A78A4700041C8D8 /* SegmentBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentBar.h; sourceTree = "<group>"; };
+		96D8FFB01A78A4700041C8D8 /* SegmentBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentBar.m; sourceTree = "<group>"; };
+		96D8FFB21A79BFFF0041C8D8 /* SegmentsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentsTableView.h; sourceTree = "<group>"; };
+		96D8FFB31A79BFFF0041C8D8 /* SegmentsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentsTableView.m; sourceTree = "<group>"; };
+		96D8FFB61A7A1D4B0041C8D8 /* NewsTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewsTitle.png; sourceTree = "<group>"; };
+		96D8FFB91A7A21BC0041C8D8 /* NewsTitle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NewsTitle@2x.png"; sourceTree = "<group>"; };
 		96DEBFB31A7377920014EA9D /* RLColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLColor.h; sourceTree = "<group>"; };
 		96DEBFB41A7377920014EA9D /* RLColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLColor.m; sourceTree = "<group>"; };
 		96DEBFB51A7377920014EA9D /* RLImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLImage.h; sourceTree = "<group>"; };
@@ -510,8 +523,6 @@
 			isa = PBXGroup;
 			children = (
 				96123D711A70E0860053CA1C /* SegmentNaviBase */,
-				96123D7A1A70E0860053CA1C /* SegmentNaviCtrlModel.h */,
-				96123D7B1A70E0860053CA1C /* SegmentNaviCtrlModel.m */,
 				96123D7C1A70E0860053CA1C /* SegmentPageTableView.h */,
 				96123D7D1A70E0860053CA1C /* SegmentPageTableView.m */,
 				96123D7E1A70E0860053CA1C /* SegmentPageTableViewCell.h */,
@@ -523,12 +534,15 @@
 		96123D711A70E0860053CA1C /* SegmentNaviBase */ = {
 			isa = PBXGroup;
 			children = (
-				96123D721A70E0860053CA1C /* SegmentBar.h */,
-				96123D731A70E0860053CA1C /* SegmentBar.m */,
-				96123D741A70E0860053CA1C /* SegmentBarItem.h */,
-				96123D751A70E0860053CA1C /* SegmentBarItem.m */,
-				96123D761A70E0860053CA1C /* SegmentContentView.h */,
-				96123D771A70E0860053CA1C /* SegmentContentView.m */,
+				96D8FFA21A789FDE0041C8D8 /* Model */,
+				96D8FFAF1A78A4700041C8D8 /* SegmentBar.h */,
+				96D8FFB01A78A4700041C8D8 /* SegmentBar.m */,
+				96123D741A70E0860053CA1C /* SegmentItemView.h */,
+				96123D751A70E0860053CA1C /* SegmentItemView.m */,
+				96123D761A70E0860053CA1C /* SegmentContentsView.h */,
+				96123D771A70E0860053CA1C /* SegmentContentsView.m */,
+				96D8FFB21A79BFFF0041C8D8 /* SegmentsTableView.h */,
+				96D8FFB31A79BFFF0041C8D8 /* SegmentsTableView.m */,
 				96123D781A70E0860053CA1C /* SegmentNaviVC.h */,
 				96123D791A70E0860053CA1C /* SegmentNaviVC.m */,
 			);
@@ -692,6 +706,28 @@
 				96C1C0991A777A7D003E7C07 /* UnsubscribChannelsView.m */,
 			);
 			name = NewsChannelsViews;
+			sourceTree = "<group>";
+		};
+		96D8FFA21A789FDE0041C8D8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				96D8FFA31A789FFB0041C8D8 /* Segment.h */,
+				96D8FFA41A789FFB0041C8D8 /* Segment.m */,
+				96D8FFA61A78A02C0041C8D8 /* SegmentItem.h */,
+				96D8FFA71A78A02C0041C8D8 /* SegmentItem.m */,
+				96D8FFA91A78A0400041C8D8 /* SegmentContent.h */,
+				96D8FFAA1A78A0400041C8D8 /* SegmentContent.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		96D8FFB51A7A1D4B0041C8D8 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				96D8FFB91A7A21BC0041C8D8 /* NewsTitle@2x.png */,
+				96D8FFB61A7A1D4B0041C8D8 /* NewsTitle.png */,
+			);
+			path = News;
 			sourceTree = "<group>";
 		};
 		96DEBFB11A7377920014EA9D /* RLSocialShare */ = {
@@ -1022,6 +1058,7 @@
 		96DEED7B1A6A502300C045DF /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				96D8FFB51A7A1D4B0041C8D8 /* News */,
 				96DEED9A1A6C9C3200C045DF /* RegisterImages */,
 				96DEED7C1A6A502300C045DF /* check_icon.png */,
 				96DEED7D1A6A502300C045DF /* qq_icon.png */,
@@ -1270,6 +1307,8 @@
 				96DEED861A6A502300C045DF /* qq_icon.png in Resources */,
 				96C1C0641A766A47003E7C07 /* SinaWeibo@2x.png in Resources */,
 				96DEED9E1A6C9C3200C045DF /* PicDefault@2x.png in Resources */,
+				96D8FFBB1A7A21BC0041C8D8 /* NewsTitle@2x.png in Resources */,
+				96D8FFB71A7A1D4B0041C8D8 /* NewsTitle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1295,6 +1334,7 @@
 				96DEEE111A6E38CD00C045DF /* UserBase.m in Sources */,
 				96DEEE251A6FA3F300C045DF /* NewsController.m in Sources */,
 				96DEEDDC1A6D10AB00C045DF /* SBJsonBase.m in Sources */,
+				96D8FFA51A789FFB0041C8D8 /* Segment.m in Sources */,
 				96123D881A70E0860053CA1C /* SegmentPageTableViewCell.m in Sources */,
 				96DEEE171A6E39D100C045DF /* UserLocation.m in Sources */,
 				96C1BFBB1A76289A003E7C07 /* RLActivityShare.m in Sources */,
@@ -1303,10 +1343,8 @@
 				96123DBD1A70F2380053CA1C /* SDWebImageDecoder.m in Sources */,
 				96C1C0531A764D95003E7C07 /* RLSinaWeiboActivity.m in Sources */,
 				96DEBFBC1A7377920014EA9D /* RLImage.m in Sources */,
-				96123D821A70E0860053CA1C /* SegmentBar.m in Sources */,
-				96123D841A70E0860053CA1C /* SegmentContentView.m in Sources */,
+				96123D841A70E0860053CA1C /* SegmentContentsView.m in Sources */,
 				96DEED711A6A259800C045DF /* RLTextField.m in Sources */,
-				96123D861A70E0860053CA1C /* SegmentNaviCtrlModel.m in Sources */,
 				96DEECFF1A69330B00C045DF /* AppDelegate.m in Sources */,
 				96DEEDE51A6D12FD00C045DF /* RLRequest.m in Sources */,
 				96DEEDF41A6DFC1D00C045DF /* RLResponse.m in Sources */,
@@ -1326,7 +1364,9 @@
 				96123D921A70E0C40053CA1C /* RefreshCollectionView.m in Sources */,
 				96123DC71A70F2380053CA1C /* UIImageView+WebCache.m in Sources */,
 				96123DC61A70F2380053CA1C /* UIImageView+HighlightedWebCache.m in Sources */,
+				96D8FFB41A79BFFF0041C8D8 /* SegmentsTableView.m in Sources */,
 				96C1BFBE1A762ED1003E7C07 /* TestViewController.m in Sources */,
+				96D8FFAB1A78A0400041C8D8 /* SegmentContent.m in Sources */,
 				96123DBA1A70F2380053CA1C /* NSData+ImageContentType.m in Sources */,
 				96DEEE6A1A709E1600C045DF /* NewsTypeModel.m in Sources */,
 				96DEECFC1A69330B00C045DF /* main.m in Sources */,
@@ -1334,6 +1374,7 @@
 				96DEED6B1A6A256600C045DF /* RLLabel.m in Sources */,
 				96123D941A70E0C40053CA1C /* RefreshView.m in Sources */,
 				96DEEDA11A6CA05D00C045DF /* RLBaseCollectionViewController.m in Sources */,
+				96D8FFA81A78A02C0041C8D8 /* SegmentItem.m in Sources */,
 				96DEEDB61A6CE09000C045DF /* RLImageCropViewController.m in Sources */,
 				96DEEE341A6FAA1600C045DF /* RLConstVariable.m in Sources */,
 				96C1C09A1A777A7D003E7C07 /* UnsubscribChannelsView.m in Sources */,
@@ -1389,12 +1430,13 @@
 				96DEEDF11A6DF30C00C045DF /* GVRequestParameterManager.m in Sources */,
 				96DEED741A6A2EB400C045DF /* ViewConstructor.m in Sources */,
 				96DEEE2E1A6FA8A200C045DF /* RLTableAndCollectionViewController.m in Sources */,
-				96123D831A70E0860053CA1C /* SegmentBarItem.m in Sources */,
+				96123D831A70E0860053CA1C /* SegmentItemView.m in Sources */,
 				96DEED611A6A210F00C045DF /* NormalLoginVC.m in Sources */,
 				96C1C06F1A766A83003E7C07 /* RLWeChatSessionActivity.m in Sources */,
 				96DEEDA71A6CAFE800C045DF /* DQNumberCell.m in Sources */,
 				96DEEDDA1A6D10AB00C045DF /* NSString+SBJSON.m in Sources */,
 				96123DC01A70F2380053CA1C /* SDWebImageManager.m in Sources */,
+				96D8FFB11A78A4700041C8D8 /* SegmentBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

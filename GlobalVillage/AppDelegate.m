@@ -36,8 +36,8 @@
         return;
     }
 //    NormalLoginVC *vc = [[NormalLoginVC alloc] init];
-//    NewsVC *vc = [[NewsVC alloc] init];
-    TestViewController *vc = [[TestViewController alloc] init];
+    NewsVC *vc = [[NewsVC alloc] init];
+//    TestViewController *vc = [[TestViewController alloc] init];
     RLBaseNavigationController *nav = [[RLBaseNavigationController alloc] initWithRootViewController:vc];
     self.window.rootViewController = nav;
 }

@@ -6,13 +6,13 @@
 //  Copyright (c) 2014年 RivenL. All rights reserved.
 //
 
-#import "SegmentContentView.h"
+#import "SegmentContentsView.h"
 
-@interface SegmentContentView () <UITableViewDataSource,UITableViewDelegate>
+@interface SegmentContentsView () <UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, readwrite, strong) UITableView *tableView;
 @end
 
-@implementation SegmentContentView
+@implementation SegmentContentsView
 @synthesize tableView = _tableView;
 @synthesize cellDataSource = _cellDataSource;
 @synthesize swipeDelegate = _swipeDelegate;
@@ -70,7 +70,6 @@
     return rowCount;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     static NSString *CellIdentifier = @"ViewCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];

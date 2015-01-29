@@ -37,13 +37,13 @@
     
 }
 
-- (void)test {
-    if(self.shareKit) {
-        return;
-    }
-    self.shareKit = [RLSocialShareKit sharedShareKit];
-    [self.shareKit registerAppWithType:2];
-}
+//- (void)test {
+//    if(self.shareKit) {
+//        return;
+//    }
+//    self.shareKit = [RLSocialShareKit sharedShareKit];
+//    [self.shareKit registerAppWithType:2];
+//}
 
 - (void)dataDoLoad {
     
@@ -86,24 +86,47 @@
 }
 
 - (void)clickRightItem:(UIBarButtonItem *)item {
-//    [self test];
-    
     item.enabled = NO;
     __block UIBarButtonItem *blockItem = item;
-    UIActivityViewControllerCompletionWithItemsHandler block = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *activityError) {
+    id block;/* = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *activityError) {
+              blockItem.enabled = YES;
+              };*/
+    
+    RLSinaWeiboActivity *sinaWeiboActivity = [[RLSinaWeiboActivity alloc] init];
+    sinaWeiboActivity.callback = @selector(sendMessageToTargetApp:);
+    sinaWeiboActivity.delegate = self;
+    RLShareMessageModel *message = sinaWeiboActivity.message;
+    message.appType = kRLSocialShareKitTypeSinaWebo;
+    message.imageData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SinaWeibo" ofType:@"png"]];
+    
+    RLWeChatSessionActivity *weChatSessionActivity = [[RLWeChatSessionActivity alloc] init];
+    weChatSessionActivity.callback = @selector(sendMessageToTargetApp:);
+    weChatSessionActivity.delegate = self;
+    weChatSessionActivity.message.appType = kRLSocialShareKitTypeWeChatSession;
+    weChatSessionActivity.message.imageData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SinaWeibo" ofType:@"png"]];
+    
+    RLWeChatTimeLineActivity *weChatTimelineActivity = [[RLWeChatTimeLineActivity alloc] init];
+    weChatTimelineActivity.callback = @selector(sendMessageToTargetApp:);
+    weChatTimelineActivity.delegate = self;
+    weChatTimelineActivity.message.appType = kRLSocialShareKitTypeWeChatTimeline;
+    weChatTimelineActivity.message.imageData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SinaWeibo" ofType:@"png"]];
+    
+    block = ^(NSString *  activityType, BOOL completed) {
         blockItem.enabled = YES;
     };
+    
     RLActivityShare *activityShare = [[RLActivityShare alloc] init];
-    NSArray *activityItems = [[NSArray alloc]initWithObjects:
-                              NSLocalizedString(@"一款免费发送广告的APP！手机号、微信号、地球号一个都不能少！", nil),
-                              @"http://www.dqcc.com.cn",
-                              [UIImage imageNamed:@"qq_icon.png"], nil];
+    //    NSArray *activityItems = [[NSArray alloc]initWithObjects:NSLocalizedString(@"一款免费发送广告的APP！手机号、微信号、地球号一个都不能少！", nil), @"http://www.dqcc.com.cn", [UIImage imageNamed:@"qq_icon.png"], nil];
     activityShare.showVC = self;
-    activityShare.showItems = activityItems;
+    //    activityShare.showItems = nil;//activityItems;
     activityShare.completionHandler = block;
-    activityShare.appActivities = nil;
+    activityShare.appActivities = @[weChatSessionActivity, weChatTimelineActivity, sinaWeiboActivity];
     
     [activityShare showActivityViewController];
+}
+
+- (void)sendMessageToTargetApp:(RLShareMessageModel *)message {
+    [[RLSocialShareKit sharedShareKit] sendMessageToTargetApp:message];
 }
 
 #pragma mark - UIWebViewDelegate

@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "SegmentBar.h"
 
-@interface SegmentContentView : UIView
+@interface SegmentContentsView : UIView
 @property (nonatomic, readonly, strong) UITableView *tableView;
 
 @property (nonatomic, strong) NSArray *cellDataSource;
-@property (nonatomic, weak) id<SegmentDelegate> swipeDelegate;
+@property (nonatomic, weak) id<SegmentBarDelegate> swipeDelegate;
 
 - (void)reloadData;
 - (void)selectIndex:(NSInteger)index;

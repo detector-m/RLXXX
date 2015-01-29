@@ -13,6 +13,7 @@
 #import "RLColor.h"
 
 #import "NewsDetailVC.h"
+#import "NewsChannelsVC.h"
 
 #import "UIImageView+WebCache.h"
 
@@ -22,10 +23,9 @@
 
 @interface NewsVC () <NewsControllerDelegate, SegmentNaviDelegate, RefreshDelegate>
 @property (nonatomic, readwrite, strong) SegmentNaviVC *segmentVC;
-
-@property (nonatomic, readwrite, strong) NSMutableArray *segmentTitles;
-@property (nonatomic, readwrite, strong) NSMutableArray *segmentContentViews;
 @property (nonatomic, readwrite, strong) NSMutableArray *segments Description(NewsSegmentModel);
+
+@property (nonatomic, strong) UIButton *channelsButton;
 
 @property (nonatomic, readwrite, strong) NewsController *controller;
 @end
@@ -39,18 +39,13 @@
 - (void)dataDoClear {
     self.controller.delegate = nil;
     self.controller = nil;
-    
-    [self.segmentTitles removeAllObjects], self.segmentTitles = nil;
-    [self.segmentContentViews removeAllObjects], self.segmentContentViews = nil;
     [self.segments removeAllObjects], self.segments = nil;
 }
 
 - (void)dataDoLoad {
     self.controller = [[NewsController alloc] init];
     self.controller.delegate = self;
-    
-    self.segmentTitles = [NSMutableArray array];
-    self.segmentContentViews = [NSMutableArray array];
+
     self.segments = [NSMutableArray array];
 }
 
@@ -63,7 +58,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = NSLocalizedString(@"新闻", nil);
+//    UIColor * color = [UIColor redColor];
+//    UIFont *font = [UIFont fontWithName:@"Georgia-Italic" size:20];
+//    
+//    NSDictionary * dict = @{NSFontAttributeName : font, NSForegroundColorAttributeName : color};
+//    self.navigationController.navigationBar.titleTextAttributes = dict;
+
+//    NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"NewsTitle.png" ofType:nil]];
+//    UIImageView *titleView = [[UIImageView alloc] initWithImage:[UIImage imageWithData:data scale:1]];
+    UIImageView *titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"NewsTitle.png"]];
+
+
+//    self.navigationController.navigationBar.titleView = titleView;
+    [self.navigationItem setTitleView:titleView];
+
     
     [self dataDoLoad];
     self.controller.accessToken = [User sharedUser].accessToken;
@@ -75,7 +83,8 @@
     if(self.segmentVC != nil)
         return;
     
-    for(NSInteger i=0; i<self.segmentTitles.count; i++) {
+    NSMutableArray *array = [NSMutableArray array];
+    for(NSInteger i=0; i<self.segments.count; i++) {
         RefreshView *refreshView = [[RefreshView alloc] initWithStyle:kRefreshViewStyleTableView];
         [refreshView setDelegates:self];
         
@@ -85,18 +94,33 @@
         
         NewsSegmentModel *segment = [self.segments objectAtIndex:i];
         segment.view = refreshView;
-        [self.segmentContentViews addObject:refreshView];
+        
+        ////////////////////////////
+        Segment *barSegment = [[Segment alloc] init];
+        barSegment.item.title = segment.title;
+        barSegment.content.view = segment.view;
+        [array addObject:barSegment];
     }
     
     self.segmentVC = [[SegmentNaviVC alloc] init];
-    self.segmentVC.titleArray = self.segmentTitles;
-    self.segmentVC.contentArray = self.segmentContentViews;
+    self.segmentVC.segments = array;
     self.segmentVC.segmentNaviDelegate = self;
+    [self.segmentVC setBarViewWidth:self.view.frame.size.width-60];
     
     [self addChildViewController:self.segmentVC];
     [self.view addSubview:self.segmentVC.view];
+    
+    self.channelsButton = [ViewConstructor constructDefaultButton:[UIButton class] withFrame:CGRectMake(self.segmentVC.segmentBar.frame.size.width+3, 0, 58, self.segmentVC.segmentBar.frame.size.height)];
+    [self.channelsButton addTarget:self action:@selector(clickChannelsBtn:) forControlEvents:UIControlEventTouchUpInside    ];
+    [self.channelsButton setTitle:NSLocalizedString(@"More", nil) forState:UIControlStateNormal];
+    self.channelsButton.backgroundColor = [UIColor colorWithRed:49/255.0 green:126/255.0 blue:243/255.0 alpha:1];
+    [self.view addSubview:self.channelsButton];
 }
 
+- (void)clickChannelsBtn:(UIButton *)button {
+    NewsChannelsVC *vc = [[NewsChannelsVC alloc] init];
+    [ChangeVCController pushViewControllerByNavigationController:self.navigationController pushVC:vc];
+}
 - (NewsSegmentModel *)segmentWithIndex:(NSInteger)index {
     return [self.segments objectAtIndex:index];
 }
@@ -291,8 +315,8 @@
     __weak NewsVC *blockSelf = self;
     NSInteger index = tag;
     void(^block)(void) = ^{
-        
-        RefreshView *refreshView = (RefreshView *)[blockSelf.segmentContentViews objectAtIndex:index];
+        NewsSegmentModel *segment = [self.segments objectAtIndex:index];
+        RefreshView *refreshView = (RefreshView *)segment.view;
         if(refreshView.refreshDelegate == blockSelf && ((RefreshTableView *)refreshView.refreshTargetView).reloading == YES) {
             [refreshView finishedReloadingData];
         }
@@ -307,9 +331,6 @@
     if(typeList.count == 0)
         return;
     
-    for(NewsSegmentModel *segmentModel in typeList) {
-        [self.segmentTitles addObject:segmentModel.title];
-    }
     [self.segments addObjectsFromArray:typeList];
     
     NewsTypeModel *newsType = [self segmentWithIndex:0].titleItem;

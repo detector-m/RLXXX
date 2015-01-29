@@ -8,20 +8,26 @@
 
 #import <UIKit/UIKit.h>
 #import "SegmentBar.h"
+#import "SegmentsTableView.h"
+#import "Segment.h"
 
+#define kBarHeight 44
 @protocol SegmentNaviDelegate <NSObject>
 @optional
 - (void)segmentNaviWillChange:(NSInteger)index;
 - (void)segmentNaviChange:(NSInteger)newIndex;
 @end
 
-@interface SegmentNaviVC : UIViewController
+@interface SegmentNaviVC : UIViewController <SegmentBarDataSource, SegmentBarDelegate, UITableViewDataSource, UITableViewDelegate>
+//-------------------
 @property (nonatomic, readonly, assign) NSInteger currentIndex;
-@property (nonatomic, readwrite, strong) NSArray *titleArray;
-@property (nonatomic, readwrite, strong) NSArray *contentArray;
-
+@property (nonatomic, strong) NSMutableArray *segments;
 @property (nonatomic, readwrite, assign) CGFloat barViewWidth;
-//@property (nonatomic, readwrite, assign) CGRect barViewFrame;
 
 @property (nonatomic, readwrite, weak) id<SegmentNaviDelegate> segmentNaviDelegate;
+
+@property (nonatomic, readonly, strong) SegmentBar *segmentBar;
+@property (nonatomic, readonly, strong) SegmentsTableView *segmentsTableView;
+
+- (void)reloadData;
 @end
