@@ -35,10 +35,12 @@
 static DejalActivityView *activityView = nil;
 + (void)showActivityWithTitle:(NSString *)title {
     dispatch_block_t block = ^(){
-        [DejalActivityView removeView];
+        [DejalBezelActivityView removeView];
         activityView = nil;
 
-        activityView = [DejalActivityView activityViewForView:[UIApplication sharedApplication].keyWindow withLabel:title];
+//        activityView = [DejalActivityView activityViewForView:[UIApplication sharedApplication].keyWindow withLabel:title];
+        UIView *view = ((UIViewController *)[UIApplication sharedApplication].keyWindow.rootViewController.childViewControllers.lastObject).view;
+        activityView = [DejalBezelActivityView activityViewForView:view withLabel:title];
     };
     
     dispatch_async(dispatch_get_main_queue(), block);
@@ -46,12 +48,34 @@ static DejalActivityView *activityView = nil;
 }
 + (void)showActivity {
     dispatch_block_t block = ^(){
-//        [self removeActivity];
-        [DejalActivityView removeView];
+        [DejalBezelActivityView removeView];
         activityView = nil;
 
-        activityView = [DejalActivityView activityViewForView:[UIApplication sharedApplication].keyWindow];
+//        activityView = [DejalActivityView activityViewForView:[UIApplication sharedApplication].keyWindow];
+        UIView *view = ((UIViewController *)[UIApplication sharedApplication].keyWindow.rootViewController.childViewControllers.lastObject).view;
+        activityView = [DejalBezelActivityView activityViewForView:view];
+
         //    activityView.showNetworkActivityIndicator = YES;
+    };
+    
+    dispatch_async(dispatch_get_main_queue(), block);
+}
+
++ (void)showActivityWithTitle:(NSString *)title forView:(UIView *)view {
+    dispatch_block_t block = ^(){
+        [DejalActivityView removeView];
+        activityView = nil;
+        activityView = [DejalActivityView activityViewForView:view withLabel:title];
+    };
+    
+    dispatch_async(dispatch_get_main_queue(), block);
+}
++ (void)showActivityForView:(UIView *)view {
+    dispatch_block_t block = ^(){
+        [DejalActivityView removeView];
+        activityView = nil;
+        
+        activityView = [DejalActivityView activityViewForView:view];
     };
     
     dispatch_async(dispatch_get_main_queue(), block);

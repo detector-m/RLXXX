@@ -17,4 +17,24 @@ typedef NS_ENUM(NSInteger, LoginType) {
     kLoginTypeLocal = 0, //本地登录
     kLoginTypeThird = 1, //第三方登录
 };
+
+//性别 1为男，2为女
+typedef enum {
+    kGenderTypeNon = 0,
+    kGenderTypeMan = 1,
+    kGenderTypeWom = 2,
+}GenderType;
+
+////性别 0->女 , 1->男
+//typedef NS_ENUM(NSUInteger, GenderType) {
+//    kGenderTypeWom = 0,
+//    kGenderTypeMan = 1,
+//};
+
+//用户是否为商家，1，普通用户，2商家
+typedef enum {
+    kUserTypeNone = 0,
+    kUserTypeNormal,
+    kUserTypeVendor,
+}UserType;
 #endif

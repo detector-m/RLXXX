@@ -68,8 +68,6 @@
 }
 
 - (void)setSelectIndexDisplay:(__unused NSInteger)tag {
-//    if(self.selectedIndex == tag)
-//        return;
     UIButton *button = (UIButton *)[self viewWithTag:self.selectedIndex+kSegmentStartTag];
     //    233,233,216
     button.backgroundColor = kSelectedColor;//[UIColor colorWithRed:188.0/255.0 green:233.0/255.0 blue:222.0/255.0 alpha:150.0/255.0];//[UIColor blueColor];
@@ -173,6 +171,12 @@
     
     if(v != nil) {
         [self.reusableItemViews removeObject:v];
+//        if(self.selectedIndex != index) {
+            v.backgroundColor = [UIColor clearColor];
+//        }
+//        else {
+//            v.backgroundColor = kBackgroundColor;
+//        }
     }
     
     return v;
@@ -283,8 +287,9 @@
         xOffset += itemWidth;
     }
     
-    if(self.selectedIndex == 0) {
-        [self setSelectIndexDisplay:0];
+//    if(self.selectedIndex == 0)
+    {
+        [self setSelectIndexDisplay:self.selectedIndex];
     }
     
     self.firstVisibleIndex = startIndex;

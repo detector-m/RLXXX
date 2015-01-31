@@ -29,14 +29,11 @@ const CGFloat getFixHeight();
 - (void)setupForDismissKeyboard;
 @end
 
-//@interface UIViewController (ChangeRootVC)
-//- (void)changeRootViewController;
-//@end
-
 @protocol BackButtonHandlerProtocol <NSObject>
 @optional
 // Override this method in UIViewController derived class to handle 'Back' button click
 - (BOOL)navigationShouldPopOnBackButton;
+- (void)navigationDidPopOnBackButton;
 @end
 
 @interface UIViewController (BackButtonHandler)

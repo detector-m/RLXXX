@@ -11,7 +11,10 @@
 
 static NSString *kDefaultHttpMethod = @"POST";
 static NSString *kRestserverBaseURL = @"http://www.dqcc.com.cn/mobile";
-static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn/mobile/api/";
+//static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn/mobile/api/";
+//http://www.dqcc.com.cn/mobile/api/v20/
+static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn/mobile/api/v20";
+
 
 @implementation GVRequestManager
 
@@ -56,7 +59,8 @@ static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn/mobile/api/";
 //手机号码是否使用
 + (RLRequest *)requestVerifyPhoneNum:(NSMutableDictionary *)parameters
                          andDelegate:(id<RLRequestDelegate>)delegate {
-    NSString *pageName = @"veriftyMobile.jhtml";
+//    NSString *pageName = @"veriftyMobile.jhtml";
+    NSString *pageName = @"/verifty/isMobileUse.jhtml";
     
     return [self requestWithPageName:pageName parameters:parameters httpMethod:kDefaultHttpMethod delegate:(id<RLRequestDelegate>)delegate];
 }
@@ -64,7 +68,8 @@ static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn/mobile/api/";
 //获取手机验证码
 + (RLRequest *)requestMobileAuthCode:(NSMutableDictionary *)parameters
                          andDelegate:(id<RLRequestDelegate>)delegate {
-    NSString *pageName = @"sendMobileAuthcode.jhtml";
+//    NSString *pageName = @"sendMobileAuthcode.jhtml";
+    NSString *pageName = @"/verifty/sendMobileAuthcode.jhtml";
     
     return [self requestWithPageName:pageName
                           parameters:parameters
@@ -75,13 +80,16 @@ static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn/mobile/api/";
 //验证手机验证码
 + (RLRequest *)requestVerifyMobileAuthCode:(NSMutableDictionary *)parameters
                                andDelegate:(id<RLRequestDelegate>)delegate {
-    NSString *pageName = @"verifyMobileAuthcode.jhtml";
+//    NSString *pageName = @"verifyMobileAuthcode.jhtml";
+    NSString *pageName = @"/verifty/isMobileAuthcodeRight.jhtml";
+
     return [self requestWithPageName:pageName parameters:parameters httpMethod:kDefaultHttpMethod delegate:delegate];
 }
 //获取可用的地球列表号
 + (RLRequest *)requestGetChikyugos:(NSMutableDictionary *)parameters
                        andDelegate:(id<RLRequestDelegate>)delegate {
-    NSString *pageName = @"getChikyugos.jhtml";
+//    NSString *pageName = @"getChikyugos.jhtml";
+      NSString *pageName = @"/member/getChikyugos.jhtml";
     
     return [self requestWithPageName:pageName parameters:parameters httpMethod:kDefaultHttpMethod delegate:(id<RLRequestDelegate>)delegate];
 }
@@ -89,15 +97,17 @@ static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn/mobile/api/";
 //地球号是否使用验证
 + (RLRequest *)requestVerifyChikyugo:(NSMutableDictionary *)parameters
                          andDelegate:(id<RLRequestDelegate>)delegate {
-    NSString *pageName = @"veriftyChikyugo.jhtml";
-    
+//    NSString *pageName = @"veriftyChikyugo.jhtml";
+    NSString *pageName = @"/verifty/isChikyugoUse.jhtml";
+
     return [self requestWithPageName:pageName parameters:parameters httpMethod:kDefaultHttpMethod delegate:(id<RLRequestDelegate>)delegate];
 }
 
 //用户注册
 + (RLRequest *)requestRegist:(NSMutableDictionary *)parameters
                  andDelegate:(id<RLRequestDelegate>)delegate {
-    NSString *pageName = @"regist.jhtml";
+//    NSString *pageName = @"regist.jhtml";
+    NSString *pageName = @"/member/regist.jhtml";
     
     return [self requestWithPageName:pageName parameters:parameters httpMethod:kDefaultHttpMethod delegate:(id<RLRequestDelegate>)delegate];
 }
@@ -105,7 +115,8 @@ static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn/mobile/api/";
 //用户登录
 + (RLRequest *)requestLogin:(NSMutableDictionary *)parameters
                 andDelegate:(id<RLRequestDelegate>)delegate {
-    NSString *pageName = @"login.jhtml";
+//    NSString *pageName = @"login.jhtml";
+    NSString *pageName = @"/member/login.jhtml";
     
     return [self requestWithPageName:pageName parameters:parameters httpMethod:kDefaultHttpMethod delegate:(id<RLRequestDelegate>)delegate];
 }
@@ -113,7 +124,8 @@ static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn/mobile/api/";
 //获取新闻类型列表
 + (RLRequest *)requestNewsTypeList:(NSMutableDictionary *)parameters
                        andDelegate:(id<RLRequestDelegate>)delegate {
-    NSString *pageName = @"newsTypeList.jhtml";
+//    NSString *pageName = @"newsTypeList.jhtml";
+    NSString *pageName = @"/news/newsTypeList.jhtml";
     
     return [self requestWithPageName:pageName parameters:parameters httpMethod:kDefaultHttpMethod delegate:(id<RLRequestDelegate>)delegate];
 }
@@ -121,7 +133,8 @@ static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn/mobile/api/";
 //根据类型获取新闻列表
 + (RLRequest *)requestNewsList:(NSMutableDictionary *)parameters
                    andDelegate:(id<RLRequestDelegate>)delegate {
-    NSString *pageName = @"newsList.jhtml";
+//    NSString *pageName = @"newsList.jhtml";
+    NSString *pageName = @"/news/newsList.jhtml";
     
     return [self requestWithPageName:pageName parameters:parameters httpMethod:kDefaultHttpMethod delegate:(id<RLRequestDelegate>)delegate];
 }

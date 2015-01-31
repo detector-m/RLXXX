@@ -11,6 +11,7 @@
 #import "SegmentPageTableViewCell.h"
 #import "RefreshView.h"
 #import "RLColor.h"
+#import "RLUtilitiesMethods.h"
 
 #import "NewsDetailVC.h"
 #import "NewsChannelsVC.h"
@@ -49,6 +50,11 @@
     self.segments = [NSMutableArray array];
 }
 
+- (void)cleanDatas {
+    [self.segments removeAllObjects];
+    [self.segmentVC.segments removeAllObjects];
+}
+
 //- (BOOL)navigationShouldPopOnBackButton {
 //
 //    [self.navigationController popViewControllerAnimated:YES];
@@ -58,32 +64,74 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    UIColor * color = [UIColor redColor];
-//    UIFont *font = [UIFont fontWithName:@"Georgia-Italic" size:20];
-//    
-//    NSDictionary * dict = @{NSFontAttributeName : font, NSForegroundColorAttributeName : color};
-//    self.navigationController.navigationBar.titleTextAttributes = dict;
-
-//    NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"NewsTitle.png" ofType:nil]];
-//    UIImageView *titleView = [[UIImageView alloc] initWithImage:[UIImage imageWithData:data scale:1]];
-    UIImageView *titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"NewsTitle.png"]];
-
-
-//    self.navigationController.navigationBar.titleView = titleView;
-    [self.navigationItem setTitleView:titleView];
-
-    
     [self dataDoLoad];
+    
+    [self navigationTitleButtonDoLoad];
+    
     self.controller.accessToken = [User sharedUser].accessToken;
     
     [self.controller newsTypeListRequest:[User sharedUser].accessToken];
 }
 
+- (void)navigationTitleButtonDoLoad {
+    UIImage *image = [UIImage imageNamed:@"NewsTitle.png"];
+
+    UIButton *button = [ViewConstructor constructDefaultButton:[UIButton class] withFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
+    button.layer.borderWidth = 0.0f;
+    [button setImage:image forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(clickNavigationTitleBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.navigationItem setTitleView:button];
+}
+
+- (void)clickNavigationTitleBtn:(UIButton *)button {
+     [self.controller newsTypeListRequest:[User sharedUser].accessToken];
+}
+
 - (void)segmentNaviVCDoLoad {
-    if(self.segmentVC != nil)
+    if(self.segmentVC != nil) {
+        [self segmentNaviDataDoLoad];
+        [self.segmentVC reloadData];
         return;
+    }
     
-    NSMutableArray *array = [NSMutableArray array];
+//    NSMutableArray *array = [NSMutableArray array];
+//    for(NSInteger i=0; i<self.segments.count; i++) {
+//        RefreshView *refreshView = [[RefreshView alloc] initWithStyle:kRefreshViewStyleTableView];
+//        [refreshView setDelegates:self];
+//        
+//        ((RefreshTableView *)refreshView.refreshTargetView).showsVerticalScrollIndicator = NO;
+//        ((RefreshTableView *)refreshView.refreshTargetView).rowHeight = 100;
+//        ((RefreshTableView *)refreshView.refreshTargetView).tag = kSegmentStartTag+i;
+//        
+//        NewsSegmentModel *segment = [self.segments objectAtIndex:i];
+//        segment.view = refreshView;
+//        
+//        ////////////////////////////
+//        Segment *barSegment = [[Segment alloc] init];
+//        barSegment.item.title = segment.title;
+//        barSegment.content.view = segment.view;
+//        [array addObject:barSegment];
+//    }
+    
+    self.segmentVC = [[SegmentNaviVC alloc] init];
+    self.segmentVC.segmentNaviDelegate = self;
+    [self.segmentVC setBarViewWidth:self.view.frame.size.width-60];
+    
+    [self segmentNaviDataDoLoad];
+
+    
+    [self addChildViewController:self.segmentVC];
+    [self.view addSubview:self.segmentVC.view];
+    
+    self.channelsButton = [ViewConstructor constructDefaultButton:[UIButton class] withFrame:CGRectMake(self.segmentVC.segmentBar.frame.size.width+3, 0, 58, self.segmentVC.segmentBar.frame.size.height)];
+    [self.channelsButton addTarget:self action:@selector(clickChannelsBtn:) forControlEvents:UIControlEventTouchUpInside];
+    self.channelsButton.layer.borderWidth = 0.0f;
+    [self.channelsButton setTitle:NSLocalizedString(@"More", nil) forState:UIControlStateNormal];
+    self.channelsButton.backgroundColor = [UIColor colorWithRed:49/255.0 green:126/255.0 blue:243/255.0 alpha:1];
+    [self.view addSubview:self.channelsButton];
+}
+
+- (void)segmentNaviDataDoLoad {
     for(NSInteger i=0; i<self.segments.count; i++) {
         RefreshView *refreshView = [[RefreshView alloc] initWithStyle:kRefreshViewStyleTableView];
         [refreshView setDelegates:self];
@@ -96,25 +144,11 @@
         segment.view = refreshView;
         
         ////////////////////////////
-        Segment *barSegment = [[Segment alloc] init];
-        barSegment.item.title = segment.title;
-        barSegment.content.view = segment.view;
-        [array addObject:barSegment];
+        segment.item.title = segment.title;
+        segment.content.view = segment.view;
     }
     
-    self.segmentVC = [[SegmentNaviVC alloc] init];
-    self.segmentVC.segments = array;
-    self.segmentVC.segmentNaviDelegate = self;
-    [self.segmentVC setBarViewWidth:self.view.frame.size.width-60];
-    
-    [self addChildViewController:self.segmentVC];
-    [self.view addSubview:self.segmentVC.view];
-    
-    self.channelsButton = [ViewConstructor constructDefaultButton:[UIButton class] withFrame:CGRectMake(self.segmentVC.segmentBar.frame.size.width+3, 0, 58, self.segmentVC.segmentBar.frame.size.height)];
-    [self.channelsButton addTarget:self action:@selector(clickChannelsBtn:) forControlEvents:UIControlEventTouchUpInside    ];
-    [self.channelsButton setTitle:NSLocalizedString(@"More", nil) forState:UIControlStateNormal];
-    self.channelsButton.backgroundColor = [UIColor colorWithRed:49/255.0 green:126/255.0 blue:243/255.0 alpha:1];
-    [self.view addSubview:self.channelsButton];
+    self.segmentVC.segments = self.segments;
 }
 
 - (void)clickChannelsBtn:(UIButton *)button {
@@ -140,12 +174,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger numOfRow = [self numberOfRows:tableView.tag];
-//    if(numOfRow * tableView.rowHeight < self.view.frame.size.height) {
-//        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    }
-//    else {
-//        tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-//    }
     
     if(numOfRow == 0) {
         tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -201,7 +229,7 @@
         cell.textLabel.textColor = [UIColor blackColor];
     }
     NSURL *imageUrl = [NSURL URLWithString:news.picUrl];
-    [cell.imageView sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"qq_icon.png"] options:SDWebImageProgressiveDownload];
+    [cell.imageView sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"NewsDefaultIcon.jpg"] options:SDWebImageProgressiveDownload];
 
     return cell;
 }
@@ -333,7 +361,7 @@
     
     [self.segments addObjectsFromArray:typeList];
     
-    NewsTypeModel *newsType = [self segmentWithIndex:0].titleItem;
+    NewsTypeModel *newsType = [self segmentWithIndex:self.segmentVC.currentIndex].titleItem;
     [self.controller newsListRequest:newsType.ID currentCount:0 pageCount:kDefaultPageSize token:nil subtag:self.segmentVC.currentIndex];
 }
 
@@ -352,12 +380,13 @@
 #pragma mark - NewsControllerDelegate
 - (void)newsTypeListResponse:(GVResponse *)response {
     dispatch_block_t block = NULL;
-    if(response.status != 0) {
+    if(response == nil || response.status != 0) {
         block = ^(){
             [GVPopViewManager showDialogWithTitle:NSLocalizedString(@"获取新闻类型列表失败！", nil)];
         };
     }
     else {
+        [self cleanDatas];
         [self newsTypeListParser:response.responseData];
         __weak NewsVC *blockSelf = self;
         block = ^(){

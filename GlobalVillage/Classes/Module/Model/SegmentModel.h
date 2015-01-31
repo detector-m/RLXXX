@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Segment.h"
 
-@interface SegmentModel : NSObject
-@property (nonatomic, assign) NSInteger Id;
+@interface SegmentModel : Segment
+//@property (nonatomic, assign) NSInteger Id;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, strong) UIView *view;
 @property (nonatomic, readonly, strong) NSMutableArray *contents;

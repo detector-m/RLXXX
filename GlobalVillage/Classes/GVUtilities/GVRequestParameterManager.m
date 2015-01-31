@@ -20,12 +20,15 @@
 
 #define dVerifyChikyugoChikyugoField    @"chikyugo"
 
-#define dUsernameField  @"username"
+#define dUsernameField  @"userName"
+#define dMemberNameField @"memberName"
 #define dPasswordField  @"password"
+#define dPassword2Field @"passward"
 #define dLatitudeField  @"latitude"
 #define dLongitudeField @"longitude"
 #define dCityField      @"city"
-#define dGuestChikyugoField @"guest_chikyugo"
+#define dRegisteredCityField @"registeredCity"
+#define dGuestChikyugoField @"guestChikyugo"
 #define dSexField       @"sex"
 #define dHeadPortraitField  @"headPortrait"
 
@@ -145,12 +148,12 @@
     }
     
     retDic = [NSMutableDictionary dictionary];
-    [retDic setObject:nicknameValue forKey:dUsernameField];
+    [retDic setObject:nicknameValue forKey:dMemberNameField];
     [retDic setObject:chikyugoValue forKey:dGuestChikyugoField];
-    [retDic setObject:passwordValue forKey:dPasswordField];
+    [retDic setObject:passwordValue forKey:dPassword2Field];
     [retDic setObject:mobileNumValue forKey:dMobileNumField];
     [retDic setObject:sexValue forKey:dSexField];
-    [retDic setObject:cityValue forKey:dCityField];
+    [retDic setObject:cityValue forKey:dRegisteredCityField];
     [retDic setObject:longitudeValue forKey:dLongitudeField];
     [retDic setObject:latitudeValue forKey:dLatitudeField];
     if(headPortraitValue != nil) {
@@ -195,7 +198,7 @@
         [retDic setObject:longitudeValue forKey:dLongitudeField];
     }
     if(cityValue) {
-        [retDic setObject:cityValue forKey:dCityField];
+        [retDic setObject:cityValue forKey:dRegisteredCityField];
     }
     
     return retDic;

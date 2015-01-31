@@ -14,5 +14,8 @@
 
 + (void)showActivityWithTitle:(NSString *)title;
 + (void)showActivity;
++ (void)showActivityWithTitle:(NSString *)title forView:(UIView *)view;
++ (void)showActivityForView:(UIView *)view;
+
 + (void)removeActivity;
 @end

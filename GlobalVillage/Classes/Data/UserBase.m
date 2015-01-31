@@ -20,6 +20,7 @@
 - (instancetype)init {
     if(self = [super init]) {
         self.location = [[UserLocation alloc] init];
+        self.location.city = @"宜春";
     }
     
     return self;
@@ -30,10 +31,12 @@
     
     self.nickname = nil;
     self.phone = nil;
+    self.dqNumber = nil;
     self.gender = 0;
     self.age = 0;
     self.signature = nil;
     self.registeredCity = nil;
+    self.city = nil;
     self.pic = nil;
     
     self.type = 0;

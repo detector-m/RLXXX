@@ -12,6 +12,9 @@
 
 #import "RegisterController.h"
 
+#import "RLBaseNavigationController.h"
+#import "NewsVC.h"
+
 @interface PasswordSettingVC () <RegisterControllerDelegate>
 @property (nonatomic, readwrite, strong) RLInputView *passwordInputView;
 @property (nonatomic, readwrite, strong) RLInputView *checkInputView;
@@ -30,9 +33,12 @@
 }
 
 - (BOOL)navigationShouldPopOnBackButton {
-    [self.controller removeAllRequest];
-    
     return [super navigationShouldPopOnBackButton];
+}
+
+- (void)navigationDidPopOnBackButton {
+    [self.controller removeAllRequest];
+    [super navigationDidPopOnBackButton];
 }
 
 - (void)dataDoLoad {
@@ -125,7 +131,7 @@
     
     User *user = [User sharedUser];
     user.password = ((UITextField *)self.passwordInputView.textInputView).text;
-    [self.controller requestRegist:user.chikyugo phoneNumber:user.phone password:user.password gender:user.gender nickname:user.nickname location:user.location pic:user.pic];
+    [self.controller requestRegist:user.dqNumber phoneNumber:user.phone password:user.password gender:user.gender nickname:user.nickname location:user.location pic:user.pic];
     
     [GVPopViewManager showActivityWithTitle:NSLocalizedString(@"正在注册...", nil)];
 }
@@ -148,8 +154,13 @@
         };
     }
     else {
+        DLog(@"%@", response.responseData);
+        User *user = [User sharedUser];
+        [user setAccount:user.phone andPassword:((UITextField *)self.passwordInputView.textInputView).text];
         block = ^() {
-            
+//            [ChangeVCController changeMainRootViewController:[NewsVC class]];
+            NewsVC *vc = [[NewsVC alloc] init];
+            [ChangeVCController pushViewControllerByNavigationControllerFromRootViewController:self.navigationController pushVC:vc];
         };
     }
     [self mainThreadAsync:block];

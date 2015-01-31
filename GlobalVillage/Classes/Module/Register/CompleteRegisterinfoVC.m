@@ -13,11 +13,6 @@
 #import "RLImageCropViewController.h"
 #import "ChooseDQNumberVC.h"
 
-//性别 0->女 , 1->男
-typedef NS_ENUM(NSUInteger, GenderType) {
-    kGenderTypeWom = 0,
-    kGenderTypeMan = 1,
-};
 @interface CompleteRegisterinfoVC ()<RLImageCropDelegate>
 @property (nonatomic, readwrite, strong) UIButton *pickPicBtn;
 @property (nonatomic, readwrite, strong) RLRadioButton *manBtn;

@@ -7,6 +7,7 @@
 //
 
 #import "User.h"
+#import "RLTypecast.h"
 
 static User *_userInstance = nil;
 
@@ -29,10 +30,12 @@ static User *_userInstance = nil;
 }
 
 - (void)dataClear {
-    self.chikyugo = nil;
+    self.account = nil;
     self.password = nil;
-    
     self.accessToken = nil;
+    
+    self.easemobUserAccount = nil;
+    self.easemobUserPassword = nil;
     
     [super dataClear];
 }
@@ -53,6 +56,42 @@ static User *_userInstance = nil;
     if(accessToken == nil || accessToken.length == 0)
         return;
     
-    _accessToken = [accessToken copy];
+    _accessToken = accessToken;
+}
+
+- (void)setAccount:(NSString *)account andPassword:(NSString *)password {
+    self.account = account;
+    self.password = password;
+}
+
+- (void)fillLoginData:(NSArray *)loginData andToken:(NSString *)accessToken {
+    if(loginData == nil)
+        return;
+    
+    DLog(@"%@", loginData);
+    NSDictionary *loginDic = [loginData firstObject];
+    
+    self.nickname = [loginDic objectForKey:RespondFieldMemberNameKey];
+    self.dqNumber = [loginDic objectForKey:RespondFieldGuestChikyugoKey];
+    self.phone = [loginDic objectForKey:RespondFieldPhoneKey];
+    self.gender = (GenderType)[RLTypecast stringToInteger:[loginDic objectForKey:RespondFieldSexKey]];
+    self.age = [RLTypecast stringToInteger:[loginDic objectForKey:RespondFieldAgeKey]];
+    self.signature = [loginDic objectForKey:RespondFieldSignatureKey];
+    self.registeredCity = [loginDic objectForKey:RespondFieldRegisteredCityKey];
+    self.pic = [loginDic objectForKey:RespondFieldPicKey];
+    self.type =  (UserType)[RLTypecast stringToInteger:[loginDic objectForKey:RespondFieldMemberTypeKey]];
+    
+    self.easemobUserAccount = [loginDic objectForKey:RespondFieldEasemobUserIdKey];
+    self.easemobUserPassword = [loginDic objectForKey:RespondFieldEasemobUserPwdKey];
+    
+    self.accessToken = accessToken;
 }
 @end
+
+//#pragma mark - 环信
+//@implementation EasemobUser
+//- (void)dealloc {
+//    self.easemobUserAccount = nil;
+//    self.easemobUserPassword = nil;
+//}
+//@end

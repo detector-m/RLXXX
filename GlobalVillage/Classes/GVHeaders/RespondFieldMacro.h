@@ -18,15 +18,19 @@
 
 //登录
 #define RespondFieldTokenKey    @"accessToken"
+
 #define RespondFieldEasemobUserIdKey    @"easemobUserId"
 #define RespondFieldEasemobUserPwdKey   @"easemobUserPwd"
-#define RespondFieldBusinessTypeKey     @"type"
-
 #define RespondFieldMemberKey       @"member"
 #define RespondFieldGuestChikyugoKey   @"guestChikyugo" 
 #define RespondFieldMemberNameKey      @"memberName"
 #define RespondFieldRegisteredCityKey   @"registeredCity"
 #define RespondFieldSexKey          @"sex"
+#define RespondFieldAgeKey          @"age"
+#define RespondFieldMemberTypeKey   @"memberType"
+#define RespondFieldPhoneKey    @"mobile"
+#define RespondFieldSignatureKey @"signature"
+#define RespondFieldPicKey  @"pic"
 
 //新闻
 #define RespondFieldTypeListKey @"typeList"

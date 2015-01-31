@@ -17,10 +17,14 @@
 @implementation RLBaseViewController
 
 - (BOOL)navigationShouldPopOnBackButton {
-    [GVPopViewManager removeActivity];
-//    [ModuleController removeAllRequest];
-    [self.navigationController popViewControllerAnimated:YES];
+//    [self.navigationController popViewControllerAnimated:YES];
     return YES;
+}
+
+- (void)navigationDidPopOnBackButton {
+//    [ModuleController removeAllRequest];
+
+    [GVPopViewManager removeActivity];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,6 +44,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
 
+//    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     [self screenFixView];
     [self setBarBackItem];
     [self setupForDismissKeyboard];

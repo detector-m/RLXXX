@@ -75,6 +75,7 @@
 }
 
 - (NSURLRequest *)requestForNews:(NSString *)aUrl {
+    DLog(@"%@", aUrl);
     NSURL *newsUrl = [NSURL URLWithString:[aUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:newsUrl];
     return request;

@@ -14,7 +14,12 @@
 }
 
 - (void)loginRequest:(NSString *)account password:(NSString *)password location:(UserLocation *)location  thirdOpenKey:(NSString *)openKey loginType:(__unused LoginType)loginType  {
+//    NSMutableDictionary *parameters = [GVRequestParameterManager loginParameter:account passwordValue:password latitudeValue:[RLTypecast doubleToString:location.latitude] longtitudeValue:[RLTypecast doubleToString:location.longitude] cityValue:location.city thirdIdValue:openKey];
+    if(location.city == nil) {
+        location.city = @"yichun";
+    }
     NSMutableDictionary *parameters = [GVRequestParameterManager loginParameter:account passwordValue:password latitudeValue:[RLTypecast doubleToString:location.latitude] longtitudeValue:[RLTypecast doubleToString:location.longitude] cityValue:location.city thirdIdValue:openKey];
+
     if(!parameters) {
         DLog(@"login error!");
         NSAssert(parameters !=nil, @"login error!");
@@ -62,7 +67,7 @@ didFailWithError:(NSError *)error {
     id<LoginControllerDelegate> delegate = (id<LoginControllerDelegate>)self.delegate;
     switch (type) {
         case kRequestTypeLogin: {
-//            response.responseData = result;
+            response.responseData = [self parseLoginResponseData:result];
             if([delegate respondsToSelector:@selector(loginResponse:)]) {
                 [delegate loginResponse:response];
             }
@@ -73,4 +78,12 @@ didFailWithError:(NSError *)error {
     }
 }
 
+- (NSString *)parseLoginResponseData:(id)result {
+    if(result == nil || ![result isKindOfClass:[NSDictionary class]])
+        return nil;
+    NSDictionary *dic = (NSDictionary *)result;
+    DLog(@"%@", result);
+    [[User sharedUser] fillLoginData:[dic objectForKey:RespondFieldMemberKey] andToken:[dic objectForKey:RespondFieldTokenKey]];
+    return @"OK";
+}
 @end

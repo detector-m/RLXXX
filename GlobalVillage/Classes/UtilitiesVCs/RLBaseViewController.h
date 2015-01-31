@@ -18,4 +18,5 @@
 - (void)endEditing;
 
 - (BOOL)navigationShouldPopOnBackButton;
+- (void)navigationDidPopOnBackButton;
 @end

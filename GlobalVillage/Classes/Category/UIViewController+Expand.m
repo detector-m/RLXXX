@@ -95,30 +95,11 @@ const CGFloat getFixHeight()
 }
 @end
 
-//@implementation UIViewController (ChangeRootVC)
-//- (void)changeRootViewController {
-//    dispatch_block_t block = ^{
-//        MainVC *vc = [[MainVC alloc] init];
-//        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//        if([[appDelegate class] instanceMethodForSelector:@selector(changeRootViewController:)]) {
-//            [self.navigationController popToRootViewControllerAnimated:NO];
-//            [[appDelegate class] changeRootViewController:vc];
-//        }
-//        else {
-//            [self.navigationController popToRootViewControllerAnimated:NO];
-//            [appDelegate.window setRootViewController:vc];
-//        }
-//    };
-//    
-//    dispatch_async(dispatch_get_main_queue(), block);
-//}
-//@end
-
 @implementation UIViewController (BackButtonHandler)
 
 @end
 
-@implementation UINavigationController (ShouldPopOnBackButton)
+@implementation UINavigationController (PopOnBackButton)
 
 - (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item {
     if([self.viewControllers count] < navigationBar.items.count) {
@@ -147,6 +128,13 @@ const CGFloat getFixHeight()
     }
     
     return NO;
+}
+
+- (void)navigationBar:(UINavigationBar *)navigationBar didPopItem:(UINavigationItem *)item {
+    UIViewController *vc = [self topViewController];
+    if([vc respondsToSelector:@selector(navigationDidPopOnBackButton)]) {
+        [(id<BackButtonHandlerProtocol>)vc navigationDidPopOnBackButton];
+    }
 }
 @end
 

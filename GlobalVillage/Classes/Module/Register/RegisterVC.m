@@ -39,9 +39,12 @@
 }
 
 - (BOOL)navigationShouldPopOnBackButton {
-    [self.controller removeAllRequest];
-    
     return [super navigationShouldPopOnBackButton];
+}
+
+- (void)navigationDidPopOnBackButton {
+    [self.controller removeAllRequest];
+    [super navigationDidPopOnBackButton];
 }
 
 - (void)viewDidLoad {
@@ -137,7 +140,7 @@
 - (void)verifyPhoneNumberResponse:(GVResponse *)response {
     dispatch_block_t block = nil;
     //可用
-    if([response.responseData integerValue] == 1) {
+    if([response.responseData integerValue] == 0) {
         block = ^(){
             [GVPopViewManager removeActivity];
             PhoneAuthCodeVC *vc = [[PhoneAuthCodeVC alloc] init];

@@ -102,7 +102,7 @@
         [self.view addSubview:self.segmentsTableView];
     }
     
-    [self reloadData];
+//    [self reloadData];
     self.currentIndex = 0;
 }
 
@@ -124,7 +124,7 @@
 }
 
 - (CGFloat)itemWidthOfSegmentBar:(SegmentBar *)segmentBar forIndex:(NSInteger)index {
-    return 70;
+    return 80;
 }
 
 - (SegmentItemView *)itemView:(SegmentBar *)sgementBar forIndex:(NSInteger)index {
@@ -137,9 +137,6 @@
     item.titleLabel.font = [UIFont systemFontOfSize:20];
     item.layer.borderWidth = 0;
     item.delegate = self.segmentBar;
-    if(self.currentIndex != index) {
-        item.backgroundColor = [UIColor clearColor];
-    }
     
     return item;
 }
@@ -213,10 +210,14 @@
 
 -(void)selectIndex:(NSInteger)index
 {
+    if(self.segments.count == 0)
+        return;
     [self.segmentsTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:NO];
 }
 
 - (void)reloadData {
+//    self.currentIndex = 0;
+//    [self.segmentBar selectIndex:0];
     [self.segmentBar reloadData];
     [self.segmentsTableView reloadData];
 }

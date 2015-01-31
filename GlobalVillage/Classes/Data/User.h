@@ -7,16 +7,27 @@
 //
 
 #import "UserBase.h"
-#import "TypesHeader.h"
 
+@class EasemobUser;
 @interface User : UserBase
-@property (nonatomic, copy) NSString *chikyugo;
+@property (nonatomic, copy) NSString *account;
 @property (nonatomic, copy) NSString *password;
 
 @property (nonatomic, readwrite, assign) LoginType loginType;
 //@property (nonatomic, copy) NSString *openKey;
-
 @property (nonatomic, readonly, copy) NSString *accessToken;
 
+@property (nonatomic, copy) NSString *easemobUserAccount;
+@property (nonatomic, copy) NSString *easemobUserPassword;
+
 + (User *)sharedUser;
+
+- (void)setAccount:(NSString *)account andPassword:(NSString *)password;
+- (void)fillLoginData:(NSDictionary *)loginData andToken:(NSString *)accessToken;
 @end
+
+//#pragma mark - 环信
+//@interface EasemobUser : NSObject
+//@property (nonatomic, copy) NSString *easemobUserAccount;
+//@property (nonatomic, copy) NSString *easemobUserPassword;
+//@end

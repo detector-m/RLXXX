@@ -46,9 +46,12 @@ typedef NS_ENUM(NSUInteger, ChargeType) {
 }
 
 - (BOOL)navigationShouldPopOnBackButton {
-    [self.controller removeAllRequest];
-    
     return [super navigationShouldPopOnBackButton];
+}
+
+- (void)navigationDidPopOnBackButton {
+    [self.controller removeAllRequest];
+    [super navigationDidPopOnBackButton];
 }
 
 - (void)dataDoLoad {
@@ -183,7 +186,7 @@ typedef NS_ENUM(NSUInteger, ChargeType) {
 }
 
 - (void)pushToPasswordSettingVC {
-    [User sharedUser].chikyugo = self.selectedDQNumber;
+    [User sharedUser].dqNumber = self.selectedDQNumber;
     PasswordSettingVC *vc = [[PasswordSettingVC alloc] init];
     [ChangeVCController pushViewControllerByNavigationController:self.navigationController pushVC:vc];
 }

@@ -35,8 +35,8 @@
         NSAssert(self.window == nil, @"window 未初始化");
         return;
     }
-//    NormalLoginVC *vc = [[NormalLoginVC alloc] init];
-    NewsVC *vc = [[NewsVC alloc] init];
+    NormalLoginVC *vc = [[NormalLoginVC alloc] init];
+//    NewsVC *vc = [[NewsVC alloc] init];
 //    TestViewController *vc = [[TestViewController alloc] init];
     RLBaseNavigationController *nav = [[RLBaseNavigationController alloc] initWithRootViewController:vc];
     self.window.rootViewController = nav;

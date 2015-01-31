@@ -33,17 +33,19 @@ static NSInteger count = 60;
 }
 
 - (BOOL)navigationShouldPopOnBackButton {
-    [self.controller removeAllRequest];
-    
     return [super navigationShouldPopOnBackButton];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    
+- (void)navigationDidPopOnBackButton {
+    [self.controller removeAllRequest];
     [self.timer invalidate], self.timer = nil;
     count = 60;
+    [super navigationDidPopOnBackButton];
 }
+
+//- (void)viewDidDisappear:(BOOL)animated {
+//    [super viewDidDisappear:animated];
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -65,7 +67,6 @@ static NSInteger count = 60;
     RLButton *getAuthcodeBtn = (RLButton *)[ViewConstructor constructDefaultButton:[RLButton class] withFrame:CGRectMake(190, 20, 125, 40)];
     [getAuthcodeBtn regulateFrameOriginX];
     [getAuthcodeBtn setTitle:NSLocalizedString(@"60s后重新获取", nil) forState:UIControlStateNormal];
-//    [getAuthcodeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [getAuthcodeBtn addTarget:self action:@selector(clickGetAuthcodeBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:getAuthcodeBtn];
     

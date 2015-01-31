@@ -24,7 +24,7 @@
 }
 
 - (void)click:(SegmentItemView *)item {
-    if(self.delegate) {
+    if(self.delegate && item.tag != self.delegate.selectedIndex) {
         DLog(@"%ld", (long)item.tag);
         [self.delegate selectIndex:item.tag - kSegmentStartTag];
     }

@@ -12,6 +12,7 @@
 #import "RLTextField.h"
 
 #import "RegisterVC.h"
+#import "NewsVC.h"
 
 #import "LoginController.h"
 
@@ -110,7 +111,12 @@
         };
     }
     else {
-        [GVPopViewManager showDialogWithTitle:@"登录成功！"];
+//        [GVPopViewManager showDialogWithTitle:@"登录成功！"];
+        User *user = [User sharedUser];
+        [user setAccount:user.phone andPassword:self.passworldTF.text];
+//        [ChangeVCController changeMainRootViewController:[NewsVC class]];
+        NewsVC *vc = [[NewsVC alloc] init];
+        [ChangeVCController pushViewControllerByNavigationController:self.navigationController pushVC:vc];
     }
     
     [self mainThreadAsync:block];

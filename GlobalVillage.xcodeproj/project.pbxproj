@@ -42,6 +42,13 @@
 		9665D42E1A7392BF00E851CB /* RLSocialShareConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9665D42D1A7392BF00E851CB /* RLSocialShareConfig.plist */; };
 		9665D43B1A75CE8F00E851CB /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9665D4301A75CE8F00E851CB /* libWeiboSDK.a */; };
 		9665D43C1A75CE8F00E851CB /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9665D4381A75CE8F00E851CB /* WeiboSDK.bundle */; };
+		96A98F5F1A7A497700EE8B6A /* RLUtilitiesMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A98F5E1A7A497700EE8B6A /* RLUtilitiesMethods.m */; };
+		96A98F641A7B729300EE8B6A /* check_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A98F601A7B729300EE8B6A /* check_icon.png */; };
+		96A98F651A7B729300EE8B6A /* check_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A98F611A7B729300EE8B6A /* check_icon@2x.png */; };
+		96A98F661A7B729300EE8B6A /* uncheck_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A98F621A7B729300EE8B6A /* uncheck_icon.png */; };
+		96A98F671A7B729300EE8B6A /* uncheck_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A98F631A7B729300EE8B6A /* uncheck_icon@2x.png */; };
+		96A98F6A1A7B78D700EE8B6A /* NewsDefaultIcon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 96A98F681A7B78D700EE8B6A /* NewsDefaultIcon.jpg */; };
+		96A98F6B1A7B78D700EE8B6A /* NewsDefaultIcon@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 96A98F691A7B78D700EE8B6A /* NewsDefaultIcon@2x.jpg */; };
 		96C1BFB41A75E89F003E7C07 /* RLShareAppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C1BFB31A75E89F003E7C07 /* RLShareAppModel.m */; };
 		96C1BFB71A761F45003E7C07 /* RLShareMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C1BFB61A761F45003E7C07 /* RLShareMessageModel.m */; };
 		96C1BFBB1A76289A003E7C07 /* RLActivityShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C1BFBA1A76289A003E7C07 /* RLActivityShare.m */; };
@@ -105,12 +112,10 @@
 		96DEED741A6A2EB400C045DF /* ViewConstructor.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DEED731A6A2EB400C045DF /* ViewConstructor.m */; };
 		96DEED771A6A3FFD00C045DF /* RegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DEED761A6A3FFD00C045DF /* RegisterVC.m */; };
 		96DEED7A1A6A4BA600C045DF /* ChangeVCController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DEED791A6A4BA600C045DF /* ChangeVCController.m */; };
-		96DEED851A6A502300C045DF /* check_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 96DEED7C1A6A502300C045DF /* check_icon.png */; };
 		96DEED861A6A502300C045DF /* qq_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 96DEED7D1A6A502300C045DF /* qq_icon.png */; };
 		96DEED871A6A502300C045DF /* qq_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96DEED7E1A6A502300C045DF /* qq_icon@2x.png */; };
 		96DEED881A6A502300C045DF /* sina_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 96DEED7F1A6A502300C045DF /* sina_icon.png */; };
 		96DEED891A6A502300C045DF /* sina_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96DEED801A6A502300C045DF /* sina_icon@2x.png */; };
-		96DEED8B1A6A502300C045DF /* uncheck_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 96DEED821A6A502300C045DF /* uncheck_icon.png */; };
 		96DEED8C1A6A502300C045DF /* wechat_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 96DEED831A6A502300C045DF /* wechat_icon.png */; };
 		96DEED8D1A6A502300C045DF /* wechat_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96DEED841A6A502300C045DF /* wechat_icon@2x.png */; };
 		96DEED931A6A5B6A00C045DF /* PhoneAuthCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DEED921A6A5B6A00C045DF /* PhoneAuthCodeVC.m */; };
@@ -249,6 +254,14 @@
 		9665D4381A75CE8F00E851CB /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
 		9665D4391A75CE8F00E851CB /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
 		9665D43A1A75CE8F00E851CB /* WeiboUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboUser.h; sourceTree = "<group>"; };
+		96A98F5D1A7A497700EE8B6A /* RLUtilitiesMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLUtilitiesMethods.h; sourceTree = "<group>"; };
+		96A98F5E1A7A497700EE8B6A /* RLUtilitiesMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLUtilitiesMethods.m; sourceTree = "<group>"; };
+		96A98F601A7B729300EE8B6A /* check_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_icon.png; sourceTree = "<group>"; };
+		96A98F611A7B729300EE8B6A /* check_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check_icon@2x.png"; sourceTree = "<group>"; };
+		96A98F621A7B729300EE8B6A /* uncheck_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uncheck_icon.png; sourceTree = "<group>"; };
+		96A98F631A7B729300EE8B6A /* uncheck_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "uncheck_icon@2x.png"; sourceTree = "<group>"; };
+		96A98F681A7B78D700EE8B6A /* NewsDefaultIcon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = NewsDefaultIcon.jpg; sourceTree = "<group>"; };
+		96A98F691A7B78D700EE8B6A /* NewsDefaultIcon@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "NewsDefaultIcon@2x.jpg"; sourceTree = "<group>"; };
 		96C1BFB21A75E89F003E7C07 /* RLShareAppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLShareAppModel.h; sourceTree = "<group>"; };
 		96C1BFB31A75E89F003E7C07 /* RLShareAppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLShareAppModel.m; sourceTree = "<group>"; };
 		96C1BFB51A761F45003E7C07 /* RLShareMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLShareMessageModel.h; sourceTree = "<group>"; };
@@ -362,12 +375,10 @@
 		96DEED761A6A3FFD00C045DF /* RegisterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterVC.m; sourceTree = "<group>"; };
 		96DEED781A6A4BA600C045DF /* ChangeVCController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeVCController.h; sourceTree = "<group>"; };
 		96DEED791A6A4BA600C045DF /* ChangeVCController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeVCController.m; sourceTree = "<group>"; };
-		96DEED7C1A6A502300C045DF /* check_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_icon.png; sourceTree = "<group>"; };
 		96DEED7D1A6A502300C045DF /* qq_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qq_icon.png; sourceTree = "<group>"; };
 		96DEED7E1A6A502300C045DF /* qq_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qq_icon@2x.png"; sourceTree = "<group>"; };
 		96DEED7F1A6A502300C045DF /* sina_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sina_icon.png; sourceTree = "<group>"; };
 		96DEED801A6A502300C045DF /* sina_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sina_icon@2x.png"; sourceTree = "<group>"; };
-		96DEED821A6A502300C045DF /* uncheck_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uncheck_icon.png; sourceTree = "<group>"; };
 		96DEED831A6A502300C045DF /* wechat_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wechat_icon.png; sourceTree = "<group>"; };
 		96DEED841A6A502300C045DF /* wechat_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat_icon@2x.png"; sourceTree = "<group>"; };
 		96DEED911A6A5B6A00C045DF /* PhoneAuthCodeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneAuthCodeVC.h; sourceTree = "<group>"; };
@@ -724,6 +735,8 @@
 		96D8FFB51A7A1D4B0041C8D8 /* News */ = {
 			isa = PBXGroup;
 			children = (
+				96A98F681A7B78D700EE8B6A /* NewsDefaultIcon.jpg */,
+				96A98F691A7B78D700EE8B6A /* NewsDefaultIcon@2x.jpg */,
 				96D8FFB91A7A21BC0041C8D8 /* NewsTitle@2x.png */,
 				96D8FFB61A7A1D4B0041C8D8 /* NewsTitle.png */,
 			);
@@ -752,6 +765,8 @@
 				96DEBFB81A7377920014EA9D /* RLTextSize.m */,
 				96DEBFB91A7377920014EA9D /* RLTypecast.h */,
 				96DEBFBA1A7377920014EA9D /* RLTypecast.m */,
+				96A98F5D1A7A497700EE8B6A /* RLUtilitiesMethods.h */,
+				96A98F5E1A7A497700EE8B6A /* RLUtilitiesMethods.m */,
 			);
 			path = RLTools;
 			sourceTree = "<group>";
@@ -1060,12 +1075,10 @@
 			children = (
 				96D8FFB51A7A1D4B0041C8D8 /* News */,
 				96DEED9A1A6C9C3200C045DF /* RegisterImages */,
-				96DEED7C1A6A502300C045DF /* check_icon.png */,
 				96DEED7D1A6A502300C045DF /* qq_icon.png */,
 				96DEED7E1A6A502300C045DF /* qq_icon@2x.png */,
 				96DEED7F1A6A502300C045DF /* sina_icon.png */,
 				96DEED801A6A502300C045DF /* sina_icon@2x.png */,
-				96DEED821A6A502300C045DF /* uncheck_icon.png */,
 				96DEED831A6A502300C045DF /* wechat_icon.png */,
 				96DEED841A6A502300C045DF /* wechat_icon@2x.png */,
 			);
@@ -1075,6 +1088,10 @@
 		96DEED9A1A6C9C3200C045DF /* RegisterImages */ = {
 			isa = PBXGroup;
 			children = (
+				96A98F601A7B729300EE8B6A /* check_icon.png */,
+				96A98F611A7B729300EE8B6A /* check_icon@2x.png */,
+				96A98F621A7B729300EE8B6A /* uncheck_icon.png */,
+				96A98F631A7B729300EE8B6A /* uncheck_icon@2x.png */,
 				96DEED9B1A6C9C3200C045DF /* PicDefault.png */,
 				96DEED9C1A6C9C3200C045DF /* PicDefault@2x.png */,
 			);
@@ -1280,19 +1297,23 @@
 				96DEED891A6A502300C045DF /* sina_icon@2x.png in Resources */,
 				9665D43C1A75CE8F00E851CB /* WeiboSDK.bundle in Resources */,
 				96DEED881A6A502300C045DF /* sina_icon.png in Resources */,
+				96A98F6B1A7B78D700EE8B6A /* NewsDefaultIcon@2x.jpg in Resources */,
 				96DEED301A69E3E600C045DF /* Localizable.strings in Resources */,
 				96DEED051A69330B00C045DF /* Main.storyboard in Resources */,
 				96DEED9D1A6C9C3200C045DF /* PicDefault.png in Resources */,
+				96A98F641A7B729300EE8B6A /* check_icon.png in Resources */,
 				96C1C0671A766A47003E7C07 /* TCZone.png in Resources */,
 				96C1C0681A766A47003E7C07 /* TCZone@2x.png in Resources */,
-				96DEED8B1A6A502300C045DF /* uncheck_icon.png in Resources */,
 				96C1C0691A766A47003E7C07 /* WeChat.png in Resources */,
 				96C1C0791A771B31003E7C07 /* read_me.txt in Resources */,
 				96C1C0621A766A47003E7C07 /* QQ@2x.png in Resources */,
+				96A98F6A1A7B78D700EE8B6A /* NewsDefaultIcon.jpg in Resources */,
 				96123D961A70E1570053CA1C /* blueArrow.png in Resources */,
+				96A98F661A7B729300EE8B6A /* uncheck_icon.png in Resources */,
 				96DEED241A69399E00C045DF /* InfoPlist.strings in Resources */,
 				96DEED0A1A69330B00C045DF /* LaunchScreen.xib in Resources */,
 				96DEED071A69330B00C045DF /* Images.xcassets in Resources */,
+				96A98F651A7B729300EE8B6A /* check_icon@2x.png in Resources */,
 				96DEED871A6A502300C045DF /* qq_icon@2x.png in Resources */,
 				96C1C0631A766A47003E7C07 /* SinaWeibo.png in Resources */,
 				96C1C0661A766A47003E7C07 /* TCWeibo@2x.png in Resources */,
@@ -1302,11 +1323,11 @@
 				96C1C06C1A766A47003E7C07 /* WeChatTimeLine@2x.png in Resources */,
 				96C1C0611A766A47003E7C07 /* QQ.png in Resources */,
 				96C1C06A1A766A47003E7C07 /* WeChat@2x.png in Resources */,
-				96DEED851A6A502300C045DF /* check_icon.png in Resources */,
 				96C1C0651A766A47003E7C07 /* TCWeibo.png in Resources */,
 				96DEED861A6A502300C045DF /* qq_icon.png in Resources */,
 				96C1C0641A766A47003E7C07 /* SinaWeibo@2x.png in Resources */,
 				96DEED9E1A6C9C3200C045DF /* PicDefault@2x.png in Resources */,
+				96A98F671A7B729300EE8B6A /* uncheck_icon@2x.png in Resources */,
 				96D8FFBB1A7A21BC0041C8D8 /* NewsTitle@2x.png in Resources */,
 				96D8FFB71A7A1D4B0041C8D8 /* NewsTitle.png in Resources */,
 			);
@@ -1355,6 +1376,7 @@
 				96C1BFB71A761F45003E7C07 /* RLShareMessageModel.m in Sources */,
 				96DEED6E1A6A257F00C045DF /* RLButton.m in Sources */,
 				96C1C0941A7777F6003E7C07 /* ChannelsView.m in Sources */,
+				96A98F5F1A7A497700EE8B6A /* RLUtilitiesMethods.m in Sources */,
 				96DEEDE11A6D10AB00C045DF /* RLReachabilityChecker.m in Sources */,
 				96DEEDB01A6CD9A600C045DF /* RLInputView.m in Sources */,
 				96DEEE0A1A6E305900C045DF /* GVPopViewManager.m in Sources */,
@@ -1577,8 +1599,8 @@
 		96DEED1A1A69330B00C045DF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GlobalVillage/PrefixHeader.pch";
 				INFOPLIST_FILE = GlobalVillage/Info.plist;
@@ -1597,8 +1619,8 @@
 		96DEED1B1A69330B00C045DF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GlobalVillage/PrefixHeader.pch";
 				INFOPLIST_FILE = GlobalVillage/Info.plist;
