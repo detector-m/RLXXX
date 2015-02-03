@@ -15,6 +15,7 @@
 @optional
 - (void)newsTypeListResponse:(GVResponse *)response;
 - (void)newsListResponse:(GVResponse *)response subtag:(NSInteger)subtag;
+- (void)newsSubscribeNewsChannelsResponse:(GVResponse *)response;
 @end
 
 @interface NewsController : ModuleController
@@ -22,4 +23,6 @@
 - (void)newsTypeListRequest:(NSString *)accessToken;
 
 - (void)newsListRequest:(NSInteger)newsTypeID currentCount:(NSInteger)currentCount pageCount:(NSInteger)pageCount token:(__unused NSString *)accessToken subtag:(NSInteger)subtag;
+
+- (void)newsSubscribeNewsChannelsRequest:(NSString *)subscribeNewsChannels unsubscribeNewsChannels:(NSString *)unsubscribeNewsChannels accessToken:(NSString *)accessToken;
 @end

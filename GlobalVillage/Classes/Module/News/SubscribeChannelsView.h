@@ -9,5 +9,5 @@
 #import "ChannelsView.h"
 
 @interface SubscribeChannelsView : ChannelsView
-
+@property (nonatomic, assign) BOOL hideDeleteView;
 @end

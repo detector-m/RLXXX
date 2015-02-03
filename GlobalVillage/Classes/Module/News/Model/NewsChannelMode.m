@@ -9,5 +9,10 @@
 #import "NewsChannelMode.h"
 
 @implementation NewsChannelMode
-
+- (void)dealloc {
+    self.title = nil;
+    
+    self.channelView = nil;
+    self.segment = nil;
+}
 @end

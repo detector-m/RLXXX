@@ -21,4 +21,6 @@
 + (UIImage *)cropImage:(UIImage *)originalImage rect:(CGRect)rect;
 
 - (UIImage *)iconImage:(UIImage *)oriImage;
+
++ (UIImage *)fixOrientation:(UIImage *)aImage;
 @end

@@ -16,6 +16,13 @@
 #define RespondFieldListKey     @"list"
 #define RespondFieldChikyugoKey @"chikyugo"
 
+//Images
+#define RespondFieldUploadImageImagesKey @"images"
+#define RespondFieldNameKey @"name"
+#define RespondFieldOriginalKey @"original"
+
+
+
 //登录
 #define RespondFieldTokenKey    @"accessToken"
 
@@ -30,13 +37,17 @@
 #define RespondFieldMemberTypeKey   @"memberType"
 #define RespondFieldPhoneKey    @"mobile"
 #define RespondFieldSignatureKey @"signature"
-#define RespondFieldPicKey  @"pic"
+#define RespondFieldPicKey  @"headPortrait"
 
 //新闻
 #define RespondFieldTypeListKey @"typeList"
 
 #define RespondFieldIDKey       @"id"
 #define RespondFieldNameKey     @"name"
+
+#define RespondFieldOperationModeKey @"operationMode"
+#define RespondFieldSubscribeModeKey @"subscibed"
+
 #define RespondFieldOrderIdKey  @"orderId"
 #define RespondFieldSelectedKey @"selected"
 
@@ -44,7 +55,7 @@
 #define RespondFieldTitleKey    @"title"
 #define RespondFieldReadNumKey  @"readNum"
 #define RespondFieldNewsAbstractKey @"newsAbstract"
-#define RespondFieldPicListStringKey    @"picListString"
+#define RespondFieldPicListStringKey    @"titleImgs"
 #define RespondFieldNewsURLKey  @"newsURL"
 
 #endif

@@ -34,5 +34,5 @@
 - (void)dqNumberList:(NSInteger)chargeType andCount:(NSInteger)count;
 - (void)verifyDQNumber:(NSString *)dqNumber;
 
-- (void)requestRegist:(NSString *)dqNumber phoneNumber:(NSString *)phoneNumber password:(NSString *)password gender:(NSInteger)gender nickname:(NSString *)nickname location:(UserLocation *)location pic:(NSData *)pic;
+- (void)requestRegist:(NSString *)dqNumber phoneNumber:(NSString *)phoneNumber password:(NSString *)password gender:(NSInteger)gender nickname:(NSString *)nickname location:(UserLocation *)location /*pic:(NSData *)pic*/;
 @end

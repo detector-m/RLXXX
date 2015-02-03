@@ -13,7 +13,9 @@
 #import "RLImageCropViewController.h"
 #import "ChooseDQNumberVC.h"
 
-@interface CompleteRegisterinfoVC ()<RLImageCropDelegate>
+#import "ImageController.h"
+
+@interface CompleteRegisterinfoVC ()<RLImageCropDelegate, ImageControllerDelegate>
 @property (nonatomic, readwrite, strong) UIButton *pickPicBtn;
 @property (nonatomic, readwrite, strong) RLRadioButton *manBtn;
 @property (nonatomic, readwrite, strong) RLRadioButton *womBtn;
@@ -21,6 +23,8 @@
 @property (nonatomic, readwrite, strong) RLTextField *nameTF;
 
 @property (nonatomic, readwrite, assign) GenderType gender;
+
+@property (nonatomic, readwrite, strong) ImageController *controller;
 @end
 
 @implementation CompleteRegisterinfoVC
@@ -31,11 +35,36 @@
 //    return [super navigationShouldPopOnBackButton];
 //}
 
+- (void)dealloc {
+    [self dataDoClear];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
+- (void)navigationDidPopOnBackButton {
+    [self.controller removeAllRequest];
+    [super navigationDidPopOnBackButton];
+}
+
+- (void)dataDoLoad {
+    self.controller = [[ImageController alloc] init];
+    self.controller.delegate = self;
+    
+    self.controller.accessToken = [User sharedUser].accessToken;
+}
+
+- (void)dataDoClear {
+    self.controller.delegate = nil;
+    self.controller = nil;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = NSLocalizedString(@"完善注册信息", nil);
-    
+    [self dataDoLoad];
     [self subviewsDoLoad];
 }
 
@@ -120,9 +149,9 @@
 - (void)clickCompleteBtn:(UIButton *)button {
     [self endEditing];
     
-    UIImage *image = [self.pickPicBtn imageForState:UIControlStateNormal];
+//    UIImage *image = [self.pickPicBtn imageForState:UIControlStateNormal];
     
-    [User sharedUser].pic = UIImagePNGRepresentation(image);
+//    [User sharedUser].pic = UIImagePNGRepresentation(image);
     [User sharedUser].gender = self.gender;
     [User sharedUser].nickname = self.nameTF.text;
     
@@ -135,6 +164,7 @@
     UIImage *theImage = nil;
     __weak CompleteRegisterinfoVC *weakSelf = self;
  
+//    [picker stopVideoCapture];
     NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
     // 判断获取类型：图片
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]){
@@ -159,15 +189,58 @@
         
         [weakSelf presentViewController:imgEditorVC animated:NO completion:imgEditorCompletionBlock];
     };
-    [picker dismissViewControllerAnimated:YES completion:completionBlock];
+    [self dismissViewControllerAnimated:YES completion:completionBlock];
 }
 
 #pragma makr - 图片裁剪 －> ImageCropDelegate
 - (void)imageCrop:(RLImageCropViewController *)cropVC didFinished:(UIImage *)editedImage {
     [self.pickPicBtn setImage:editedImage forState:UIControlStateNormal];
+    
+    [self.controller uploadImageRequest:editedImage accessToken:nil];
+    [GVPopViewManager showActivityWithTitle:NSLocalizedString(@"等待上传头像。。。", nil) forView:self.view];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-//- (void)imageCropDidCancel:(RLImageCropViewController *)cropVC {
-//}
+- (void)imageCropDidCancel:(RLImageCropViewController *)cropVC {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - ImageControllerDelegate 
+- (void)uploadImageResponse:(GVResponse *)response {
+    dispatch_block_t block = NULL;
+    if(response == nil || response.status != 0) {
+        block = ^(){
+            [GVPopViewManager showDialogWithTitle:NSLocalizedString(@"上传头像失败！", nil)];
+        };
+    }
+    else {
+//        __weak CompleteRegisterinfoVC *blockSelf = self;
+        [GVPopViewManager removeActivity];
+        User *user = [User sharedUser];
+        user.picUrl = response.responseData;
+
+//        [self.controller downloadImageRequest:user.picUrl imageScale:@"1" accessToken:user.accessToken];
+    }
+    
+    [self mainThreadAsync:block];
+}
+
+- (void)downloadImageResponse:(GVResponse *)response {
+    dispatch_block_t block = NULL;
+    if(response == nil || response.status != 0) {
+        block = ^(){
+            [GVPopViewManager showDialogWithTitle:NSLocalizedString(@"获取头像失败！", nil)];
+        };
+    }
+    else {
+        [GVPopViewManager removeActivity];
+//        User *user = [User sharedUser];
+//        user.picUrl = response.responseData;
+
+        [User sharedUser].pic = response.responseData;
+    }
+    
+    [self mainThreadAsync:block];
+}
 
 @end

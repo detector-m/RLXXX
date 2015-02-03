@@ -19,9 +19,9 @@
 }
 
 - (void)fillDefaultData {
-    self.title = @"share";
-    self.abstract = @"一款免费发送广告的APP！手机号、微信号、地球号一个都不能少！";
-    self.imageData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SinaWeibo" ofType:@"png"]];
+    self.title = @"地球村";
+    self.abstract = @"一款免费发送广告的APP！手机号、微信号、地球号一个都不能少！\r\nhttp://www.dqcc.com.cn";
+//    self.imageData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"58" ofType:@"png"]];
     self.url = @"http://www.dqcc.com.cn";
 }
 @end

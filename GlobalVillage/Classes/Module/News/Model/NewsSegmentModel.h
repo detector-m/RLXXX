@@ -7,9 +7,17 @@
 //
 
 #import "SegmentModel.h"
-
+#import "NewsMacros.h"
+typedef NS_ENUM(UInt8, NewsSegmentSubscribeMode) {
+    kNewsSegmentSubscribeModeNone,
+    kNewsSegmentSubscribeModeSubscribe,
+    kNewsSegmentSubscribeModeUnSubscribe,
+};
 @interface NewsSegmentModel : SegmentModel
 @property (nonatomic, strong) id titleItem;
-
+@property (nonatomic, assign) OperationMode operationMode;
+@property (nonatomic, assign) SubscribeMode subscribeMode;
 @property (nonatomic, assign) BOOL needRefresh;
+
+@property (nonatomic, assign) NewsSegmentSubscribeMode newsSubscribeMode;
 @end

@@ -38,6 +38,13 @@
 		96123DC71A70F2380053CA1C /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 96123DB61A70F2380053CA1C /* UIImageView+WebCache.m */; };
 		96123DC81A70F2380053CA1C /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 96123DB81A70F2380053CA1C /* UIView+WebCacheOperation.m */; };
 		96123DCB1A710B880053CA1C /* NewsDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 96123DCA1A710B880053CA1C /* NewsDetailVC.m */; };
+		9647315A1A7C77ED00604904 /* ImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 964731591A7C77ED00604904 /* ImageController.m */; };
+		9647315D1A7F0EEE00604904 /* 58.png in Resources */ = {isa = PBXBuildFile; fileRef = 9647315C1A7F0EEE00604904 /* 58.png */; };
+		964731641A7F8CAA00604904 /* ChannelsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 964731631A7F8CAA00604904 /* ChannelsButton.m */; };
+		964731661A80534F00604904 /* ChannelDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = 964731651A80534F00604904 /* ChannelDelete.png */; };
+		964731681A80539300604904 /* ChannelDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 964731671A80539300604904 /* ChannelDelete@2x.png */; };
+		9647316B1A805A2400604904 /* SingleChannelNewsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9647316A1A805A2400604904 /* SingleChannelNewsVC.m */; };
+		9647316E1A805BBC00604904 /* RLTableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9647316D1A805BBC00604904 /* RLTableModel.m */; };
 		9665D42C1A738DF700E851CB /* RLSocialShareKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9665D42A1A738DF700E851CB /* RLSocialShareKit.m */; };
 		9665D42E1A7392BF00E851CB /* RLSocialShareConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9665D42D1A7392BF00E851CB /* RLSocialShareConfig.plist */; };
 		9665D43B1A75CE8F00E851CB /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9665D4301A75CE8F00E851CB /* libWeiboSDK.a */; };
@@ -78,7 +85,7 @@
 		96C1C08E1A776F5C003E7C07 /* ChannelsTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C1C08D1A776F5C003E7C07 /* ChannelsTitleView.m */; };
 		96C1C0941A7777F6003E7C07 /* ChannelsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C1C0931A7777F6003E7C07 /* ChannelsView.m */; };
 		96C1C0971A7779E0003E7C07 /* SubscribeChannelsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C1C0961A7779E0003E7C07 /* SubscribeChannelsView.m */; };
-		96C1C09A1A777A7D003E7C07 /* UnsubscribChannelsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C1C0991A777A7D003E7C07 /* UnsubscribChannelsView.m */; };
+		96C1C09A1A777A7D003E7C07 /* UnsubscribeChannelsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C1C0991A777A7D003E7C07 /* UnsubscribeChannelsView.m */; };
 		96C1C0A01A7793BA003E7C07 /* NewsChannelsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C1C09F1A7793BA003E7C07 /* NewsChannelsVC.m */; };
 		96C1C0A31A7793C9003E7C07 /* NewsChannelsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C1C0A21A7793C9003E7C07 /* NewsChannelsView.m */; };
 		96D8FFA51A789FFB0041C8D8 /* Segment.m in Sources */ = {isa = PBXBuildFile; fileRef = 96D8FFA41A789FFB0041C8D8 /* Segment.m */; };
@@ -240,6 +247,18 @@
 		96123DB81A70F2380053CA1C /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		96123DC91A710B880053CA1C /* NewsDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDetailVC.h; sourceTree = "<group>"; };
 		96123DCA1A710B880053CA1C /* NewsDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDetailVC.m; sourceTree = "<group>"; };
+		964731581A7C77ED00604904 /* ImageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageController.h; sourceTree = "<group>"; };
+		964731591A7C77ED00604904 /* ImageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageController.m; sourceTree = "<group>"; };
+		9647315C1A7F0EEE00604904 /* 58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 58.png; sourceTree = "<group>"; };
+		9647315E1A7F173500604904 /* NewsMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsMacros.h; sourceTree = "<group>"; };
+		964731621A7F8CAA00604904 /* ChannelsButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelsButton.h; sourceTree = "<group>"; };
+		964731631A7F8CAA00604904 /* ChannelsButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelsButton.m; sourceTree = "<group>"; };
+		964731651A80534F00604904 /* ChannelDelete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChannelDelete.png; sourceTree = "<group>"; };
+		964731671A80539300604904 /* ChannelDelete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ChannelDelete@2x.png"; sourceTree = "<group>"; };
+		964731691A805A2400604904 /* SingleChannelNewsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleChannelNewsVC.h; sourceTree = "<group>"; };
+		9647316A1A805A2400604904 /* SingleChannelNewsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleChannelNewsVC.m; sourceTree = "<group>"; };
+		9647316C1A805BBC00604904 /* RLTableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTableModel.h; sourceTree = "<group>"; };
+		9647316D1A805BBC00604904 /* RLTableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLTableModel.m; sourceTree = "<group>"; };
 		9665D4291A738DF700E851CB /* RLSocialShareKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLSocialShareKit.h; sourceTree = "<group>"; };
 		9665D42A1A738DF700E851CB /* RLSocialShareKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLSocialShareKit.m; sourceTree = "<group>"; };
 		9665D42D1A7392BF00E851CB /* RLSocialShareConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RLSocialShareConfig.plist; sourceTree = "<group>"; };
@@ -305,8 +324,8 @@
 		96C1C0931A7777F6003E7C07 /* ChannelsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelsView.m; sourceTree = "<group>"; };
 		96C1C0951A7779E0003E7C07 /* SubscribeChannelsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscribeChannelsView.h; sourceTree = "<group>"; };
 		96C1C0961A7779E0003E7C07 /* SubscribeChannelsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscribeChannelsView.m; sourceTree = "<group>"; };
-		96C1C0981A777A7D003E7C07 /* UnsubscribChannelsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnsubscribChannelsView.h; sourceTree = "<group>"; };
-		96C1C0991A777A7D003E7C07 /* UnsubscribChannelsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnsubscribChannelsView.m; sourceTree = "<group>"; };
+		96C1C0981A777A7D003E7C07 /* UnsubscribeChannelsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnsubscribeChannelsView.h; sourceTree = "<group>"; };
+		96C1C0991A777A7D003E7C07 /* UnsubscribeChannelsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnsubscribeChannelsView.m; sourceTree = "<group>"; };
 		96C1C09E1A7793BA003E7C07 /* NewsChannelsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsChannelsVC.h; sourceTree = "<group>"; };
 		96C1C09F1A7793BA003E7C07 /* NewsChannelsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsChannelsVC.m; sourceTree = "<group>"; };
 		96C1C0A11A7793C9003E7C07 /* NewsChannelsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsChannelsView.h; sourceTree = "<group>"; };
@@ -504,6 +523,8 @@
 			children = (
 				96123D581A70C83F0053CA1C /* ModuleController.h */,
 				96123D591A70C83F0053CA1C /* ModuleController.m */,
+				964731581A7C77ED00604904 /* ImageController.h */,
+				964731591A7C77ED00604904 /* ImageController.m */,
 			);
 			path = ModuleUtilities;
 			sourceTree = "<group>";
@@ -613,6 +634,14 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		9647315B1A7F0EEE00604904 /* ShareIcon */ = {
+			isa = PBXGroup;
+			children = (
+				9647315C1A7F0EEE00604904 /* 58.png */,
+			);
+			path = ShareIcon;
+			sourceTree = "<group>";
+		};
 		9665D4281A738DF700E851CB /* ShareKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -713,8 +742,10 @@
 				96C1C0931A7777F6003E7C07 /* ChannelsView.m */,
 				96C1C0951A7779E0003E7C07 /* SubscribeChannelsView.h */,
 				96C1C0961A7779E0003E7C07 /* SubscribeChannelsView.m */,
-				96C1C0981A777A7D003E7C07 /* UnsubscribChannelsView.h */,
-				96C1C0991A777A7D003E7C07 /* UnsubscribChannelsView.m */,
+				96C1C0981A777A7D003E7C07 /* UnsubscribeChannelsView.h */,
+				96C1C0991A777A7D003E7C07 /* UnsubscribeChannelsView.m */,
+				964731621A7F8CAA00604904 /* ChannelsButton.h */,
+				964731631A7F8CAA00604904 /* ChannelsButton.m */,
 			);
 			name = NewsChannelsViews;
 			sourceTree = "<group>";
@@ -735,6 +766,8 @@
 		96D8FFB51A7A1D4B0041C8D8 /* News */ = {
 			isa = PBXGroup;
 			children = (
+				964731671A80539300604904 /* ChannelDelete@2x.png */,
+				964731651A80534F00604904 /* ChannelDelete.png */,
 				96A98F681A7B78D700EE8B6A /* NewsDefaultIcon.jpg */,
 				96A98F691A7B78D700EE8B6A /* NewsDefaultIcon@2x.jpg */,
 				96D8FFB91A7A21BC0041C8D8 /* NewsTitle@2x.png */,
@@ -782,6 +815,8 @@
 				96123DCA1A710B880053CA1C /* NewsDetailVC.m */,
 				96C1C09E1A7793BA003E7C07 /* NewsChannelsVC.h */,
 				96C1C09F1A7793BA003E7C07 /* NewsChannelsVC.m */,
+				964731691A805A2400604904 /* SingleChannelNewsVC.h */,
+				9647316A1A805A2400604904 /* SingleChannelNewsVC.m */,
 				96C1C08B1A776F10003E7C07 /* NewsChannelsViews */,
 			);
 			name = VCs;
@@ -958,6 +993,8 @@
 				96DEEE191A6F58E900C045DF /* RLLocationManager.m */,
 				96DEEE321A6FAA1600C045DF /* RLConstVariable.h */,
 				96DEEE331A6FAA1600C045DF /* RLConstVariable.m */,
+				9647316C1A805BBC00604904 /* RLTableModel.h */,
+				9647316D1A805BBC00604904 /* RLTableModel.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1073,6 +1110,7 @@
 		96DEED7B1A6A502300C045DF /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				9647315B1A7F0EEE00604904 /* ShareIcon */,
 				96D8FFB51A7A1D4B0041C8D8 /* News */,
 				96DEED9A1A6C9C3200C045DF /* RegisterImages */,
 				96DEED7D1A6A502300C045DF /* qq_icon.png */,
@@ -1198,6 +1236,7 @@
 		96DEEE611A709DD900C045DF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9647315E1A7F173500604904 /* NewsMacros.h */,
 				96DEEE6B1A709F9C00C045DF /* NewsBaseModel.h */,
 				96DEEE6C1A709F9C00C045DF /* NewsBaseModel.m */,
 				96DEEE681A709E1600C045DF /* NewsTypeModel.h */,
@@ -1298,6 +1337,7 @@
 				9665D43C1A75CE8F00E851CB /* WeiboSDK.bundle in Resources */,
 				96DEED881A6A502300C045DF /* sina_icon.png in Resources */,
 				96A98F6B1A7B78D700EE8B6A /* NewsDefaultIcon@2x.jpg in Resources */,
+				964731681A80539300604904 /* ChannelDelete@2x.png in Resources */,
 				96DEED301A69E3E600C045DF /* Localizable.strings in Resources */,
 				96DEED051A69330B00C045DF /* Main.storyboard in Resources */,
 				96DEED9D1A6C9C3200C045DF /* PicDefault.png in Resources */,
@@ -1315,6 +1355,7 @@
 				96DEED071A69330B00C045DF /* Images.xcassets in Resources */,
 				96A98F651A7B729300EE8B6A /* check_icon@2x.png in Resources */,
 				96DEED871A6A502300C045DF /* qq_icon@2x.png in Resources */,
+				9647315D1A7F0EEE00604904 /* 58.png in Resources */,
 				96C1C0631A766A47003E7C07 /* SinaWeibo.png in Resources */,
 				96C1C0661A766A47003E7C07 /* TCWeibo@2x.png in Resources */,
 				9665D42E1A7392BF00E851CB /* RLSocialShareConfig.plist in Resources */,
@@ -1327,6 +1368,7 @@
 				96DEED861A6A502300C045DF /* qq_icon.png in Resources */,
 				96C1C0641A766A47003E7C07 /* SinaWeibo@2x.png in Resources */,
 				96DEED9E1A6C9C3200C045DF /* PicDefault@2x.png in Resources */,
+				964731661A80534F00604904 /* ChannelDelete.png in Resources */,
 				96A98F671A7B729300EE8B6A /* uncheck_icon@2x.png in Resources */,
 				96D8FFBB1A7A21BC0041C8D8 /* NewsTitle@2x.png in Resources */,
 				96D8FFB71A7A1D4B0041C8D8 /* NewsTitle.png in Resources */,
@@ -1376,6 +1418,7 @@
 				96C1BFB71A761F45003E7C07 /* RLShareMessageModel.m in Sources */,
 				96DEED6E1A6A257F00C045DF /* RLButton.m in Sources */,
 				96C1C0941A7777F6003E7C07 /* ChannelsView.m in Sources */,
+				9647315A1A7C77ED00604904 /* ImageController.m in Sources */,
 				96A98F5F1A7A497700EE8B6A /* RLUtilitiesMethods.m in Sources */,
 				96DEEDE11A6D10AB00C045DF /* RLReachabilityChecker.m in Sources */,
 				96DEEDB01A6CD9A600C045DF /* RLInputView.m in Sources */,
@@ -1391,6 +1434,7 @@
 				96D8FFAB1A78A0400041C8D8 /* SegmentContent.m in Sources */,
 				96123DBA1A70F2380053CA1C /* NSData+ImageContentType.m in Sources */,
 				96DEEE6A1A709E1600C045DF /* NewsTypeModel.m in Sources */,
+				964731641A7F8CAA00604904 /* ChannelsButton.m in Sources */,
 				96DEECFC1A69330B00C045DF /* main.m in Sources */,
 				96DEEDDE1A6D10AB00C045DF /* SBJsonWriter.m in Sources */,
 				96DEED6B1A6A256600C045DF /* RLLabel.m in Sources */,
@@ -1399,11 +1443,13 @@
 				96D8FFA81A78A02C0041C8D8 /* SegmentItem.m in Sources */,
 				96DEEDB61A6CE09000C045DF /* RLImageCropViewController.m in Sources */,
 				96DEEE341A6FAA1600C045DF /* RLConstVariable.m in Sources */,
-				96C1C09A1A777A7D003E7C07 /* UnsubscribChannelsView.m in Sources */,
+				96C1C09A1A777A7D003E7C07 /* UnsubscribeChannelsView.m in Sources */,
 				96C1BFB41A75E89F003E7C07 /* RLShareAppModel.m in Sources */,
+				9647316E1A805BBC00604904 /* RLTableModel.m in Sources */,
 				96DEED961A6A5FB700C045DF /* CompleteRegisterinfoVC.m in Sources */,
 				96123DC51A70F2380053CA1C /* UIImage+WebP.m in Sources */,
 				96DEED991A6C898F00C045DF /* RLRadioButton.m in Sources */,
+				9647316B1A805A2400604904 /* SingleChannelNewsVC.m in Sources */,
 				96DEED931A6A5B6A00C045DF /* PhoneAuthCodeVC.m in Sources */,
 				96123D811A70E0860053CA1C /* EGORefreshTableHeaderView.m in Sources */,
 				96C1BFC11A76396F003E7C07 /* RLActivity.m in Sources */,

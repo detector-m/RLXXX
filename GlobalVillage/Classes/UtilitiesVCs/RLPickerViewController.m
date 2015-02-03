@@ -10,9 +10,19 @@
 
 @interface RLPickerViewController () <UIImagePickerControllerDelegate>
 @property (nonatomic, readwrite, strong) UIActionSheet *actionSheet;
+@property (nonatomic, strong) UIImagePickerController *imagePicker;
 @end
 
 @implementation RLPickerViewController
+- (void)dealloc {
+    self.actionSheet = nil;
+    self.imagePicker = nil;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+//    self.imagePicker = nil;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,24 +48,30 @@
     if(btnIndex > 1)
         return;
     
-    UIImagePickerController *imagePickVC = [[UIImagePickerController alloc] init];
-    NSMutableArray *mediaTypes = [NSMutableArray array];
-    [mediaTypes addObject:(__bridge NSString*)kUTTypeImage];
-    imagePickVC.mediaTypes = mediaTypes;
-    imagePickVC.delegate = (id)self;
+    if([self isCameraAvailable] == NO)
+        return;
+    if(self.imagePicker == nil) {
+        self.imagePicker = [[UIImagePickerController alloc] init];
+        NSMutableArray *mediaTypes = [NSMutableArray array];
+        [mediaTypes addObject:(__bridge_transfer NSString*)kUTTypeImage];
+//        NSArray *mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
+        self.imagePicker.videoQuality = UIImagePickerControllerQualityTypeLow;
+        self.imagePicker.mediaTypes = mediaTypes;
+        self.imagePicker.delegate = (id)self;
+    }
 
     if(btnIndex == 0) { //拍照
         if([self isCameraAvailable]) {
-            imagePickVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+            self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
         }
     }
     else if(btnIndex == 1) { //相册
         if([self isPhotoLibraryAvailable]) {
-            imagePickVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         }
     }
     
-    [self presentViewController:imagePickVC animated:YES completion:nil];
+    [self presentViewController:self.imagePicker animated:YES completion:^(){}];
 }
 
 #pragma mark - UIImagePickerControllerDelegate

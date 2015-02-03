@@ -38,6 +38,18 @@
     [[self class] requestWithType:kRequestTypeNewsList andSubtag:subtag parameters:parameters andDelegate:self];
 }
 
+- (void)newsSubscribeNewsChannelsRequest:(NSString *)subscribeNewsChannels unsubscribeNewsChannels:(NSString *)unsubscribeNewsChannels accessToken:(__unused NSString *)accessToken {
+    NSMutableDictionary *parameters = [GVRequestParameterManager subscribeNewsChannelsParameter:subscribeNewsChannels unsubscribeNewsChannelsValue:unsubscribeNewsChannels accessTokenValue:self.accessToken];
+    
+    if(!parameters)
+    {
+        DLog(@"newsSubscribeNewsChannelsRequest error!");
+        NSAssert(parameters !=nil, @"newsSubscribeNewsChannelsRequest error!");
+    }
+    
+    [[self class] requestWithType:kRequestTypeSubscribeNewsChannels andSubtag:0 parameters:parameters andDelegate:self];
+}
+
 #pragma mark - RLRequestDelegate
 - (void)request:(RLRequest *)request
 didFailWithError:(NSError *)error {
@@ -86,6 +98,13 @@ didFailWithError:(NSError *)error {
                 [delegate newsListResponse:response subtag:subtag];
             }
             break;
+        case kRequestTypeSubscribeNewsChannels:
+            response.responseData = result;
+            
+            if([delegate respondsToSelector:@selector(newsSubscribeNewsChannelsResponse:)]) {
+                [delegate newsSubscribeNewsChannelsResponse:response];
+            }
+            break;
         default:
             break;
     }
@@ -103,9 +122,20 @@ didFailWithError:(NSError *)error {
     for(NSDictionary *dic in typeList) {
         newsType = [[NewsTypeModel alloc] init];
         [newsType fillDataWithDic:dic];
+        
         NewsSegmentModel *newsSegment = [[NewsSegmentModel alloc] init];
         newsSegment.title = newsType.title;
         newsSegment.titleItem = newsType;
+        newsSegment.operationMode = newsType.operationMode;
+        newsSegment.subscribeMode = newsType.subscribeMode;
+        if(newsType.operationMode == kOperationModeCompany) {
+            newsSegment.segmentMode = kSegmentModeShow;
+        }
+        else if(newsType.operationMode == kOperationModePerson) {
+            if(newsType.subscribeMode == kSubscribeModeYES) {
+                newsSegment.segmentMode = kSegmentModeShow;
+            }
+        }
         
         [array addObject:newsSegment];
     }

@@ -30,7 +30,7 @@
         return;
     }
     CGRect frame = self.view.frame;
-    self.channelsView = [[NewsChannelsView alloc] initWithFrame:frame];
+    self.channelsView = [[NewsChannelsView alloc] initWithFrame:frame andVC:self.newsVC];
     [self.view addSubview:self.channelsView];
 }
 

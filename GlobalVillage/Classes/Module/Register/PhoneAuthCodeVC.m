@@ -47,6 +47,13 @@ static NSInteger count = 60;
 //    [super viewDidDisappear:animated];
 //}
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.timer invalidate], self.timer = nil;
+    count = 0;
+    [self updateLb];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

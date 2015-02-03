@@ -41,7 +41,9 @@
     if(self) {
         _cropFrame = cropFrame;
         _limitRatio = limitRation;
-        _originalImage = oriImage;
+//        _originalImage = oriImage;
+        _originalImage = [RLImage fixOrientation:oriImage];
+        oriImage = nil;
     }
     
     return self;
@@ -138,14 +140,14 @@
         [_delegate imageCropDidCancel:self];
     }
     
-    [self dismissVC:self];
+//    [self dismissVC:self];
 }
 
 - (void)clickConfirmBtn:(UIButton *)btn {
     if(_delegate && [(id)_delegate respondsToSelector:@selector(imageCrop:didFinished:)]) {
         [_delegate imageCrop:self didFinished:[self cropImage]];
     }
-    [self dismissVC:self];
+//    [self dismissVC:self];
 }
 
 - (void)dismissVC:(UIViewController *)vc {
@@ -317,10 +319,12 @@
     
     UIGraphicsBeginImageContext(size);
     CGContextRef context = UIGraphicsGetCurrentContext();
+//    CGContextRotateCTM(context, -M_PI_2);
     CGContextDrawImage(context, imageRect, subImageRef);
     UIImage *smallImage = [UIImage imageWithCGImage:subImageRef];
     UIGraphicsEndImageContext();
     _editedImage = smallImage;
+    _originalImage = nil;
     CGImageRelease(subImageRef);
     
     smallImage = [self iconImage:smallImage];
@@ -335,12 +339,10 @@
         ratio = (ICON_WIDTH*2)/image.size.width;
         subImage = [RLImage scaleImage:subImage toScale:ratio];
     }
-    
-    if(subImage.size.height > ICON_WIDTH*2) {
+    else if(subImage.size.height > ICON_WIDTH*2) {
         ratio = (ICON_WIDTH*2)/image.size.height;
         subImage = [RLImage scaleImage:subImage toScale:ratio];
     }
-    
     return subImage;
 }
 

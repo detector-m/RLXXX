@@ -20,6 +20,10 @@
 
 #define dVerifyChikyugoChikyugoField    @"chikyugo"
 
+#define dUploadImageField @"files"
+#define dDownloadImageNameField @"name"
+#define dDownloadImageScaleField @"scale"
+
 #define dUsernameField  @"userName"
 #define dMemberNameField @"memberName"
 #define dPasswordField  @"password"
@@ -39,6 +43,9 @@
 #define dIDField    @"id"
 #define dCurrSizeField @"currSize"
 #define dPageSizeField @"pageSize"
+
+#define dSubscribesField @"subscibedes"
+#define dUnsubscribesField @"unsubscibedes"
 
 //商家
 #define dRadiusField    @"radius"
@@ -122,6 +129,34 @@
     return  retDic;
 }
 
+//上传图片参数列表
++ (NSMutableDictionary *)uploadImageParameter:(UIImage *)imageDataValue {
+    if(imageDataValue == nil)
+        return nil;
+    
+    NSMutableDictionary *retDic = nil;
+    retDic = [NSMutableDictionary dictionary];
+    [retDic setObject:imageDataValue forKey:dUploadImageField];
+    
+    return retDic;
+}
+//下载图片参数列表
++ (NSMutableDictionary *)downloadImageParameter:(NSString *)imageUrlValue
+                                 imageScaleVale:(NSString *)scaleValue
+                                    accessToken:(NSString *)accessTokenValue {
+    if(imageUrlValue.length == 0 || accessTokenValue.length == 0) {
+        return nil;
+    }
+    NSMutableDictionary *retDic = nil;
+    retDic = [NSMutableDictionary dictionary];
+    
+    [retDic setObject:imageUrlValue forKey:dDownloadImageNameField];
+    [retDic setObject:scaleValue forKey:dDownloadImageScaleField];
+    [retDic setObject:accessTokenValue forKey:dAccessTokenField];
+    
+    return retDic;
+}
+
 //用户注册参数列表
 + (NSMutableDictionary *)registParameter:(NSString *)nicknameValue
                            chikyugoValue:(NSString *)chikyugoValue
@@ -132,7 +167,7 @@
                                cityValue:(NSString *)cityValue
                           longitudeValue:(NSString *)longitudeValue
                            latitudeValue:(NSString *)latitudeValue
-                       headPortraitValue:(NSData *)headPortraitValue {
+                       /*headPortraitValue:(NSData *)headPortraitValue*/ {
     NSMutableDictionary *retDic = nil;
     
     if(nicknameValue==nil ||
@@ -156,9 +191,9 @@
     [retDic setObject:cityValue forKey:dRegisteredCityField];
     [retDic setObject:longitudeValue forKey:dLongitudeField];
     [retDic setObject:latitudeValue forKey:dLatitudeField];
-    if(headPortraitValue != nil) {
-        [retDic setObject:headPortraitValue forKey:dHeadPortraitField];
-    }
+//    if(headPortraitValue != nil) {
+//        [retDic setObject:headPortraitValue forKey:dHeadPortraitField];
+//    }
     
     if(thirdidValue != nil) {
         [retDic setObject:thirdidValue forKey:dThirdIdField];
@@ -231,6 +266,26 @@
     [retDic setObject:pageSizeValue forKey:dPageSizeField];
     [retDic setObject:accessTokenValue forKey:dAccessTokenField];
     
+    return retDic;
+}
+
+//“订阅/取消订阅”新闻栏目接口
++ (NSMutableDictionary *)subscribeNewsChannelsParameter:(NSString *)subscribeNewsChannelsValue
+                           unsubscribeNewsChannelsValue:(NSString *)unsubscribeNewsChannelsValue
+                                       accessTokenValue:(NSString *)accessTokenValue {
+    if(accessTokenValue.length == 0 || (subscribeNewsChannelsValue.length == 0 && unsubscribeNewsChannelsValue.length == 0))
+        return nil;
+    
+    NSMutableDictionary *retDic = [NSMutableDictionary dictionary];
+    if(subscribeNewsChannelsValue.length) {
+        [retDic setObject:subscribeNewsChannelsValue forKey:dSubscribesField];
+    }
+    
+    if(unsubscribeNewsChannelsValue.length) {
+        [retDic setObject:unsubscribeNewsChannelsValue forKey:dUnsubscribesField];
+    }
+    
+    [retDic setObject:accessTokenValue forKey:dAccessTokenField];
     return retDic;
 }
 

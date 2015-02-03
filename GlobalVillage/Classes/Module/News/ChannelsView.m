@@ -43,11 +43,14 @@
     CGFloat y = 0;
     CGRect frame;
     
+    NewsChannelMode *channel = nil;
     for(NSInteger i=0; i<self.channels.count; i++) {
         x = padding*((i%4)+1) + (i%4)*width;
         y = padding*((i/4)+1) + (i/4)*height;
         frame = CGRectMake(x, y, width, height);
-        UIButton *button = [self.channels objectAtIndex:i];
+        channel = [self.channels objectAtIndex:i];
+        ChannelsButton *button = channel.channelView;
+        button.deleteImageView.hidden = YES;
         button.frame = frame;
     }
     

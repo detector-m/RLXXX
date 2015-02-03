@@ -7,8 +7,11 @@
 //
 
 #import "NewsBaseModel.h"
+#import "NewsMacros.h"
 
 @interface NewsTypeModel : NewsBaseModel
+@property (nonatomic, assign) OperationMode operationMode;
+@property (nonatomic, assign) SubscribeMode subscribeMode;
 @property (nonatomic, assign) NSInteger orderId;
 @property (nonatomic, assign) BOOL selected;
 

@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NewsBaseModel : NSObject
+@interface NewsBaseModel : NSObject {
+}
 @property (nonatomic, assign) NSInteger ID;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *abstract;

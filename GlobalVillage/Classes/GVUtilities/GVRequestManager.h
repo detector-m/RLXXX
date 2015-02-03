@@ -22,12 +22,17 @@ typedef NS_ENUM(NSInteger, RequestType) {
     kRequestTypeChargeDQNumberList,
     kRequestTypeVerifyDQNumber,
     
+    kRequestTypeUploadImage,
+    kRequestTypeDownloadImage,
+    
     kRequestTypeRegister,
     
     kRequestTypeLogin,
     
     kRequestTypeNewsTypeList,
     kRequestTypeNewsList,
+    
+    kRequestTypeSubscribeNewsChannels,
     
     kRequestTypeStoreList,
 };
@@ -51,6 +56,14 @@ typedef NS_ENUM(NSInteger, RequestType) {
 //地球号是否使用验证
 + (RLRequest *)requestVerifyChikyugo:(NSMutableDictionary *)parameters
                          andDelegate:(id<RLRequestDelegate>)delegate;
+
+//上传图片
++ (RLRequest *)requestUploadImage:(NSMutableDictionary *)parameters
+                      andDelegate:(id<RLRequestDelegate>)delegate;
+//下载图片
++ (RLRequest *)requestDownloadImage:(NSMutableDictionary *)parameters
+                        andDelegate:(id<RLRequestDelegate>)delegate;
+
 //用户注册
 + (RLRequest *)requestRegist:(NSMutableDictionary *)parameters
                  andDelegate:(id<RLRequestDelegate>)delegate;
@@ -66,6 +79,10 @@ typedef NS_ENUM(NSInteger, RequestType) {
 //根据类型获取新闻列表
 + (RLRequest *)requestNewsList:(NSMutableDictionary *)parameters
                    andDelegate:(id<RLRequestDelegate>)delegate;
+
+//订阅/取消订阅新闻栏目接口
++ (RLRequest *)requestSubscribeNewsChannels:(NSMutableDictionary *)parameters
+                                andDelegate:(id<RLRequestDelegate>)delegate;
 
 //获取商家列表
 + (RLRequest *)requestForStoreList:(NSMutableDictionary *)parameters

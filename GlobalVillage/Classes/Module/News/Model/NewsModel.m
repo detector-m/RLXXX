@@ -15,7 +15,7 @@
     self.title = [dic objectForKey:RespondFieldTitleKey];
     self.abstract = [dic objectForKey:RespondFieldNewsAbstractKey];
     self.readNum = [[dic objectForKey:RespondFieldReadNumKey] integerValue];
-    self.picUrl = [(NSArray *)[dic objectForKey:RespondFieldPicListStringKey] objectAtIndex:0];
+    self.picUrl = [dic objectForKey:RespondFieldPicListStringKey];//[(NSArray *)[dic objectForKey:RespondFieldPicListStringKey] objectAtIndex:0];
     self.detailUrl = [dic objectForKey:RespondFieldNewsURLKey];
 }
 @end

@@ -8,6 +8,14 @@
 
 #import "RLTableViewController.h"
 
+@class NewsSegmentModel;
 @interface NewsVC : RLTableViewController
 
+- (NSArray *)newsSegments;
+- (NSArray *)subscribeNewsSegments;
+- (NSArray *)unsubscribeNewsSegments;
+
+- (void)commitChennelsForSubscribeAndUnSubscribe;
+
+- (void)selected:(NewsSegmentModel *)segment;
 @end

@@ -63,19 +63,19 @@ static DejalActivityView *activityView = nil;
 
 + (void)showActivityWithTitle:(NSString *)title forView:(UIView *)view {
     dispatch_block_t block = ^(){
-        [DejalActivityView removeView];
+        [DejalBezelActivityView removeView];
         activityView = nil;
-        activityView = [DejalActivityView activityViewForView:view withLabel:title];
+        activityView = [DejalBezelActivityView activityViewForView:view withLabel:title];
     };
     
     dispatch_async(dispatch_get_main_queue(), block);
 }
 + (void)showActivityForView:(UIView *)view {
     dispatch_block_t block = ^(){
-        [DejalActivityView removeView];
+        [DejalBezelActivityView removeView];
         activityView = nil;
         
-        activityView = [DejalActivityView activityViewForView:view];
+        activityView = [DejalBezelActivityView activityViewForView:view];
     };
     
     dispatch_async(dispatch_get_main_queue(), block);

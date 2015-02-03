@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+@class NewsSegmentModel;
 @interface NewsChannelMode : NSObject
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, assign) BOOL subscribed;
+@property (nonatomic, weak) id channelView;
+@property (nonatomic, weak) NewsSegmentModel *segment;
 @end

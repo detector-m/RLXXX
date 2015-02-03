@@ -118,7 +118,7 @@ static const NSTimeInterval kTimeoutInterval = 180.0;
             NSObject *dataParam = [dataDictionary objectForKey:key];
             if([dataParam isKindOfClass:[UIImage class]]){
                 NSData *imageData = UIImagePNGRepresentation((UIImage *)dataParam);
-                [self utfAppendBody:body data:[NSString stringWithFormat:@"Content-Disposition:form-data;filename=\"%@\"\r\n", key]];
+                [self utfAppendBody:body data:[NSString stringWithFormat:@"Content-Disposition:form-data;name=\"%@\";filename=\"%@.png\"\r\n", key, key]];
                 [self utfAppendBody:body data:[NSString stringWithFormat:@"Content-Type:image/png\r\n\r\n"]];
                 [body appendData:imageData];
             }
@@ -146,6 +146,9 @@ static const NSTimeInterval kTimeoutInterval = 180.0;
 #define GeneralErrorCode 10000
 - (id)parseJsonResponse:(NSData *)data error:(NSError **)error{
     NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    if(responseString == nil && data != nil) {
+        return data;
+    }
     if([responseString isEqualToString:@"true"]){
         return [NSDictionary dictionaryWithObject:@"true" forKey:@"result"];
     }

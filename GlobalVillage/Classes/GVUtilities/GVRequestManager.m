@@ -14,6 +14,7 @@ static NSString *kRestserverBaseURL = @"http://www.dqcc.com.cn/mobile";
 //static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn/mobile/api/";
 //http://www.dqcc.com.cn/mobile/api/v20/
 static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn/mobile/api/v20";
+//static NSString *kRestserverApiURL = @"http://192.168.10.104:8080/mobile/api/v20";
 
 
 @implementation GVRequestManager
@@ -103,6 +104,21 @@ static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn/mobile/api/v20";
     return [self requestWithPageName:pageName parameters:parameters httpMethod:kDefaultHttpMethod delegate:(id<RLRequestDelegate>)delegate];
 }
 
+//上传图片
++ (RLRequest *)requestUploadImage:(NSMutableDictionary *)parameters
+                      andDelegate:(id<RLRequestDelegate>)delegate {
+    NSString *pageName = @"/image/upload.jhtml";
+    
+    return [self requestWithPageName:pageName parameters:parameters httpMethod:kDefaultHttpMethod delegate:delegate];
+}
+//下载图片
++ (RLRequest *)requestDownloadImage:(NSMutableDictionary *)parameters
+                        andDelegate:(id<RLRequestDelegate>)delegate {
+    NSString *pageName = @"/image/download.jhtml";
+    
+    return [self requestWithPageName:pageName parameters:parameters httpMethod:kDefaultHttpMethod delegate:delegate];
+}
+
 //用户注册
 + (RLRequest *)requestRegist:(NSMutableDictionary *)parameters
                  andDelegate:(id<RLRequestDelegate>)delegate {
@@ -137,6 +153,14 @@ static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn/mobile/api/v20";
     NSString *pageName = @"/news/newsList.jhtml";
     
     return [self requestWithPageName:pageName parameters:parameters httpMethod:kDefaultHttpMethod delegate:(id<RLRequestDelegate>)delegate];
+}
+
+//订阅/取消订阅新闻栏目接口
++ (RLRequest *)requestSubscribeNewsChannels:(NSMutableDictionary *)parameters
+                            andDelegate:(id<RLRequestDelegate>)delegate {
+    NSString *pageName = @"/news/subscibed.jhtml";
+    
+    return [self requestWithPageName:pageName parameters:parameters httpMethod:kDefaultHttpMethod delegate:delegate];
 }
 
 //获取商家列表
@@ -182,6 +206,14 @@ static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn/mobile/api/v20";
         case kRequestTypeVerifyDQNumber:
             request = [self requestVerifyChikyugo:parameters andDelegate:delegate];
             break;
+            
+        case kRequestTypeUploadImage:
+            request = [self requestUploadImage:parameters andDelegate:delegate];
+            break;
+        case kRequestTypeDownloadImage:
+            request = [self requestDownloadImage:parameters andDelegate:delegate];
+            break;
+            
         case kRequestTypeRegister:
             request = [self requestRegist:parameters andDelegate:delegate];
             break;
@@ -193,6 +225,9 @@ static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn/mobile/api/v20";
             break;
         case kRequestTypeNewsList:
             request = [self requestNewsList:parameters andDelegate:delegate];
+            break;
+        case kRequestTypeSubscribeNewsChannels:
+            request = [self requestSubscribeNewsChannels:parameters andDelegate:delegate];
             break;
         default:
             break;

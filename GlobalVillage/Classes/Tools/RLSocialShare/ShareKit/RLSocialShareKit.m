@@ -101,7 +101,7 @@ static RLSocialShareKit *_shareKit = nil;
     switch (appType) {
         case kRLSocialShareKitTypeWeChatSession:
         case kRLSocialShareKitTypeWeChatTimeline:
-            [WXApi registerApp:self.shareAppInfo.appKey withDescription:@"demo 2.0"];
+            [WXApi registerApp:self.shareAppInfo.appKey withDescription:@"GlobalVillage"];
             break;
         case kRLSocialShareKitTypeSinaWebo:
             [WeiboSDK enableDebugMode:YES];
@@ -330,31 +330,31 @@ static RLSocialShareKit *_shareKit = nil;
 {
     if([resp isKindOfClass:[SendMessageToWXResp class]])
     {
-        NSString *strTitle = [NSString stringWithFormat:@"发送媒体消息结果"];
-        NSString *strMsg = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+//        NSString *strTitle = [NSString stringWithFormat:@"发送媒体消息结果"];
+//        NSString *strMsg = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
+//        
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//        [alert show];
     }
     else if([resp isKindOfClass:[SendAuthResp class]])
     {
-        SendAuthResp *temp = (SendAuthResp*)resp;
-        
-        NSString *strTitle = [NSString stringWithFormat:@"Auth结果"];
-        NSString *strMsg = [NSString stringWithFormat:@"code:%@,state:%@,errcode:%d", temp.code, temp.state, temp.errCode];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+//        SendAuthResp *temp = (SendAuthResp*)resp;
+//        
+//        NSString *strTitle = [NSString stringWithFormat:@"Auth结果"];
+//        NSString *strMsg = [NSString stringWithFormat:@"code:%@,state:%@,errcode:%d", temp.code, temp.state, temp.errCode];
+//        
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//        [alert show];
     }
     else if ([resp isKindOfClass:[AddCardToWXCardPackageResp class]])
     {
-        AddCardToWXCardPackageResp* temp = (AddCardToWXCardPackageResp*)resp;
-        NSMutableString* cardStr = [[NSMutableString alloc] init];
-        for (WXCardItem* cardItem in temp.cardAry) {
-            [cardStr appendString:[NSString stringWithFormat:@"cardid:%@ cardext:%@ cardstate:%u\n",cardItem.cardId,cardItem.extMsg,(unsigned int)cardItem.cardState]];
-        }
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"add card resp" message:cardStr delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+//        AddCardToWXCardPackageResp* temp = (AddCardToWXCardPackageResp*)resp;
+//        NSMutableString* cardStr = [[NSMutableString alloc] init];
+//        for (WXCardItem* cardItem in temp.cardAry) {
+//            [cardStr appendString:[NSString stringWithFormat:@"cardid:%@ cardext:%@ cardstate:%u\n",cardItem.cardId,cardItem.extMsg,(unsigned int)cardItem.cardState]];
+//        }
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"add card resp" message:cardStr delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//        [alert show];
     }
 }
 

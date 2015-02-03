@@ -31,6 +31,11 @@
         self.editButton = [ViewConstructor constructDefaultButton:[UIButton class] withFrame:CGRectMake(frame.size.width-95, 5, 80, frame.size.height-10)];
         [self.editButton setTitle:NSLocalizedString(@"编辑", nil) forState:UIControlStateNormal];
         [self.editButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+        self.editButton.layer.borderColor = [UIColor colorWithRed:255/255.0 green:0/255.0 blue:153/255.0 alpha:1].CGColor;
+//        self.editButton.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:204/255.0 alpha:1];
+        [self.editButton setTintColor:[UIColor colorWithRed:204/255.0 green:195/255.0 blue:48/255.0 alpha:1]];
+        [self.editButton setTitleColor:[UIColor colorWithRed:255/255.0 green:0/255.0 blue:153/255.0 alpha:1] forState:UIControlStateNormal];
+        
         [self addSubview:self.editButton];
         
     }

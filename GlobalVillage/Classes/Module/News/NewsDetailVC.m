@@ -98,19 +98,16 @@
     sinaWeiboActivity.delegate = self;
     RLShareMessageModel *message = sinaWeiboActivity.message;
     message.appType = kRLSocialShareKitTypeSinaWebo;
-    message.imageData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SinaWeibo" ofType:@"png"]];
     
     RLWeChatSessionActivity *weChatSessionActivity = [[RLWeChatSessionActivity alloc] init];
     weChatSessionActivity.callback = @selector(sendMessageToTargetApp:);
     weChatSessionActivity.delegate = self;
     weChatSessionActivity.message.appType = kRLSocialShareKitTypeWeChatSession;
-    weChatSessionActivity.message.imageData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SinaWeibo" ofType:@"png"]];
     
     RLWeChatTimeLineActivity *weChatTimelineActivity = [[RLWeChatTimeLineActivity alloc] init];
     weChatTimelineActivity.callback = @selector(sendMessageToTargetApp:);
     weChatTimelineActivity.delegate = self;
     weChatTimelineActivity.message.appType = kRLSocialShareKitTypeWeChatTimeline;
-    weChatTimelineActivity.message.imageData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SinaWeibo" ofType:@"png"]];
     
     block = ^(NSString *  activityType, BOOL completed) {
         blockItem.enabled = YES;
@@ -127,6 +124,7 @@
 }
 
 - (void)sendMessageToTargetApp:(RLShareMessageModel *)message {
+    message.imageData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"58" ofType:@"png"]];
     [[RLSocialShareKit sharedShareKit] sendMessageToTargetApp:message];
 }
 

@@ -118,13 +118,47 @@
 //    [self.segmentBar reloadSubViews];
 }
 
+- (NSInteger)segmentsShowCount:(NSArray *)segments {
+    NSInteger count = 0;
+    for(Segment *segment in self.segments) {
+        if(segment.segmentMode == kSegmentModeShow) {
+            count++;
+        }
+    }
+
+    return count;
+}
+
+- (Segment *)segmentShow:(NSArray *)segments index:(NSInteger)index {
+    NSInteger count = 0;
+    for(Segment *inSegment in self.segments) {
+        if(inSegment.segmentMode == kSegmentModeShow) {
+            if(count == index) {
+                return inSegment;
+                
+            }
+            count++;
+        }
+    }
+    
+    return nil;
+}
+
 #pragma mark SegmentBarDelegate datasource
 - (NSInteger)itemViewsNumberOfSegmentBar:(SegmentBar *)segmentBar {
-    return self.segments.count;
+
+    return [self segmentsShowCount:self.segments];
+//    return self.segments.count;
 }
 
 - (CGFloat)itemWidthOfSegmentBar:(SegmentBar *)segmentBar forIndex:(NSInteger)index {
-    return 80;
+    NSInteger count = [self segmentsShowCount:self.segments];
+    CGFloat contentWidth = count *  80.0;
+    if(contentWidth > segmentBar.frame.size.width)
+        return 80;
+    else {
+        return segmentBar.frame.size.width/count;
+    }
 }
 
 - (SegmentItemView *)itemView:(SegmentBar *)sgementBar forIndex:(NSInteger)index {
@@ -132,7 +166,8 @@
     if((item = [sgementBar dequeueReusableItemView]) == nil) {
         item = (SegmentItemView *)[ViewConstructor constructDefaultButton:[SegmentItemView class] withFrame:CGRectZero];
     }
-    Segment *segment = [self.segments objectAtIndex:index];
+    
+    Segment *segment = [self segmentShow:self.segments index:index];
     [item setTitle:segment.item.title forState:UIControlStateNormal];
     item.titleLabel.font = [UIFont systemFontOfSize:20];
     item.layer.borderWidth = 0;
@@ -174,9 +209,9 @@
 //}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger rowCount = self.segments.count;
-    
-    return rowCount;
+    return [self segmentsShowCount:self.segments];
+//    NSInteger rowCount = self.segments.count;
+//    return rowCount;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -189,7 +224,9 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.transform = CGAffineTransformMakeRotation(M_PI/2);
     }
-    Segment *segment = [self.segments objectAtIndex:[indexPath row]];
+
+    Segment *segment = [self segmentShow:self.segments index:indexPath.row];
+//    Segment *segment = [self.segments objectAtIndex:[indexPath row]];
     UIView *vw = segment.content.view;
     vw.frame = CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height);
     [cell.contentView addSubview:vw];

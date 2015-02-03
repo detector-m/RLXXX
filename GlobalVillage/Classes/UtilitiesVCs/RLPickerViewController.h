@@ -10,7 +10,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 
-@interface RLPickerViewController : RLBaseViewController
+@interface RLPickerViewController : RLBaseViewController <UIImagePickerControllerDelegate>
 @property (nonatomic, readonly, strong) UIActionSheet *actionSheet;
 - (BOOL)isCameraAvailable;
 - (BOOL)isRearCameraAvailable;

@@ -10,7 +10,8 @@
 #import "SegmentItemView.h"
 #import "RLColor.h"
 
-#define kSelectedColor [UIColor colorWithRed:206/255.0 green:222/255.0 blue:235/255.0 alpha:1]
+//#define kSelectedColor [UIColor colorWithRed:206/255.0 green:222/255.0 blue:235/255.0 alpha:1]
+#define kSelectedColor [UIColor colorWithRed:117/255.0 green:226/255.0 blue:255/255.0 alpha:0.5]
 //[UIColor colorWithRed:232/255.0 green:228/255.0 blue:219/255.0 alpha:1]
 #define kLineColor [UIColor clearColor]
 #define kBackgroundColor [UIColor colorWithRed:248/255.0 green:248/255.0 blue:248/255.0 alpha:1]

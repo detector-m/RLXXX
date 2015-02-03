@@ -78,7 +78,7 @@ static User *_userInstance = nil;
     self.age = [RLTypecast stringToInteger:[loginDic objectForKey:RespondFieldAgeKey]];
     self.signature = [loginDic objectForKey:RespondFieldSignatureKey];
     self.registeredCity = [loginDic objectForKey:RespondFieldRegisteredCityKey];
-    self.pic = [loginDic objectForKey:RespondFieldPicKey];
+    self.picUrl = [loginDic objectForKey:RespondFieldPicKey];
     self.type =  (UserType)[RLTypecast stringToInteger:[loginDic objectForKey:RespondFieldMemberTypeKey]];
     
     self.easemobUserAccount = [loginDic objectForKey:RespondFieldEasemobUserIdKey];

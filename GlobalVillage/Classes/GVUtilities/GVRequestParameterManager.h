@@ -23,6 +23,13 @@
 //地球号是否被用验证参数列表
 + (NSMutableDictionary *)verifyChikyugoParameter:(NSString *)chikyugoValue;
 
+//上传图片参数列表
++ (NSMutableDictionary *)uploadImageParameter:(UIImage *)imageDataValue;
+//下载图片参数列表
++ (NSMutableDictionary *)downloadImageParameter:(NSString *)imageUrlValue
+                                 imageScaleVale:(NSString *)scaleValue
+                                    accessToken:(NSString *)accessTokenValue;
+
 //用户注册参数列表
 + (NSMutableDictionary *)registParameter:(NSString *)nicknameValue
                            chikyugoValue:(NSString *)chikyugoValue
@@ -33,7 +40,7 @@
                                cityValue:(NSString *)cityValue
                           longitudeValue:(NSString *)longitudeValue
                            latitudeValue:(NSString *)latitudeValue
-                       headPortraitValue:(NSData *)headPortraitValue;
+                       /*headPortraitValue:(NSData *)headPortraitValue*/;
 //用户登录参数列表
 + (NSMutableDictionary *)loginParameter:(NSString *)userAccountValue
                           passwordValue:(NSString *)passwordValue
@@ -49,6 +56,11 @@
                           currentSizeValue:(NSString *)currSizeValue
                              pageSizeValue:(NSString *)pageSizeValue
                           accessTokenValue:(NSString *)accessTokenValue;
+
+//“订阅/取消订阅”新闻栏目接口
++ (NSMutableDictionary *)subscribeNewsChannelsParameter:(NSString *)subscribeNewsChannelsValue
+                           unsubscribeNewsChannelsValue:(NSString *)unsubscribeNewsChannelsValue
+                                       accessTokenValue:(NSString *)accessTokenValue;
 
 //获取商家列表参数列表
 + (NSMutableDictionary *)storeListParameter:(NSString *)radiusValue

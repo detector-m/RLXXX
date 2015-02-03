@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "ChannelsTitleView.h"
 #import "SubscribeChannelsView.h"
-#import "UnsubscribChannelsView.h"
+#import "UnsubscribeChannelsView.h"
+
+#import "NewsVC.h"
 
 #define kChannelsViewTitleViewHeight 40.0f
 
@@ -18,5 +20,7 @@
 @property (nonatomic, readonly, strong) UIScrollView *channelsView;
 
 @property (nonatomic, readonly, strong) SubscribeChannelsView *subscribeChannelsView;
-@property (nonatomic, readonly, strong) UnsubscribChannelsView *unsubscribeChannelsView;
+@property (nonatomic, readonly, strong) UnsubscribeChannelsView *unsubscribeChannelsView;
+
+- (instancetype)initWithFrame:(CGRect)frame andVC:(NewsVC *)newsVC;
 @end

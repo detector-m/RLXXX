@@ -1,13 +1,13 @@
 //
-//  UnsubscribChannelsView.m
+//  UnsubscribChannelsView.h
 //  GlobalVillage
 //
 //  Created by RivenL on 15/1/27.
 //  Copyright (c) 2015年 RivenL. All rights reserved.
 //
 
-#import "UnsubscribChannelsView.h"
+#import "ChannelsView.h"
 
-@implementation UnsubscribChannelsView
+@interface UnsubscribeChannelsView : ChannelsView
 
 @end

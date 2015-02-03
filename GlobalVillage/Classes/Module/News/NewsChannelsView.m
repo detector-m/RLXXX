@@ -7,6 +7,13 @@
 //
 
 #import "NewsChannelsView.h"
+#import "NewsSegmentModel.h"
+#import "NewsChannelMode.h"
+#import "ChannelsButton.h"
+
+#import "SingleChannelNewsVC.h"
+
+#define kDefaultColor [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1]
 
 @interface NewsChannelsView ()
 @property (nonatomic, readwrite, strong) ChannelsTitleView *titleView;
@@ -14,9 +21,12 @@
 
 @property (nonatomic, readwrite, strong) SubscribeChannelsView *subscribeChannelsView;
 @property (nonatomic, readwrite, strong) UILabel *unsubscribChannelWarnLabel;
-@property (nonatomic, readwrite, strong) UnsubscribChannelsView *unsubscribeChannelsView;
+@property (nonatomic, readwrite, strong) UnsubscribeChannelsView *unsubscribeChannelsView;
 
-@property (nonatomic, assign) BOOL editAble;
+@property (nonatomic, assign) BOOL editable;
+
+@property (nonatomic, weak) NewsVC *newsVC;
+@property (nonatomic, weak) NSArray *segments;
 @end
 
 @implementation NewsChannelsView
@@ -25,21 +35,31 @@
     self.channelsView = nil;
     self.subscribeChannelsView = nil;
     self.unsubscribeChannelsView = nil;
+
+    self.newsVC = nil;
+    self.segments = nil;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if(self = [super initWithFrame:frame]) {
         self.titleView = [[ChannelsTitleView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, kChannelsViewTitleViewHeight)];
-        self.titleView.backgroundColor = [UIColor grayColor];
+        self.titleView.backgroundColor = kDefaultColor;//[UIColor colorWithRed:174/255.0 green:221/255.0 blue:227/255.0 alpha:0.75];//[UIColor grayColor];
         [self addSubview:self.titleView];
         
         [self.titleView.editButton addTarget:self action:@selector(clickEditButton:) forControlEvents:UIControlEventTouchUpInside];
         
         [self channelsViewDoLoadWithFrame:frame];
         
-        self.editAble = NO;
+        self.editable = NO;
     }
 
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame andVC:(NewsVC *)newsVC {
+    self.newsVC = newsVC;
+    self = [self initWithFrame:frame];
+    
     return self;
 }
 
@@ -55,21 +75,24 @@
     
     heightOffset = self.subscribeChannelsView.frame.size.height;
     self.unsubscribChannelWarnLabel = [ViewConstructor constructDefaultLabel:[UILabel class] withFrame:CGRectMake(0, heightOffset, frame.size.width, kChannelsViewTitleViewHeight)];
-    self.unsubscribChannelWarnLabel.backgroundColor = [UIColor lightGrayColor];
+    self.unsubscribChannelWarnLabel.backgroundColor = kDefaultColor;
     self.unsubscribChannelWarnLabel.text = NSLocalizedString(@"点击添加频道", nil);
     [self.channelsView addSubview:self.unsubscribChannelWarnLabel];
     
     heightOffset += self.unsubscribChannelWarnLabel.frame.size.height;
-    self.unsubscribeChannelsView = [[UnsubscribChannelsView alloc] initWithFrame:CGRectMake(0, heightOffset, frame.size.width, kChannelsViewTitleViewHeight)];
+    self.unsubscribeChannelsView = [[UnsubscribeChannelsView alloc] initWithFrame:CGRectMake(0, heightOffset, frame.size.width, kChannelsViewTitleViewHeight)];
     [self constructUnsubscribeChannels];
     [self.channelsView addSubview:self.unsubscribeChannelsView];
     
     self.channelsView.contentSize = CGSizeMake(frame.size.width, self.subscribeChannelsView.frame.size.height+kChannelsViewTitleViewHeight + self.unsubscribeChannelsView.frame.size.height);
 }
 
-- (UIButton *)constructChannelButtonWithTitle:(NSString *)text frame:(CGRect)frame {
-    UIButton *button = [ViewConstructor constructDefaultButton:[UIButton class] withFrame:frame];
+- (ChannelsButton *)constructChannelButtonWithTitle:(NSString *)text frame:(CGRect)frame {
+    ChannelsButton *button = (ChannelsButton *)[ViewConstructor constructDefaultButton:[ChannelsButton class] withFrame:frame];
     [button setTitle:text forState:UIControlStateNormal];
+//    button.imageView.layer.borderColor
+    button.imageView.layer.borderWidth = 1.0f;
+    button.clipsToBounds = NO;
     
     return button;
 }
@@ -82,14 +105,22 @@
     CGFloat y = padding;
     CGRect frame;
     
-    for(NSInteger i=0; i<10; i++) {
+    NSArray *subscribeSegments = [self.newsVC subscribeNewsSegments];
+    NewsSegmentModel *segment = nil;
+    for(NSInteger i=0; i<subscribeSegments.count; i++) {
         x = padding*((i%4)+1) + (i%4)*width;
         y = padding*((i/4)+1) + (i/4)*height;
         frame = CGRectMake(x, y, width, height);
-        UIButton *button = [self constructChannelButtonWithTitle:@"test" frame:frame];
+        segment = [subscribeSegments objectAtIndex:i];
+        
+        NewsChannelMode *channel = [[NewsChannelMode alloc] init];
+        channel.title = segment.title;
+        channel.segment = segment;
+        ChannelsButton *button = [self constructChannelButtonWithTitle:segment.title frame:frame];
         [button addTarget:self action:@selector(clickUnsubscribeChannel:) forControlEvents:UIControlEventTouchUpInside];
         [self.subscribeChannelsView addSubview:button];
-        [self.subscribeChannelsView.channels addObject:button];
+        channel.channelView = button;
+        [self.subscribeChannelsView.channels addObject:channel];
     }
     
     frame = self.subscribeChannelsView.frame;
@@ -105,14 +136,23 @@
     CGFloat y = padding;
     CGRect frame;
     
-    for(NSInteger i=0; i<10; i++) {
+    NSArray *unsubscribeSegments = [self.newsVC unsubscribeNewsSegments];
+    NewsSegmentModel *segment = nil;
+    for(NSInteger i=0; i<unsubscribeSegments.count; i++) {
         x = padding*((i%4)+1) + (i%4)*width;
         y = padding*((i/4)+1) + (i/4)*height;
         frame = CGRectMake(x, y, width, height);
-        UIButton *button = [self constructChannelButtonWithTitle:@"test" frame:frame];
+        
+        segment = [unsubscribeSegments objectAtIndex:i];
+        NewsChannelMode *channel = [[NewsChannelMode alloc] init];
+        channel.title = segment.title;
+        channel.segment = segment;
+        UIButton *button = [self constructChannelButtonWithTitle:segment.title frame:frame];
         [button addTarget:self action:@selector(clickSubscribeChannel:) forControlEvents:UIControlEventTouchUpInside];
         [self.unsubscribeChannelsView addSubview:button];
-        [self.unsubscribeChannelsView.channels addObject:button];
+        channel.channelView = button;
+
+        [self.unsubscribeChannelsView.channels addObject:channel];
     }
     
     frame = self.unsubscribeChannelsView.frame;
@@ -122,41 +162,57 @@
 }
 
 - (void)clickEditButton:(UIButton *)button {
-    self.editAble = !self.editAble;
-    if([button.titleLabel.text isEqualToString:NSLocalizedString(@"编辑", nil)]) {
+    self.editable = !self.editable;
+    if(self.editable/*[button.titleLabel.text isEqualToString:NSLocalizedString(@"编辑", nil)]*/) {
         [button setTitle:NSLocalizedString(@"完成", nil) forState:UIControlStateNormal];
+        self.subscribeChannelsView.hideDeleteView = NO;
+        [self.subscribeChannelsView reloadData];
     }
     else {
         [button setTitle:NSLocalizedString(@"编辑", nil) forState:UIControlStateNormal];
+        [self.newsVC commitChennelsForSubscribeAndUnSubscribe];
+        self.subscribeChannelsView.hideDeleteView = YES;
+        [self.subscribeChannelsView reloadData];
     }
 }
 
 - (void)clickUnsubscribeChannel:(UIButton *)button {
-    if(!self.editAble) {
+    if(!self.editable) {
+        NewsChannelMode *channel = [self channelForChannelView:button withChannels:self.subscribeChannelsView.channels];
+        [self.newsVC selected:channel.segment];
+        [ChangeVCController popViewControllerByNavigationController:self.newsVC.navigationController];
         return;
     }
+    NewsChannelMode *channel = [self channelForChannelView:button withChannels:self.subscribeChannelsView.channels];
+    channel.segment.newsSubscribeMode = kNewsSegmentSubscribeModeUnSubscribe;
     [button removeTarget:self action:@selector(clickUnsubscribeChannel:) forControlEvents:UIControlEventTouchUpInside];
     [button removeFromSuperview];
-    [self.subscribeChannelsView.channels removeObject:button];
+    [self.subscribeChannelsView.channels removeObject:channel];
     
     [button addTarget:self action:@selector(clickSubscribeChannel:) forControlEvents:UIControlEventTouchUpInside];
     [self.unsubscribeChannelsView addSubview:button];
-    [self.unsubscribeChannelsView.channels insertObject:button atIndex:0];
-    
+    [self.unsubscribeChannelsView.channels insertObject:channel atIndex:0];
     [self reloadData];
 }
 
 - (void)clickSubscribeChannel:(UIButton *)button {
-    if(!self.editAble) {
+    NewsChannelMode *channel = [self channelForChannelView:button withChannels:self.unsubscribeChannelsView.channels];
+
+    if(!self.editable) {
+        SingleChannelNewsVC *vc = [[SingleChannelNewsVC alloc] init];
+        vc.newsType = channel.segment.titleItem;
+        [ChangeVCController pushViewControllerByNavigationController:self.newsVC.navigationController pushVC:vc];
         return;
     }
+    channel.segment.newsSubscribeMode = kNewsSegmentSubscribeModeSubscribe;
+
     [button removeTarget:self action:@selector(clickSubscribeChannel:) forControlEvents:UIControlEventTouchUpInside];
     [button removeFromSuperview];
-    [self.unsubscribeChannelsView.channels removeObject:button];
+    [self.unsubscribeChannelsView.channels removeObject:channel];
     
     [button addTarget:self action:@selector(clickUnsubscribeChannel:) forControlEvents:UIControlEventTouchUpInside];
-    [self.subscribeChannelsView addSubview:button];
-    [self.subscribeChannelsView.channels addObject:button];
+    [self.subscribeChannelsView addSubview:channel.channelView];
+    [self.subscribeChannelsView.channels addObject:channel];
     [self reloadData];
 }
 
@@ -178,5 +234,14 @@
     frame.size.height = height;
     
     self.unsubscribeChannelsView.frame = frame;
+}
+
+- (NewsChannelMode *)channelForChannelView:(id)channelView withChannels:(NSArray *)channels {
+    for(NewsChannelMode *channel in channels) {
+        if(channel.channelView == channelView)
+            return channel;
+    }
+    
+    return nil;
 }
 @end

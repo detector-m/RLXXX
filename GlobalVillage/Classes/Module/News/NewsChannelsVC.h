@@ -9,6 +9,9 @@
 #import "RLBaseViewController.h"
 #import "NewsChannelsView.h"
 
+@class NewsVC;
 @interface NewsChannelsVC : RLBaseViewController
 @property (nonatomic, readonly, strong) NewsChannelsView *channelsView;
+
+@property (nonatomic, weak) NewsVC *newsVC;
 @end

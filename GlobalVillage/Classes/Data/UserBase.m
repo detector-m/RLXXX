@@ -37,6 +37,7 @@
     self.signature = nil;
     self.registeredCity = nil;
     self.city = nil;
+    self.picUrl = nil;
     self.pic = nil;
     
     self.type = 0;

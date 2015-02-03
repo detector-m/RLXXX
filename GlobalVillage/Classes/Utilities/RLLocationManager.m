@@ -110,6 +110,8 @@
         
         [blockGeocoder cancelGeocode];
     }];
+    
+    [self stopUpdatingLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {

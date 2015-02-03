@@ -37,6 +37,11 @@
     [self dataDoClear];
 }
 
+- (void)navigationDidPopOnBackButton {
+    [self.controller removeAllRequest];
+    [super navigationDidPopOnBackButton];
+}
+
 - (void)dataDoClear {
     self.controller.delegate = nil;
     self.controller = nil;
@@ -123,16 +128,20 @@
     [self addChildViewController:self.segmentVC];
     [self.view addSubview:self.segmentVC.view];
     
-    self.channelsButton = [ViewConstructor constructDefaultButton:[UIButton class] withFrame:CGRectMake(self.segmentVC.segmentBar.frame.size.width+3, 0, 58, self.segmentVC.segmentBar.frame.size.height)];
+    self.channelsButton = [ViewConstructor constructDefaultButton:[UIButton class] withFrame:CGRectMake(self.segmentVC.segmentBar.frame.size.width+2, 5, self.view.frame.size.width - self.segmentVC.segmentBar.frame.size.width-4, self.segmentVC.segmentBar.frame.size.height-10)];
+    self.channelsButton.layer.borderWidth = 1.0f;
+    self.channelsButton.layer.borderColor = [UIColor colorWithRed:219/255.0 green:219/255.0 blue:219/255.0 alpha:0.5].CGColor;
     [self.channelsButton addTarget:self action:@selector(clickChannelsBtn:) forControlEvents:UIControlEventTouchUpInside];
-    self.channelsButton.layer.borderWidth = 0.0f;
-    [self.channelsButton setTitle:NSLocalizedString(@"More", nil) forState:UIControlStateNormal];
-    self.channelsButton.backgroundColor = [UIColor colorWithRed:49/255.0 green:126/255.0 blue:243/255.0 alpha:1];
+    [self.channelsButton setTitle:NSLocalizedString(@"更多", nil) forState:UIControlStateNormal];
+    self.channelsButton.titleLabel.font = [UIFont systemFontOfSize:15];
+    [self.channelsButton setTintColor:[UIColor colorWithRed:181/255.0 green:224/255.0 blue:239/255.0 alpha:1]];
+    self.channelsButton.backgroundColor = [UIColor colorWithRed:117/255.0 green:226/255.0 blue:255/255.0 alpha:0.5];
     [self.view addSubview:self.channelsButton];
 }
 
 - (void)segmentNaviDataDoLoad {
-    for(NSInteger i=0; i<self.segments.count; i++) {
+    NSInteger count = [self segmentsShowCount:self.segments];
+    for(NSInteger i=0; i<count/*self.segments.count*/; i++) {
         RefreshView *refreshView = [[RefreshView alloc] initWithStyle:kRefreshViewStyleTableView];
         [refreshView setDelegates:self];
         
@@ -140,7 +149,7 @@
         ((RefreshTableView *)refreshView.refreshTargetView).rowHeight = 100;
         ((RefreshTableView *)refreshView.refreshTargetView).tag = kSegmentStartTag+i;
         
-        NewsSegmentModel *segment = [self.segments objectAtIndex:i];
+        NewsSegmentModel *segment = [self segmentShow:self.segments index:i];//[self.segments objectAtIndex:i];
         segment.view = refreshView;
         
         ////////////////////////////
@@ -153,14 +162,43 @@
 
 - (void)clickChannelsBtn:(UIButton *)button {
     NewsChannelsVC *vc = [[NewsChannelsVC alloc] init];
+    vc.newsVC = self;
     [ChangeVCController pushViewControllerByNavigationController:self.navigationController pushVC:vc];
 }
 - (NewsSegmentModel *)segmentWithIndex:(NSInteger)index {
-    return [self.segments objectAtIndex:index];
+    
+    return [self segmentShow:self.segments index:index];
+//    return [self.segments objectAtIndex:index];
 }
 
 - (NewsModel *)newsWithIndex:(NSInteger)index andRow:(NSInteger)row {
     return [[self segmentWithIndex:index].contents objectAtIndex:row];
+}
+
+- (NSInteger)segmentsShowCount:(NSArray *)segments {
+    NSInteger count = 0;
+    for(Segment *segment in self.segments) {
+        if(segment.segmentMode == kSegmentModeShow) {
+            count++;
+        }
+    }
+    
+    return count;
+}
+
+- (NewsSegmentModel *)segmentShow:(NSArray *)segments index:(NSInteger)index {
+    NSInteger count = 0;
+    for(NewsSegmentModel *inSegment in self.segments) {
+        if(inSegment.segmentMode == kSegmentModeShow) {
+            if(count == index) {
+                return inSegment;
+                
+            }
+            count++;
+        }
+    }
+    
+    return nil;
 }
 
 #pragma mark - UITableViewDatasource UITableViewDelegate
@@ -174,13 +212,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger numOfRow = [self numberOfRows:tableView.tag];
-    
-    if(numOfRow == 0) {
+    CGFloat height = numOfRow * tableView.rowHeight;
+    if(height < tableView.frame.size.height) {
         tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     else {
         tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     }
+//    if(numOfRow == 0) {
+//        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    }
+//    else {
+//        tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+//    }
 
     return numOfRow;
 }
@@ -343,7 +387,7 @@
     __weak NewsVC *blockSelf = self;
     NSInteger index = tag;
     void(^block)(void) = ^{
-        NewsSegmentModel *segment = [self.segments objectAtIndex:index];
+        NewsSegmentModel *segment = [self segmentShow:self.segments index:index];//[self.segments objectAtIndex:index];
         RefreshView *refreshView = (RefreshView *)segment.view;
         if(refreshView.refreshDelegate == blockSelf && ((RefreshTableView *)refreshView.refreshTargetView).reloading == YES) {
             [refreshView finishedReloadingData];
@@ -415,4 +459,99 @@
     [self mainThreadAsync:block];
 }
 
+- (void)newsSubscribeNewsChannelsResponse:(GVResponse *)response {
+    dispatch_block_t block = NULL;
+    if(response.status != 0) {
+        block = ^(){
+            [GVPopViewManager showDialogWithTitle:NSLocalizedString(@"获取新闻列表失败！", nil)];
+        };
+    }
+    else {
+        __weak NewsVC *blockSelf = self;
+        block = ^(){
+            [blockSelf.controller newsTypeListRequest:[User sharedUser].accessToken];
+        };
+    }
+    
+    [self mainThreadAsync:block];
+
+}
+
+#pragma mark News interface method
+- (NSArray *)newsSegments {
+    return self.segments;
+}
+
+- (NSArray *)subscribeNewsSegments {
+    NSMutableArray *subscribeSegments = [NSMutableArray array];
+    for(NewsSegmentModel *segment in self.segments) {
+        if(segment.operationMode == kOperationModePerson) {
+            if(segment.subscribeMode == kSubscribeModeYES) {
+                [subscribeSegments addObject:segment];
+            }
+        }
+    }
+    
+    return subscribeSegments;
+}
+- (NSArray *)unsubscribeNewsSegments {
+    NSMutableArray *unsubscribeSegments = [NSMutableArray array];
+    for(NewsSegmentModel *segment in self.segments) {
+        if(segment.operationMode == kOperationModePerson) {
+            if(segment.subscribeMode == kSubscribeModeNO) {
+                [unsubscribeSegments addObject:segment];
+            }
+        }
+    }
+    return unsubscribeSegments;
+}
+
+- (void)commitChennelsForSubscribeAndUnSubscribe {
+    NSMutableArray *subscribes = [NSMutableArray array];
+    NSMutableArray *unsubscribes = [NSMutableArray array];
+    NSMutableArray *subscribeSegments = (NSMutableArray *)[self subscribeNewsSegments];
+    NewsTypeModel *newsType = nil;
+    for(NewsSegmentModel *segment in self.segments) {
+        newsType = segment.titleItem;
+
+        if(segment.newsSubscribeMode == kNewsSegmentSubscribeModeSubscribe) {
+            [subscribes addObject:[RLTypecast integerToString:newsType.ID]];
+            segment.newsSubscribeMode = kNewsSegmentSubscribeModeNone;
+            [subscribeSegments addObject:segment];
+        }
+        else if(segment.newsSubscribeMode == kNewsSegmentSubscribeModeUnSubscribe) {
+            [unsubscribes addObject:[RLTypecast integerToString:newsType.ID]];
+            segment.newsSubscribeMode = kNewsSegmentSubscribeModeNone;
+            [subscribeSegments removeObject:segment];
+        }
+    }
+    
+    if(subscribes.count == 0 && unsubscribes.count == 0)
+        return;
+    [subscribes removeAllObjects];
+    for(NewsSegmentModel *segment in subscribeSegments) {
+        newsType = segment.titleItem;
+        [subscribes addObject:[RLTypecast integerToString:newsType.ID]];
+    }
+    
+    NSString *subscribesStr = [subscribes componentsJoinedByString:@","];
+//    NSString *unsubscribesStr = [unsubscribes componentsJoinedByString:@","];
+    [subscribes removeAllObjects], subscribes = nil;
+    [unsubscribes removeAllObjects], unsubscribes = nil;
+    [subscribeSegments removeAllObjects], subscribeSegments = nil;
+    [self.controller newsSubscribeNewsChannelsRequest:subscribesStr unsubscribeNewsChannels:nil accessToken:nil];
+}
+
+- (void)selected:(NewsSegmentModel *)theSegment {
+    NSInteger index = 0;
+    for(Segment *segment in self.segments) {
+        if(segment == theSegment)
+            break;
+        if(segment.segmentMode == kSegmentModeShow) {
+            index++;
+        }
+    }
+    
+    [self.segmentVC.segmentBar selectIndex:index];
+}
 @end

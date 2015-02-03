@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "NewsChannelMode.h"
+#import "ChannelsButton.h"
 
 @interface ChannelsView : UIView
 @property (nonatomic, readonly, strong) NSMutableArray *channels;

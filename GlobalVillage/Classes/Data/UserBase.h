@@ -21,7 +21,8 @@
 @property (nonatomic, copy) NSString *signature;
 @property (nonatomic, copy) NSString *registeredCity;
 @property (nonatomic, copy) NSString *city;
-@property (nonatomic, strong) NSData *pic;
+@property (nonatomic, copy) NSString *picUrl;
+@property (nonatomic, copy) NSData *pic;
 
 @property (nonatomic, assign) UserType type; //用户是否为商家，1，普通用户，2商家
 

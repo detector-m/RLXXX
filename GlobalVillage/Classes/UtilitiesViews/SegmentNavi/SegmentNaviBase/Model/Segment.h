@@ -10,8 +10,16 @@
 #import "SegmentItem.h"
 #import "SegmentContent.h"
 
+typedef NS_ENUM(UInt8, SegmentMode) {
+    kSegmentModeHide,
+    kSegmentModeShow,
+};
+
 @interface Segment : NSObject
 @property (nonatomic, assign) NSInteger Id;
+
+@property (nonatomic, assign) SegmentMode segmentMode;
+
 @property (nonatomic, strong) SegmentItem *item;
 @property (nonatomic, strong) SegmentContent *content;
 @end
