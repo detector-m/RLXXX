@@ -119,12 +119,6 @@
 		96DEED741A6A2EB400C045DF /* ViewConstructor.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DEED731A6A2EB400C045DF /* ViewConstructor.m */; };
 		96DEED771A6A3FFD00C045DF /* RegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DEED761A6A3FFD00C045DF /* RegisterVC.m */; };
 		96DEED7A1A6A4BA600C045DF /* ChangeVCController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DEED791A6A4BA600C045DF /* ChangeVCController.m */; };
-		96DEED861A6A502300C045DF /* qq_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 96DEED7D1A6A502300C045DF /* qq_icon.png */; };
-		96DEED871A6A502300C045DF /* qq_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96DEED7E1A6A502300C045DF /* qq_icon@2x.png */; };
-		96DEED881A6A502300C045DF /* sina_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 96DEED7F1A6A502300C045DF /* sina_icon.png */; };
-		96DEED891A6A502300C045DF /* sina_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96DEED801A6A502300C045DF /* sina_icon@2x.png */; };
-		96DEED8C1A6A502300C045DF /* wechat_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 96DEED831A6A502300C045DF /* wechat_icon.png */; };
-		96DEED8D1A6A502300C045DF /* wechat_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96DEED841A6A502300C045DF /* wechat_icon@2x.png */; };
 		96DEED931A6A5B6A00C045DF /* PhoneAuthCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DEED921A6A5B6A00C045DF /* PhoneAuthCodeVC.m */; };
 		96DEED961A6A5FB700C045DF /* CompleteRegisterinfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DEED951A6A5FB700C045DF /* CompleteRegisterinfoVC.m */; };
 		96DEED991A6C898F00C045DF /* RLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DEED981A6C898F00C045DF /* RLRadioButton.m */; };
@@ -394,12 +388,6 @@
 		96DEED761A6A3FFD00C045DF /* RegisterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterVC.m; sourceTree = "<group>"; };
 		96DEED781A6A4BA600C045DF /* ChangeVCController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeVCController.h; sourceTree = "<group>"; };
 		96DEED791A6A4BA600C045DF /* ChangeVCController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeVCController.m; sourceTree = "<group>"; };
-		96DEED7D1A6A502300C045DF /* qq_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qq_icon.png; sourceTree = "<group>"; };
-		96DEED7E1A6A502300C045DF /* qq_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qq_icon@2x.png"; sourceTree = "<group>"; };
-		96DEED7F1A6A502300C045DF /* sina_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sina_icon.png; sourceTree = "<group>"; };
-		96DEED801A6A502300C045DF /* sina_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sina_icon@2x.png"; sourceTree = "<group>"; };
-		96DEED831A6A502300C045DF /* wechat_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wechat_icon.png; sourceTree = "<group>"; };
-		96DEED841A6A502300C045DF /* wechat_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat_icon@2x.png"; sourceTree = "<group>"; };
 		96DEED911A6A5B6A00C045DF /* PhoneAuthCodeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneAuthCodeVC.h; sourceTree = "<group>"; };
 		96DEED921A6A5B6A00C045DF /* PhoneAuthCodeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneAuthCodeVC.m; sourceTree = "<group>"; };
 		96DEED941A6A5FB700C045DF /* CompleteRegisterinfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompleteRegisterinfoVC.h; sourceTree = "<group>"; };
@@ -1113,12 +1101,6 @@
 				9647315B1A7F0EEE00604904 /* ShareIcon */,
 				96D8FFB51A7A1D4B0041C8D8 /* News */,
 				96DEED9A1A6C9C3200C045DF /* RegisterImages */,
-				96DEED7D1A6A502300C045DF /* qq_icon.png */,
-				96DEED7E1A6A502300C045DF /* qq_icon@2x.png */,
-				96DEED7F1A6A502300C045DF /* sina_icon.png */,
-				96DEED801A6A502300C045DF /* sina_icon@2x.png */,
-				96DEED831A6A502300C045DF /* wechat_icon.png */,
-				96DEED841A6A502300C045DF /* wechat_icon@2x.png */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -1333,9 +1315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96C1C06B1A766A47003E7C07 /* WeChatTimeLine.png in Resources */,
-				96DEED891A6A502300C045DF /* sina_icon@2x.png in Resources */,
 				9665D43C1A75CE8F00E851CB /* WeiboSDK.bundle in Resources */,
-				96DEED881A6A502300C045DF /* sina_icon.png in Resources */,
 				96A98F6B1A7B78D700EE8B6A /* NewsDefaultIcon@2x.jpg in Resources */,
 				964731681A80539300604904 /* ChannelDelete@2x.png in Resources */,
 				96DEED301A69E3E600C045DF /* Localizable.strings in Resources */,
@@ -1354,18 +1334,14 @@
 				96DEED0A1A69330B00C045DF /* LaunchScreen.xib in Resources */,
 				96DEED071A69330B00C045DF /* Images.xcassets in Resources */,
 				96A98F651A7B729300EE8B6A /* check_icon@2x.png in Resources */,
-				96DEED871A6A502300C045DF /* qq_icon@2x.png in Resources */,
 				9647315D1A7F0EEE00604904 /* 58.png in Resources */,
 				96C1C0631A766A47003E7C07 /* SinaWeibo.png in Resources */,
 				96C1C0661A766A47003E7C07 /* TCWeibo@2x.png in Resources */,
 				9665D42E1A7392BF00E851CB /* RLSocialShareConfig.plist in Resources */,
-				96DEED8D1A6A502300C045DF /* wechat_icon@2x.png in Resources */,
-				96DEED8C1A6A502300C045DF /* wechat_icon.png in Resources */,
 				96C1C06C1A766A47003E7C07 /* WeChatTimeLine@2x.png in Resources */,
 				96C1C0611A766A47003E7C07 /* QQ.png in Resources */,
 				96C1C06A1A766A47003E7C07 /* WeChat@2x.png in Resources */,
 				96C1C0651A766A47003E7C07 /* TCWeibo.png in Resources */,
-				96DEED861A6A502300C045DF /* qq_icon.png in Resources */,
 				96C1C0641A766A47003E7C07 /* SinaWeibo@2x.png in Resources */,
 				96DEED9E1A6C9C3200C045DF /* PicDefault@2x.png in Resources */,
 				964731661A80534F00604904 /* ChannelDelete.png in Resources */,
