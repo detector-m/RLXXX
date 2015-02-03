@@ -11,6 +11,7 @@
 #import "RLInputView.h"
 
 #import "RegisterController.h"
+#import "RLFileOperation.h"
 
 #import "RLBaseNavigationController.h"
 #import "NewsVC.h"
@@ -154,9 +155,10 @@
         };
     }
     else {
-        DLog(@"%@", response.responseData);
+//        DLog(@"%@", response.responseData);
         User *user = [User sharedUser];
         [user setAccount:user.phone andPassword:((UITextField *)self.passwordInputView.textInputView).text];
+        [RLFileOperation storeLoginInfo:user.dqNumber pwd:user.password date:nil plateforme:@"local" openKey:nil];
         block = ^() {
 //            [ChangeVCController changeMainRootViewController:[NewsVC class]];
             NewsVC *vc = [[NewsVC alloc] init];

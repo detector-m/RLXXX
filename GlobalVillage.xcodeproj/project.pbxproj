@@ -45,6 +45,7 @@
 		964731681A80539300604904 /* ChannelDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 964731671A80539300604904 /* ChannelDelete@2x.png */; };
 		9647316B1A805A2400604904 /* SingleChannelNewsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9647316A1A805A2400604904 /* SingleChannelNewsVC.m */; };
 		9647316E1A805BBC00604904 /* RLTableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9647316D1A805BBC00604904 /* RLTableModel.m */; };
+		964731721A80B90F00604904 /* RLFileOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 964731711A80B90F00604904 /* RLFileOperation.m */; };
 		9665D42C1A738DF700E851CB /* RLSocialShareKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9665D42A1A738DF700E851CB /* RLSocialShareKit.m */; };
 		9665D42E1A7392BF00E851CB /* RLSocialShareConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9665D42D1A7392BF00E851CB /* RLSocialShareConfig.plist */; };
 		9665D43B1A75CE8F00E851CB /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9665D4301A75CE8F00E851CB /* libWeiboSDK.a */; };
@@ -253,6 +254,8 @@
 		9647316A1A805A2400604904 /* SingleChannelNewsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleChannelNewsVC.m; sourceTree = "<group>"; };
 		9647316C1A805BBC00604904 /* RLTableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTableModel.h; sourceTree = "<group>"; };
 		9647316D1A805BBC00604904 /* RLTableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLTableModel.m; sourceTree = "<group>"; };
+		964731701A80B90F00604904 /* RLFileOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLFileOperation.h; sourceTree = "<group>"; };
+		964731711A80B90F00604904 /* RLFileOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLFileOperation.m; sourceTree = "<group>"; };
 		9665D4291A738DF700E851CB /* RLSocialShareKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLSocialShareKit.h; sourceTree = "<group>"; };
 		9665D42A1A738DF700E851CB /* RLSocialShareKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLSocialShareKit.m; sourceTree = "<group>"; };
 		9665D42D1A7392BF00E851CB /* RLSocialShareConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RLSocialShareConfig.plist; sourceTree = "<group>"; };
@@ -628,6 +631,15 @@
 				9647315C1A7F0EEE00604904 /* 58.png */,
 			);
 			path = ShareIcon;
+			sourceTree = "<group>";
+		};
+		9647316F1A80B90F00604904 /* RLFileOperation */ = {
+			isa = PBXGroup;
+			children = (
+				964731701A80B90F00604904 /* RLFileOperation.h */,
+				964731711A80B90F00604904 /* RLFileOperation.m */,
+			);
+			path = RLFileOperation;
 			sourceTree = "<group>";
 		};
 		9665D4281A738DF700E851CB /* ShareKit */ = {
@@ -1049,6 +1061,7 @@
 		96DEED441A69EA1500C045DF /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				9647316F1A80B90F00604904 /* RLFileOperation */,
 				96DEBFB11A7377920014EA9D /* RLSocialShare */,
 				96DEBFB21A7377920014EA9D /* RLTools */,
 				96DEEDBA1A6D10AB00C045DF /* RLHTTP */,
@@ -1443,6 +1456,7 @@
 				96123DC21A70F2380053CA1C /* UIButton+WebCache.m in Sources */,
 				96DEED681A6A242500C045DF /* DejalActivityView.m in Sources */,
 				96123DC31A70F2380053CA1C /* UIImage+GIF.m in Sources */,
+				964731721A80B90F00604904 /* RLFileOperation.m in Sources */,
 				96DEEDFD1A6E1B2300C045DF /* GVResponse.m in Sources */,
 				96DEEDDB1A6D10AB00C045DF /* SBJSON.m in Sources */,
 				96DEEDA41A6CA36500C045DF /* ChooseDQNumberVC.m in Sources */,

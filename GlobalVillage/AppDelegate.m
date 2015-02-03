@@ -36,10 +36,10 @@
         NSAssert(self.window == nil, @"window 未初始化");
         return;
     }
-//    NormalLoginVC *vc = [[NormalLoginVC alloc] init];
+    NormalLoginVC *vc = [[NormalLoginVC alloc] init];
 //    NewsVC *vc = [[NewsVC alloc] init];
 //    TestViewController *vc = [[TestViewController alloc] init];
-    CompleteRegisterinfoVC *vc = [[CompleteRegisterinfoVC alloc] init];
+//    CompleteRegisterinfoVC *vc = [[CompleteRegisterinfoVC alloc] init];
     RLBaseNavigationController *nav = [[RLBaseNavigationController alloc] initWithRootViewController:vc];
     self.window.rootViewController = nav;
 }
@@ -50,11 +50,6 @@
         self.locationManager.location = [User sharedUser].location;
     }
 }
-
-//- (void)test {
-//    self.shareKit = [[RLSocialShareKit alloc] init];
-//    [self.shareKit registerAppWithType:2];
-//}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self startLocationManager];

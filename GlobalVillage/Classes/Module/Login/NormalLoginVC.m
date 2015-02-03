@@ -14,6 +14,7 @@
 #import "RegisterVC.h"
 #import "NewsVC.h"
 
+#import "RLFileOperation.h"
 #import "LoginController.h"
 
 @interface NormalLoginVC () <LoginControllerDelegate>
@@ -50,6 +51,7 @@
     self.accountTF = [[RLTextField alloc] initWithFrame:CGRectMake(15, 30, self.view.bounds.size.width-30, 40)];
     self.accountTF.placeholder = NSLocalizedString(@"地球号/手机号", nil);
     self.accountTF.keyboardType = UIKeyboardTypeNumberPad;
+    self.accountTF.text = [[RLFileOperation userLoginInfo] objectForKey:@"kUsername"];
 //    self.accountTF.delegate = self;
     self.accountTF.returnKeyType = UIReturnKeyDone;
     [self.view addSubview:self.accountTF];
@@ -59,6 +61,7 @@
     self.passworldTF.secureTextEntry = YES;
 //    self.passworldTF.delegate = self;
     self.passworldTF.returnKeyType = UIReturnKeyDone;
+    self.passworldTF.text = [[RLFileOperation userLoginInfo] objectForKey:@"kUserPwd"];
     [self.view addSubview:_passworldTF];
 }
 
@@ -115,8 +118,11 @@
         User *user = [User sharedUser];
         [user setAccount:user.phone andPassword:self.passworldTF.text];
 //        [ChangeVCController changeMainRootViewController:[NewsVC class]];
-        NewsVC *vc = [[NewsVC alloc] init];
-        [ChangeVCController pushViewControllerByNavigationController:self.navigationController pushVC:vc];
+        [RLFileOperation storeLoginInfo:user.dqNumber pwd:user.password date:nil plateforme:@"local" openKey:nil];
+        block = ^(){
+            NewsVC *vc = [[NewsVC alloc] init];
+            [ChangeVCController pushViewControllerByNavigationController:self.navigationController pushVC:vc];
+        };
     }
     
     [self mainThreadAsync:block];
