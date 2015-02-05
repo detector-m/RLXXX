@@ -185,8 +185,12 @@
         [refreshView setDelegates:self];
         
         ((RefreshTableView *)refreshView.refreshTargetView).showsVerticalScrollIndicator = NO;
-        ((RefreshTableView *)refreshView.refreshTargetView).rowHeight = 100;
+        ((RefreshTableView *)refreshView.refreshTargetView).rowHeight = kNewsCellHeight;
         ((RefreshTableView *)refreshView.refreshTargetView).tag = kSegmentStartTag+i;
+        ((RefreshTableView *)refreshView.refreshTargetView).tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+        if ([(RefreshTableView *)refreshView.refreshTargetView respondsToSelector:@selector(setSeparatorInset:)]) {
+            ((RefreshTableView *)refreshView.refreshTargetView).separatorInset = UIEdgeInsetsMake(0, 15, 0, 15);
+        }
         
         NewsSegmentModel *segment = [self segmentShow:self.segments index:i];//[self.segments objectAtIndex:i];
         segment.view = refreshView;
@@ -251,16 +255,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger numOfRow = [self numberOfRows:tableView.tag];
-    CGFloat height = numOfRow * tableView.rowHeight;
-    if(height < tableView.frame.size.height) {
-        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    }
-    else {
-        tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    }
+//    CGFloat height = numOfRow * tableView.rowHeight;
+//    if(height < tableView.frame.size.height) {
+//        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    }
+//    else {
+//        tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+//    }
 
     return numOfRow;
 }
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return kNewsCellHeight;
+//}
 
 - (NewsModel *)getNewsWithTag:(NSInteger)tag andRow:(NSInteger)row {
     NSInteger index = tag-kSegmentStartTag;
@@ -268,37 +276,23 @@
     return [self newsWithIndex:index andRow:row];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+#if 0
+    [tableView registerClass:[SegmentPageTableViewCell class] forCellReuseIdentifier:kTableCellIdentifier];
     NewsModel *news = [self getNewsWithTag:tableView.tag andRow:indexPath.row];
-    SegmentPageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCellIdentifier];
-    
-    if(cell == nil) {
-        cell = [[SegmentPageTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kTableCellIdentifier];
-        
-        cell.textLabel.numberOfLines = 2;
-        cell.textLabel.font = [UIFont systemFontOfSize:15];
-        
-        cell.detailTextLabel.numberOfLines = 4;
-        cell.detailTextLabel.textColor = [UIColor lightGrayColor];
-        cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
-        
-        cell.imageView.contentMode  = UIViewContentModeScaleAspectFit;
-        cell.imageView.layer.cornerRadius = 5;
-        
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
+    SegmentPageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCellIdentifier forIndexPath:indexPath];
+//        SegmentPageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCellIdentifier];
     
     cell.textLabel.text = news.title;
     cell.detailTextLabel.text = news.abstract;
     
-//    cell.autoresizesSubviews = YES;
-//    cell.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    //    cell.autoresizesSubviews = YES;
+    //    cell.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     
     if([cell respondsToSelector:@selector(layoutMargins)]) {
         cell.layoutMargins = UIEdgeInsetsMake(2, 3, 2, 3);
     }
-
+    
     if(news.hasRead) {
         cell.textLabel.textColor = [UIColor lightGrayColor];
     }
@@ -307,6 +301,28 @@
     }
     NSURL *imageUrl = [NSURL URLWithString:news.picUrl];
     [cell.imageView sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"NewsDefaultIcon.png"] options:SDWebImageProgressiveDownload];
+#else
+    [tableView registerClass:[NewsCell class] forCellReuseIdentifier:kTableCellIdentifier];
+    NewsModel *news = [self getNewsWithTag:tableView.tag andRow:indexPath.row];
+    NewsCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCellIdentifier forIndexPath:indexPath];
+    
+    cell.title.text = news.title;
+    cell.abstract.text = news.abstract;
+    
+    if([cell respondsToSelector:@selector(layoutMargins)]) {
+        cell.layoutMargins = UIEdgeInsetsMake(2, 3, 2, 3);
+    }
+    
+    if(news.hasRead) {
+        cell.textLabel.textColor = [UIColor lightGrayColor];
+    }
+    else {
+        cell.textLabel.textColor = [UIColor blackColor];
+    }
+    
+    NSURL *imageUrl = [NSURL URLWithString:news.picUrl];
+    [cell.thumbView sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"NewsDefaultIcon.png"] options:SDWebImageProgressiveDownload];
+#endif
 
     return cell;
 }

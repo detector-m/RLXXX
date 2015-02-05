@@ -8,6 +8,7 @@
 
 #import "RLTableViewController.h"
 #import "NewsTypeModel.h"
+#import "NewsCell.h"
 
 @interface SingleChannelNewsVC : RLTableViewController
 @property (nonatomic, weak) NewsTypeModel *newsType;

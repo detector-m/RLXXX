@@ -7,6 +7,7 @@
 //
 
 #import "RLTableViewController.h"
+#import "NewsCell.h"
 
 @class NewsSegmentModel;
 @interface NewsVC : RLTableViewController

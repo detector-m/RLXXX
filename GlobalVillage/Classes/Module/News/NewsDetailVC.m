@@ -130,6 +130,9 @@
 }
 
 #pragma mark - UIWebViewDelegate
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    [GVPopViewManager removeActivity];
+}
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     [GVPopViewManager removeActivity];
 }

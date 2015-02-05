@@ -10,23 +10,35 @@
 
 @implementation SegmentPageTableViewCell
 
-- (void)awakeFromNib {
-    // Initialization code
-}
-
-//- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-//    if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-////        self.textLabel.numberOfLines = 2;
-////        self.textLabel.textColor = [UIColor blackColor];
-////        self.textLabel.font = [UIFont systemFontOfSize:15];
-////        
-////        self.detailTextLabel.numberOfLines = 4;
-////        self.detailTextLabel.textColor = [UIColor lightGrayColor];
-////        self.detailTextLabel.font = [UIFont systemFontOfSize:12];
-//    }
-//    
-//    return self;
+//- (void)awakeFromNib {
+//    // Initialization code
 //}
+
+#define  kMargin 5.0f
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    if(self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier]) {
+        self.textLabel.numberOfLines = 2;
+        self.textLabel.textColor = [UIColor blackColor];
+        self.textLabel.textAlignment = NSTextAlignmentLeft;
+        self.textLabel.font = [UIFont boldSystemFontOfSize:16];
+        
+        self.detailTextLabel.numberOfLines = 3;
+        self.detailTextLabel.textColor = [UIColor lightGrayColor];
+        self.detailTextLabel.textAlignment = NSTextAlignmentLeft;
+        self.detailTextLabel.font = [UIFont systemFontOfSize:12];
+        
+        self.imageView.contentMode  = UIViewContentModeScaleAspectFit;
+        self.imageView.layer.cornerRadius = 5;
+        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
+        self.backgroundView = nil;
+        self.selectedBackgroundView = nil;
+        self.multipleSelectionBackgroundView = nil;
+    }
+    
+    return self;
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -38,19 +50,23 @@
     [super layoutSubviews];
     CGRect cellFrame = self.contentView.frame;
     
-    self.imageView.bounds  = CGRectMake (2,5, cellFrame.size.height-10,cellFrame.size.height-10);
-    self.imageView.frame  =  CGRectMake (2,5, cellFrame.size.height-10,cellFrame.size.height-10);
-    
+    self.imageView.bounds  = CGRectMake (kMargin,5, cellFrame.size.height-10,cellFrame.size.height-10);
+    self.imageView.frame  =  CGRectMake (kMargin,5, cellFrame.size.height-10,cellFrame.size.height-10);
+
     CGRect tmpFrame = self.textLabel.frame ;
     self.textLabel.text = self.textLabel.text;
-    tmpFrame.origin.x  = self.imageView.frame.size.width+4;
+    tmpFrame.origin.x  = self.imageView.frame.size.width+self.imageView.frame.origin.x+kMargin;
     tmpFrame.size.width = cellFrame.size.width - tmpFrame.origin.x;
+//    tmpFrame.origin.y = kMargin*1.5;
     self.textLabel.frame = tmpFrame;
+//    [self.textLabel sizeToFit];
     
     tmpFrame =  self.detailTextLabel.frame ;
-    tmpFrame.origin.x  = self.imageView.frame.size.width+4;
+    tmpFrame.origin.x  = self.imageView.frame.size.width+self.imageView.frame.origin.x+kMargin;
     tmpFrame.size.width = cellFrame.size.width - tmpFrame.origin.x;
+//    tmpFrame.origin.y = cellFrame.size.height/2 + 2.5;
     self.detailTextLabel.frame  = tmpFrame;
+//    [self.detailTextLabel sizeToFit];
 }
 
 /*

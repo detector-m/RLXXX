@@ -55,7 +55,7 @@
     
 //    [self refreshViewDoLoad];
     [self.controller newsListRequest:self.newsType.ID currentCount:self.tableModel.datas.count pageCount:kDefaultPageSize token:nil subtag:0];
-
+    [GVPopViewManager showActivityWithTitle:NSLocalizedString(@"加载中。。。", nil) forView:self.view];
 }
 
 - (void)refreshViewDoLoad {
@@ -67,26 +67,23 @@
     [refreshView setDelegates:self];
     refreshView.frame = self.view.frame;
     ((RefreshTableView *)refreshView.refreshTargetView).showsVerticalScrollIndicator = NO;
-    ((RefreshTableView *)refreshView.refreshTargetView).rowHeight = 100;
+    ((RefreshTableView *)refreshView.refreshTargetView).rowHeight = kNewsCellHeight;
+    ((RefreshTableView *)refreshView.refreshTargetView).tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    if ([(RefreshTableView *)refreshView.refreshTargetView respondsToSelector:@selector(setSeparatorInset:)]) {
+        ((RefreshTableView *)refreshView.refreshTargetView).separatorInset = UIEdgeInsetsMake(0, 15, 0, 15);
+    }
     self.refreshView = refreshView;
     [self.view addSubview:self.refreshView];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger numOfRow = [self.tableModel.datas count];
-    CGFloat height = numOfRow * tableView.rowHeight;
-    if(height < tableView.frame.size.height) {
-        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    }
-    else {
-        tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    }
     
     return numOfRow;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+#if 0
     NewsModel *news = [self.tableModel.datas objectAtIndex:indexPath.row];
     SegmentPageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCellIdentifier];
     if(cell == nil) {
@@ -120,6 +117,29 @@
     }
     NSURL *imageUrl = [NSURL URLWithString:news.picUrl];
     [cell.imageView sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"NewsDefaultIcon.png"] options:SDWebImageProgressiveDownload];
+#else
+    [tableView registerClass:[NewsCell class] forCellReuseIdentifier:kTableCellIdentifier];
+    NewsModel *news = [self.tableModel.datas objectAtIndex:indexPath.row];
+    NewsCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCellIdentifier forIndexPath:indexPath];
+    
+    cell.title.text = news.title;
+    cell.abstract.text = news.abstract;
+    
+    if([cell respondsToSelector:@selector(layoutMargins)]) {
+        cell.layoutMargins = UIEdgeInsetsMake(2, 3, 2, 3);
+    }
+    
+    if(news.hasRead) {
+        cell.textLabel.textColor = [UIColor lightGrayColor];
+    }
+    else {
+        cell.textLabel.textColor = [UIColor blackColor];
+    }
+    
+    NSURL *imageUrl = [NSURL URLWithString:news.picUrl];
+    [cell.thumbView sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"NewsDefaultIcon.png"] options:SDWebImageProgressiveDownload];
+#endif
+
     
     return cell;
 }
@@ -147,6 +167,20 @@
     }
     [self performSelector:@selector(deselectRow:) withObject:tableView afterDelay:0.5];
 }
+
+//-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+//    return 0.01f;
+//}
+//- (UITableViewHeaderFooterView *)footerViewForSection:(NSInteger)section NS_AVAILABLE_IOS(6_0) {
+//    return [UITableViewHeaderFooterView new];
+//}
+
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+//    return [UIView new];
+//    
+//    // If you are not using ARC:
+//    // return [[UIView new] autorelease];
+//}
 
 #pragma mark UIScrollViewDelegate Methods
 
@@ -222,6 +256,7 @@
         [self newsListParser:response.responseData segmentIndex:subtag];
         __weak SingleChannelNewsVC *blockSelf = self;
         block = ^() {
+            [GVPopViewManager removeActivity];
             if(blockSelf.refreshView.refreshDelegate == blockSelf && ((RefreshTableView *)blockSelf.refreshView.refreshTargetView).reloading == YES) {
                 [self.refreshView finishedReloadingData];
             }

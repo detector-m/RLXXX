@@ -52,6 +52,7 @@
 		9665D42E1A7392BF00E851CB /* RLSocialShareConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9665D42D1A7392BF00E851CB /* RLSocialShareConfig.plist */; };
 		9665D43B1A75CE8F00E851CB /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9665D4301A75CE8F00E851CB /* libWeiboSDK.a */; };
 		9665D43C1A75CE8F00E851CB /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9665D4381A75CE8F00E851CB /* WeiboSDK.bundle */; };
+		9682CA4F1A83577100097D7C /* NewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9682CA4E1A83577100097D7C /* NewsCell.m */; };
 		96A98F5F1A7A497700EE8B6A /* RLUtilitiesMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A98F5E1A7A497700EE8B6A /* RLUtilitiesMethods.m */; };
 		96A98F641A7B729300EE8B6A /* check_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A98F601A7B729300EE8B6A /* check_icon.png */; };
 		96A98F651A7B729300EE8B6A /* check_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A98F611A7B729300EE8B6A /* check_icon@2x.png */; };
@@ -272,6 +273,8 @@
 		9665D4381A75CE8F00E851CB /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
 		9665D4391A75CE8F00E851CB /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
 		9665D43A1A75CE8F00E851CB /* WeiboUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboUser.h; sourceTree = "<group>"; };
+		9682CA4D1A83577100097D7C /* NewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCell.h; sourceTree = "<group>"; };
+		9682CA4E1A83577100097D7C /* NewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCell.m; sourceTree = "<group>"; };
 		96A98F5D1A7A497700EE8B6A /* RLUtilitiesMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLUtilitiesMethods.h; sourceTree = "<group>"; };
 		96A98F5E1A7A497700EE8B6A /* RLUtilitiesMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLUtilitiesMethods.m; sourceTree = "<group>"; };
 		96A98F601A7B729300EE8B6A /* check_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_icon.png; sourceTree = "<group>"; };
@@ -811,6 +814,8 @@
 				96DEEE241A6FA3F300C045DF /* NewsController.m */,
 				96DEEE261A6FA40F00C045DF /* NewsVC.h */,
 				96DEEE271A6FA40F00C045DF /* NewsVC.m */,
+				9682CA4D1A83577100097D7C /* NewsCell.h */,
+				9682CA4E1A83577100097D7C /* NewsCell.m */,
 				96123DC91A710B880053CA1C /* NewsDetailVC.h */,
 				96123DCA1A710B880053CA1C /* NewsDetailVC.m */,
 				96C1C09E1A7793BA003E7C07 /* NewsChannelsVC.h */,
@@ -1413,6 +1418,7 @@
 				96DEEDE11A6D10AB00C045DF /* RLReachabilityChecker.m in Sources */,
 				96DEEDB01A6CD9A600C045DF /* RLInputView.m in Sources */,
 				96DEEE0A1A6E305900C045DF /* GVPopViewManager.m in Sources */,
+				9682CA4F1A83577100097D7C /* NewsCell.m in Sources */,
 				96DEEDE01A6D10AB00C045DF /* Reachability.m in Sources */,
 				96DEEDEE1A6DDF5300C045DF /* GVResponseManager.m in Sources */,
 				96F2B7761A77BD3200EF9B13 /* NewsChannelMode.m in Sources */,
