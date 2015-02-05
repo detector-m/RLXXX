@@ -273,8 +273,11 @@
 + (NSMutableDictionary *)subscribeNewsChannelsParameter:(NSString *)subscribeNewsChannelsValue
                            unsubscribeNewsChannelsValue:(NSString *)unsubscribeNewsChannelsValue
                                        accessTokenValue:(NSString *)accessTokenValue {
-    if(accessTokenValue.length == 0 || (subscribeNewsChannelsValue.length == 0 && unsubscribeNewsChannelsValue.length == 0))
+    if(accessTokenValue.length == 0)
         return nil;
+    
+    if(subscribeNewsChannelsValue.length == 0)
+        subscribeNewsChannelsValue = @"";
     
     NSMutableDictionary *retDic = [NSMutableDictionary dictionary];
     if(subscribeNewsChannelsValue.length) {

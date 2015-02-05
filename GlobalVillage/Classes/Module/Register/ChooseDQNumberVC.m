@@ -157,17 +157,18 @@ typedef NS_ENUM(NSUInteger, ChargeType) {
 - (void)bottomViewDoLoad {
     CGRect frame = self.view.frame;
     
-    UIButton *confirmBtn = [ViewConstructor constructDefaultButton:[UIButton class] withFrame:CGRectMake(20, 387, 120, 40)];
-    [confirmBtn regulateFrameOrigin];
+    UIButton *confirmBtn = [ViewConstructor constructDefaultButton:[UIButton class] withFrame:CGRectMake(20, 387, frame.size.width-40, 40)];
+//    [confirmBtn regulateFrameOrigin];
+    [confirmBtn regulateFrameOriginY];
     [confirmBtn setTitle:NSLocalizedString(@"确定", nil) forState:UIControlStateNormal];
     [confirmBtn addTarget:self action:@selector(clickConfirmBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:confirmBtn];
     
-    UIButton *skipBtn = [ViewConstructor constructDefaultButton:[UIButton class] withFrame:CGRectMake(frame.size.width-20-120, 387, 120, 40)];
-    [skipBtn regulateFrameOrigin];
-    [skipBtn setTitle:NSLocalizedString(@"跳过", nil) forState:UIControlStateNormal];
-    [skipBtn addTarget:self action:@selector(clickSkipBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:skipBtn];
+//    UIButton *skipBtn = [ViewConstructor constructDefaultButton:[UIButton class] withFrame:CGRectMake(frame.size.width-20-120, 387, 120, 40)];
+//    [skipBtn regulateFrameOrigin];
+//    [skipBtn setTitle:NSLocalizedString(@"跳过", nil) forState:UIControlStateNormal];
+//    [skipBtn addTarget:self action:@selector(clickSkipBtn:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:skipBtn];
 }
 
 - (void)clickConfirmBtn:(UIButton *)button {

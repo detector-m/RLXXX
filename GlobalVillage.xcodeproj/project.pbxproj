@@ -46,6 +46,8 @@
 		9647316B1A805A2400604904 /* SingleChannelNewsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9647316A1A805A2400604904 /* SingleChannelNewsVC.m */; };
 		9647316E1A805BBC00604904 /* RLTableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9647316D1A805BBC00604904 /* RLTableModel.m */; };
 		964731721A80B90F00604904 /* RLFileOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 964731711A80B90F00604904 /* RLFileOperation.m */; };
+		964731751A80D52F00604904 /* NewsDefaultIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 964731731A80D52F00604904 /* NewsDefaultIcon.png */; };
+		964731761A80D52F00604904 /* NewsDefaultIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 964731741A80D52F00604904 /* NewsDefaultIcon@2x.png */; };
 		9665D42C1A738DF700E851CB /* RLSocialShareKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9665D42A1A738DF700E851CB /* RLSocialShareKit.m */; };
 		9665D42E1A7392BF00E851CB /* RLSocialShareConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9665D42D1A7392BF00E851CB /* RLSocialShareConfig.plist */; };
 		9665D43B1A75CE8F00E851CB /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9665D4301A75CE8F00E851CB /* libWeiboSDK.a */; };
@@ -55,8 +57,6 @@
 		96A98F651A7B729300EE8B6A /* check_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A98F611A7B729300EE8B6A /* check_icon@2x.png */; };
 		96A98F661A7B729300EE8B6A /* uncheck_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A98F621A7B729300EE8B6A /* uncheck_icon.png */; };
 		96A98F671A7B729300EE8B6A /* uncheck_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A98F631A7B729300EE8B6A /* uncheck_icon@2x.png */; };
-		96A98F6A1A7B78D700EE8B6A /* NewsDefaultIcon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 96A98F681A7B78D700EE8B6A /* NewsDefaultIcon.jpg */; };
-		96A98F6B1A7B78D700EE8B6A /* NewsDefaultIcon@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 96A98F691A7B78D700EE8B6A /* NewsDefaultIcon@2x.jpg */; };
 		96C1BFB41A75E89F003E7C07 /* RLShareAppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C1BFB31A75E89F003E7C07 /* RLShareAppModel.m */; };
 		96C1BFB71A761F45003E7C07 /* RLShareMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C1BFB61A761F45003E7C07 /* RLShareMessageModel.m */; };
 		96C1BFBB1A76289A003E7C07 /* RLActivityShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C1BFBA1A76289A003E7C07 /* RLActivityShare.m */; };
@@ -256,6 +256,8 @@
 		9647316D1A805BBC00604904 /* RLTableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLTableModel.m; sourceTree = "<group>"; };
 		964731701A80B90F00604904 /* RLFileOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLFileOperation.h; sourceTree = "<group>"; };
 		964731711A80B90F00604904 /* RLFileOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLFileOperation.m; sourceTree = "<group>"; };
+		964731731A80D52F00604904 /* NewsDefaultIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewsDefaultIcon.png; sourceTree = "<group>"; };
+		964731741A80D52F00604904 /* NewsDefaultIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NewsDefaultIcon@2x.png"; sourceTree = "<group>"; };
 		9665D4291A738DF700E851CB /* RLSocialShareKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLSocialShareKit.h; sourceTree = "<group>"; };
 		9665D42A1A738DF700E851CB /* RLSocialShareKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLSocialShareKit.m; sourceTree = "<group>"; };
 		9665D42D1A7392BF00E851CB /* RLSocialShareConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RLSocialShareConfig.plist; sourceTree = "<group>"; };
@@ -276,8 +278,6 @@
 		96A98F611A7B729300EE8B6A /* check_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check_icon@2x.png"; sourceTree = "<group>"; };
 		96A98F621A7B729300EE8B6A /* uncheck_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uncheck_icon.png; sourceTree = "<group>"; };
 		96A98F631A7B729300EE8B6A /* uncheck_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "uncheck_icon@2x.png"; sourceTree = "<group>"; };
-		96A98F681A7B78D700EE8B6A /* NewsDefaultIcon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = NewsDefaultIcon.jpg; sourceTree = "<group>"; };
-		96A98F691A7B78D700EE8B6A /* NewsDefaultIcon@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "NewsDefaultIcon@2x.jpg"; sourceTree = "<group>"; };
 		96C1BFB21A75E89F003E7C07 /* RLShareAppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLShareAppModel.h; sourceTree = "<group>"; };
 		96C1BFB31A75E89F003E7C07 /* RLShareAppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLShareAppModel.m; sourceTree = "<group>"; };
 		96C1BFB51A761F45003E7C07 /* RLShareMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLShareMessageModel.h; sourceTree = "<group>"; };
@@ -768,8 +768,8 @@
 			children = (
 				964731671A80539300604904 /* ChannelDelete@2x.png */,
 				964731651A80534F00604904 /* ChannelDelete.png */,
-				96A98F681A7B78D700EE8B6A /* NewsDefaultIcon.jpg */,
-				96A98F691A7B78D700EE8B6A /* NewsDefaultIcon@2x.jpg */,
+				964731731A80D52F00604904 /* NewsDefaultIcon.png */,
+				964731741A80D52F00604904 /* NewsDefaultIcon@2x.png */,
 				96D8FFB91A7A21BC0041C8D8 /* NewsTitle@2x.png */,
 				96D8FFB61A7A1D4B0041C8D8 /* NewsTitle.png */,
 			);
@@ -1295,6 +1295,7 @@
 				TargetAttributes = {
 					96DEECF51A69330B00C045DF = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = LR7MS97E95;
 					};
 					96DEED0E1A69330B00C045DF = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -1328,19 +1329,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				96C1C06B1A766A47003E7C07 /* WeChatTimeLine.png in Resources */,
+				964731751A80D52F00604904 /* NewsDefaultIcon.png in Resources */,
 				9665D43C1A75CE8F00E851CB /* WeiboSDK.bundle in Resources */,
-				96A98F6B1A7B78D700EE8B6A /* NewsDefaultIcon@2x.jpg in Resources */,
 				964731681A80539300604904 /* ChannelDelete@2x.png in Resources */,
 				96DEED301A69E3E600C045DF /* Localizable.strings in Resources */,
 				96DEED051A69330B00C045DF /* Main.storyboard in Resources */,
 				96DEED9D1A6C9C3200C045DF /* PicDefault.png in Resources */,
 				96A98F641A7B729300EE8B6A /* check_icon.png in Resources */,
 				96C1C0671A766A47003E7C07 /* TCZone.png in Resources */,
+				964731761A80D52F00604904 /* NewsDefaultIcon@2x.png in Resources */,
 				96C1C0681A766A47003E7C07 /* TCZone@2x.png in Resources */,
 				96C1C0691A766A47003E7C07 /* WeChat.png in Resources */,
 				96C1C0791A771B31003E7C07 /* read_me.txt in Resources */,
 				96C1C0621A766A47003E7C07 /* QQ@2x.png in Resources */,
-				96A98F6A1A7B78D700EE8B6A /* NewsDefaultIcon.jpg in Resources */,
 				96123D961A70E1570053CA1C /* blueArrow.png in Resources */,
 				96A98F661A7B729300EE8B6A /* uncheck_icon.png in Resources */,
 				96DEED241A69399E00C045DF /* InfoPlist.strings in Resources */,
@@ -1637,6 +1638,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GlobalVillage/PrefixHeader.pch";
 				INFOPLIST_FILE = GlobalVillage/Info.plist;
@@ -1649,6 +1652,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1657,6 +1661,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/GlobalVillage/PrefixHeader.pch";
 				INFOPLIST_FILE = GlobalVillage/Info.plist;
@@ -1669,6 +1675,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

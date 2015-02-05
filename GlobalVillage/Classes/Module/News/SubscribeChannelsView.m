@@ -11,10 +11,10 @@
 @implementation SubscribeChannelsView
 
 - (CGFloat)reloadData {
-    if(self.channels.count == 0)
-        return 0.0f;
     CGFloat padding = 15;
     CGFloat height = 30;
+    if(self.channels.count == 0)
+        return padding*2 + height;
     CGFloat width = (self.frame.size.width-15*5)/4;
     CGFloat x = 0;
     CGFloat y = 0;

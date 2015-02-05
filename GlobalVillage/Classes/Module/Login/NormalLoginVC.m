@@ -40,6 +40,8 @@
     [super viewDidLoad];
     
     self.title = NSLocalizedString(@"登录", nil);
+    
+    self.navigationItem.backBarButtonItem = nil;
 
     [self dataDoLoad];
     

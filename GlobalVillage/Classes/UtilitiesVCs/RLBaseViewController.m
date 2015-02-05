@@ -40,31 +40,25 @@
 //    [navigationBar setFrame:frame];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    BOOL isInteractivePop = self.navigationController.interactivePopGestureRecognizer.state == UIGestureRecognizerStateBegan;
+    if(isInteractivePop) {
+        [GVPopViewManager removeActivity];
+        [self navigationShouldPopOnBackButton];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
 
-//    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+//  self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     [self screenFixView];
     [self setBarBackItem];
     [self setupForDismissKeyboard];
 }
-
-//- (void)setNavigationBarHeight {
-//    CGRect frame = self.navigationController.navigationBar.frame;
-//    CGFloat height = frame.size.height+30;
-//    CGFloat heightOld = frame.size.height;
-//    frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, height);
-//    [self.navigationController.navigationBar setFrame:frame];
-//    
-//    UIView* navBarTransitionView = [self.navigationController.view.subviews objectAtIndex:0];
-//    frame = navBarTransitionView.frame;
-//    navBarTransitionView.frame = CGRectMake(frame.origin.x, frame.origin.y-(height-heightOld), frame.size.width, frame.size.height+(height-heightOld));
-//    
-////    [self.navigationController setNeedsStatusBarAppearanceUpdate];
-//    [self.navigationController.view setNeedsDisplay];
-//}
-
 
 - (void)mainThreadAsync:(dispatch_block_t)dispatchBlock {
     if(dispatchBlock == NULL) {

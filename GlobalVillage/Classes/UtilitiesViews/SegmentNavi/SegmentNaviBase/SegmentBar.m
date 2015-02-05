@@ -61,36 +61,37 @@
         self.lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, 2)];
         self.lineView.backgroundColor = kLineColor;//[RLColor colorWithHexString:@"#87CEEB"];
         [self addSubview:self.lineView];
-        
-        self.backgroundColor = kBackgroundColor;
     }
     
     return self;
 }
 
 - (void)setSelectIndexDisplay:(__unused NSInteger)tag {
-    UIButton *button = (UIButton *)[self viewWithTag:self.selectedIndex+kSegmentStartTag];
-    //    233,233,216
-    button.backgroundColor = kSelectedColor;//[UIColor colorWithRed:188.0/255.0 green:233.0/255.0 blue:222.0/255.0 alpha:150.0/255.0];//[UIColor blueColor];
-    
-//    CGSize size = [self textSizeWithFont:button.titleLabel.font andText:button.titleLabel.text];
-//    CGRect rc = button.frame;
-//    self.lineView.frame = CGRectMake(rc.origin.x+(rc.size.width-size.width)/2, self.frame.size.height - 2, size.width, 2);
+    SegmentItemView *button = (SegmentItemView *)[self viewWithTag:self.selectedIndex+kSegmentStartTag];
+
+    if(button == nil) {
+        return;
+    }
+
+    [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     CGRect rc = button.frame;
     self.lineView.frame = CGRectMake(rc.origin.x, self.frame.size.height - 2, rc.size.width, 2);
 }
 - (void)cancelSelectIndexDisplay:(__unused NSInteger)tag {
-    UIButton *button = (UIButton *)[self viewWithTag:self.selectedIndex+kSegmentStartTag];
-    button.backgroundColor = [UIColor clearColor];
+    SegmentItemView *button = (SegmentItemView *)[self viewWithTag:self.selectedIndex+kSegmentStartTag];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+}
+
+- (void)setSelectIndexDisplayAnimate {
+    [UIView beginAnimations:@"" context:nil];
+    [UIView setAnimationDuration:0.2];
+    [self setSelectIndexDisplay:0];
+    [UIView commitAnimations];
 }
 
 - (void)selectIndex:(NSInteger)index {
     if(self.selectedIndex == index) {
-        [UIView beginAnimations:@"" context:nil];
-        [UIView setAnimationDuration:0.2];
-        [self setSelectIndexDisplay:0];
-        [UIView commitAnimations];
-        
+//        [self setSelectIndexDisplayAnimate];
         return;
     }
     
@@ -144,10 +145,7 @@
         [self setContentOffset:offset animated:YES];
     }
     
-    [UIView beginAnimations:@"" context:nil];
-    [UIView setAnimationDuration:0.2];
-    [self setSelectIndexDisplay:0];
-    [UIView commitAnimations];
+    [self setSelectIndexDisplayAnimate];
 }
 
 - (void)setLineOffsetWithPage:(CGFloat)page andRatio:(CGFloat)ratio {
@@ -172,12 +170,7 @@
     
     if(v != nil) {
         [self.reusableItemViews removeObject:v];
-//        if(self.selectedIndex != index) {
-            v.backgroundColor = [UIColor clearColor];
-//        }
-//        else {
-//            v.backgroundColor = kBackgroundColor;
-//        }
+        [v setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
     
     return v;
@@ -197,6 +190,18 @@
 - (void)reloadData {
     [self queueReusableItemViews];
     [self setNeedsLayout];
+}
+
+- (void)resetIndex {
+    [self selectIndex:0];
+    CGPoint offset = self.contentOffset;
+    if(!CGPointEqualToPoint(offset, CGPointZero)) {
+        offset = CGPointMake([self widthOffsetAtIndex:0], 0);
+        [self setContentOffset:offset animated:NO];
+    }
+    self.selectedIndex = 0;
+    self.firstVisibleIndex = NSIntegerMax;
+    self.lastVisibleIndex = NSIntegerMin;
 }
 
 - (void)layoutSubviews {
@@ -279,19 +284,23 @@
             xOffset += itemWidth;
             continue;
         }
+        
+        UIView *v = [self viewWithTag:index+kSegmentStartTag];
+        if(v && [v isKindOfClass:[SegmentItemView class]]) {
+            [self.reusableItemViews addObject:v];
+            [v removeFromSuperview];
+        }
         SegmentItemView *itemView = [self.dataSource itemView:self forIndex:index];
+
         viewFrame = CGRectMake(xOffset, yOffset, itemWidth, self.frame.size.height-2);
         itemView.tag = index + kSegmentStartTag;
         itemView.frame = viewFrame;
-        
+
         [self addSubview:itemView];
         xOffset += itemWidth;
     }
     
-//    if(self.selectedIndex == 0)
-    {
-        [self setSelectIndexDisplay:self.selectedIndex];
-    }
+    [self setSelectIndexDisplay:0];
     
     self.firstVisibleIndex = startIndex;
     self.lastVisibleIndex = stopIndex;

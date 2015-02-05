@@ -13,6 +13,14 @@
 @end
 
 @implementation NewsChannelsVC
+
+- (BOOL)navigationShouldPopOnBackButton {
+    return [super navigationShouldPopOnBackButton];
+}
+- (void)navigationDidPopOnBackButton {
+    [super navigationDidPopOnBackButton];
+}
+
 - (void)dealloc {
     self.channelsView = nil;
 }
@@ -31,6 +39,7 @@
     }
     CGRect frame = self.view.frame;
     self.channelsView = [[NewsChannelsView alloc] initWithFrame:frame andVC:self.newsVC];
+    self.channelsView.belongVC = self;
     [self.view addSubview:self.channelsView];
 }
 

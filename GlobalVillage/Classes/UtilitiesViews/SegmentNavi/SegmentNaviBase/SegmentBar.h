@@ -10,6 +10,7 @@
 #import "SegmentItemView.h"
 
 #define kSegmentStartTag 100
+#define kItemWidth 80.0f
 
 @class SegmentBar;
 @protocol SegmentBarDataSource <NSObject>
@@ -38,6 +39,8 @@
 
 - (SegmentItemView *)dequeueReusableItemView;
 - (void)reloadData;
+
+- (void)resetIndex;
 
 - (void)setLineOffsetWithPage:(CGFloat)page andRatio:(CGFloat)ratio;
 - (void)selectIndex:(NSInteger)index;

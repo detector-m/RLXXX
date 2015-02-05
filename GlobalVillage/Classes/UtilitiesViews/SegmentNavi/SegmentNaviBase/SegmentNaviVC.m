@@ -11,6 +11,8 @@
 #import "SegmentContentsView.h"
 #import "UIViewController+Expand.h"
 
+#define kBackgroundColor [UIColor colorWithRed:248/255.0 green:248/255.0 blue:248/255.0 alpha:1]
+
 @interface SegmentNaviVC () <SegmentBarDelegate>
 //@property (nonatomic, strong) SegmentContentsView *contentTable;
 // --------
@@ -30,10 +32,6 @@
     [self.segments removeAllObjects], self.segments = nil;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
 - (void)resizeFrame {
     if([[UIDevice currentDevice].systemVersion floatValue] >= 7.0){
         self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -44,7 +42,6 @@
     CGRect navigationFrame = self.navigationController.navigationBarHidden ? CGRectZero : self.navigationController.navigationBar.bounds;
     CGRect tabBarFrame = self.tabBarController.tabBar.hidden ? CGRectZero : self.tabBarController.tabBar.frame;
     
-//    CGRect frame = self.view.frame;
     CGFloat height = frame.size.height - (navigationFrame.size.height +
                                           statusFrame.size.height +
                                           tabBarFrame.size.height);
@@ -66,27 +63,11 @@
     if(self.barViewWidth == 0) {
         self.barViewWidth = self.view.frame.size.width;
     }
+    self.view.backgroundColor = kBackgroundColor;
     [self performSelectorOnMainThread:@selector(subviewsDoLoad) withObject:nil waitUntilDone: YES];
 }
 
 - (void)subviewsDoLoad {
-//    if(self.segmentBar == nil) {
-//        self.segmentBar = [[SegmentBar alloc] initWithFrame:CGRectMake(0, 0, self.barViewWidth, kBarHeight)];
-////        self.segmentBar.frame = CGRectMake(0, 0, self.barViewWidth, kBarHeight);
-//        self.segmentBar.titleArray = self.titleArray;
-//        [self.view addSubview:self.segmentBar];
-//        self.segmentBar.segmentDelegate = self;
-//        [self.segmentBar reloadSubViews];
-//    }
-    
-//    if(self.contentTable == nil) {
-//        self.contentTable = [[SegmentContentsView alloc] initWithFrame:CGRectMake(0,  kBarHeight, self.view.frame.size.width, self.view.frame.size.height - kBarHeight)];
-//        self.contentTable.cellDataSource = self.contentArray;
-//        self.contentTable.swipeDelegate = self;
-//        [self.view addSubview:self.contentTable];
-//        self.currentIndex = 0;
-//    }
-    
     //-----------------
     if(self.segmentBar == nil) {
         self.segmentBar = [[SegmentBar alloc] initWithFrame:CGRectMake(0, 1, self.barViewWidth, kBarHeight)];
@@ -102,10 +83,8 @@
         [self.view addSubview:self.segmentsTableView];
     }
     
-//    [self reloadData];
     self.currentIndex = 0;
 }
-
 
 //------------------
 - (void)setBarViewWidth:(CGFloat)barViewWidth {
@@ -153,9 +132,9 @@
 
 - (CGFloat)itemWidthOfSegmentBar:(SegmentBar *)segmentBar forIndex:(NSInteger)index {
     NSInteger count = [self segmentsShowCount:self.segments];
-    CGFloat contentWidth = count *  80.0;
+    CGFloat contentWidth = count *  kItemWidth;
     if(contentWidth > segmentBar.frame.size.width)
-        return 80;
+        return kItemWidth;
     else {
         return segmentBar.frame.size.width/count;
     }
@@ -169,21 +148,20 @@
     
     Segment *segment = [self segmentShow:self.segments index:index];
     [item setTitle:segment.item.title forState:UIControlStateNormal];
-    item.titleLabel.font = [UIFont systemFontOfSize:20];
+
+    item.titleLabel.font = [UIFont systemFontOfSize:18];
     item.layer.borderWidth = 0;
     item.delegate = self.segmentBar;
     
     return item;
 }
 
--(void)segmentBarSelectedIndexChanged:(NSInteger)newIndex {
+- (void)segmentBarSelectedIndexChanged:(NSInteger)newIndex {
     if (newIndex >= 0) {
         if(self.segmentNaviDelegate && [self.segmentNaviDelegate respondsToSelector:@selector(segmentNaviWillChange:)]) {
             [self.segmentNaviDelegate segmentNaviWillChange:self.currentIndex];
         }
         self.currentIndex = newIndex;
-//        self.title = [self.titleArray objectAtIndex:newIndex];
-//        [self.contentTable selectIndex:newIndex];
         [self selectIndex:newIndex];
         
         if(self.segmentNaviDelegate && [self.segmentNaviDelegate respondsToSelector:@selector(segmentNaviChange:)]) {
@@ -192,11 +170,11 @@
     }
 }
 
--(void)contentSelectedIndexChanged:(NSInteger)newIndex {
+- (void)contentSelectedIndexChanged:(NSInteger)newIndex {
     [self.segmentBar selectIndex:newIndex];
 }
 
--(void)scrollOffsetChanged:(CGPoint)offset {
+- (void)scrollOffsetChanged:(CGPoint)offset {
     NSInteger page = (NSInteger)offset.y / self.view.frame.size.width ;
     CGFloat radio = (CGFloat)((NSInteger)offset.y%(NSInteger)self.view.frame.size.width)/self.view.frame.size.width;
     [self.segmentBar setLineOffsetWithPage:page andRatio:radio];
@@ -233,29 +211,37 @@
     return cell;
 }
 
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     NSInteger index = self.segmentsTableView.contentOffset.y / self.segmentsTableView.frame.size.width;
     [self contentSelectedIndexChanged:index];
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGPoint pt = self.segmentsTableView.contentOffset;
     [self scrollOffsetChanged:pt];
 }
 
--(void)selectIndex:(NSInteger)index
-{
+- (void)selectIndex:(NSInteger)index {
     if(self.segments.count == 0)
         return;
     [self.segmentsTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:NO];
 }
 
+- (void)cleanData {
+    [self.segments removeAllObjects];
+}
+
 - (void)reloadData {
-//    self.currentIndex = 0;
-//    [self.segmentBar selectIndex:0];
     [self.segmentBar reloadData];
     [self.segmentsTableView reloadData];
+}
+
+- (void)resetIndex {
+//    [self.segmentBar selectIndex:0];
+//    self.segmentBar.selectedIndex = 0;
+    [self.segmentBar resetIndex];
+    self.currentIndex = 0;
+    
+    self.needReset = NO;
 }
 @end

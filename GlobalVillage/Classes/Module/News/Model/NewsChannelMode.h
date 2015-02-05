@@ -12,5 +12,5 @@
 @interface NewsChannelMode : NSObject
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, weak) id channelView;
-@property (nonatomic, weak) NewsSegmentModel *segment;
+@property (nonatomic, strong) NewsSegmentModel *segment;
 @end

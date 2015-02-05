@@ -12,6 +12,7 @@
 #import "ChannelsButton.h"
 
 #import "SingleChannelNewsVC.h"
+#import "NewsChannelsVC.h"
 
 #define kDefaultColor [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1]
 
@@ -171,8 +172,9 @@
     else {
         [button setTitle:NSLocalizedString(@"编辑", nil) forState:UIControlStateNormal];
         [self.newsVC commitChennelsForSubscribeAndUnSubscribe];
-        self.subscribeChannelsView.hideDeleteView = YES;
-        [self.subscribeChannelsView reloadData];
+//        self.subscribeChannelsView.hideDeleteView = YES;
+//        [self.subscribeChannelsView reloadData];
+        [ChangeVCController popViewControllerByNavigationController:self.belongVC.navigationController];
     }
 }
 
@@ -180,7 +182,7 @@
     if(!self.editable) {
         NewsChannelMode *channel = [self channelForChannelView:button withChannels:self.subscribeChannelsView.channels];
         [self.newsVC selected:channel.segment];
-        [ChangeVCController popViewControllerByNavigationController:self.newsVC.navigationController];
+        [ChangeVCController popViewControllerByNavigationController:self.belongVC.navigationController];
         return;
     }
     NewsChannelMode *channel = [self channelForChannelView:button withChannels:self.subscribeChannelsView.channels];
@@ -201,7 +203,7 @@
     if(!self.editable) {
         SingleChannelNewsVC *vc = [[SingleChannelNewsVC alloc] init];
         vc.newsType = channel.segment.titleItem;
-        [ChangeVCController pushViewControllerByNavigationController:self.newsVC.navigationController pushVC:vc];
+        [ChangeVCController pushViewControllerByNavigationController:self.belongVC.navigationController pushVC:vc];
         return;
     }
     channel.segment.newsSubscribeMode = kNewsSegmentSubscribeModeSubscribe;

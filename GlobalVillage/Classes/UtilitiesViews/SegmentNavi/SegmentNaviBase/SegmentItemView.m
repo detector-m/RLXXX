@@ -29,4 +29,10 @@
         [self.delegate selectIndex:item.tag - kSegmentStartTag];
     }
 }
+
+//- (void)setTitleColor:(UIColor *)color forState:(UIControlState)state {
+//    [super setTitleColor:color forState:state];
+//    DLog(@"%@", color);
+//    DLog(@"%@", [self titleLabel].text);
+//}
 @end

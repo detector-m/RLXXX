@@ -17,6 +17,7 @@
 #import "NewsChannelsVC.h"
 
 #import "UIImageView+WebCache.h"
+#import "URBAlertView.h"
 
 #import "NewsController.h"
 
@@ -27,6 +28,7 @@
 @property (nonatomic, readwrite, strong) NSMutableArray *segments Description(NewsSegmentModel);
 
 @property (nonatomic, strong) UIButton *channelsButton;
+@property (nonatomic, strong) UIButton *navigationTitleButton;
 
 @property (nonatomic, readwrite, strong) NewsController *controller;
 @end
@@ -37,8 +39,28 @@
     [self dataDoClear];
 }
 
-- (void)navigationDidPopOnBackButton {
+- (BOOL)navigationShouldPopOnBackButton {
     [self.controller removeAllRequest];
+    
+    URBAlertView *alertView = [URBAlertView dialogWithTitle:NSLocalizedString(@"是否退出到登录？", nil) subtitle:nil];
+    alertView.blurBackground = NO;
+    [alertView addButtonWithTitle:NSLocalizedString(@"取消", nil)];
+    [alertView addButtonWithTitle:NSLocalizedString(@"确定", nil)];
+    [alertView setHandlerBlock:^(NSInteger buttonIndex, URBAlertView *theAlertView) {
+        [theAlertView hideWithCompletionBlock:^{
+            if(buttonIndex == 1) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        }];
+    }];
+    
+    [alertView showWithAnimation:URBAlertAnimationDefault];
+
+    return NO;//[super navigationShouldPopOnBackButton];
+}
+
+
+- (void)navigationDidPopOnBackButton {
     [super navigationDidPopOnBackButton];
 }
 
@@ -46,6 +68,8 @@
     self.controller.delegate = nil;
     self.controller = nil;
     [self.segments removeAllObjects], self.segments = nil;
+    self.channelsButton = nil;
+    self.navigationTitleButton = nil;
 }
 
 - (void)dataDoLoad {
@@ -56,8 +80,9 @@
 }
 
 - (void)cleanDatas {
+    [self.segmentVC cleanData];
     [self.segments removeAllObjects];
-    [self.segmentVC.segments removeAllObjects];
+//    [self.segmentVC.segments removeAllObjects];
 }
 
 //- (BOOL)navigationShouldPopOnBackButton {
@@ -66,12 +91,25 @@
 //    return YES;
 //}
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationTitleButton.enabled = YES;
+    [self.navigationItem setHidesBackButton:YES animated:NO];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.navigationTitleButton.enabled = NO;
+    [self.navigationItem setHidesBackButton:NO animated:NO];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self dataDoLoad];
     
     [self navigationTitleButtonDoLoad];
+    self.title = NSLocalizedString(@"地球村新闻", nil);
     
     self.controller.accessToken = [User sharedUser].accessToken;
     
@@ -79,13 +117,15 @@
 }
 
 - (void)navigationTitleButtonDoLoad {
-    UIImage *image = [UIImage imageNamed:@"NewsTitle.png"];
+//    UIImage *image = [UIImage imageNamed:@"NewsTitle.png"];
 
-    UIButton *button = [ViewConstructor constructDefaultButton:[UIButton class] withFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
-    button.layer.borderWidth = 0.0f;
-    [button setImage:image forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(clickNavigationTitleBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.navigationItem setTitleView:button];
+//    UIButton *button = [ViewConstructor constructDefaultButton:[UIButton class] withFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
+    self.navigationTitleButton = [ViewConstructor constructDefaultButton:[UIButton class] withFrame:CGRectMake((self.view.frame.size.width-120)/2.0, 2, 120, 40)];
+
+    self.navigationTitleButton.layer.borderWidth = 0.0f;
+//    [button setImage:image forState:UIControlStateNormal];
+    [self.navigationTitleButton addTarget:self action:@selector(clickNavigationTitleBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.navigationController.navigationBar addSubview:self.navigationTitleButton];
 }
 
 - (void)clickNavigationTitleBtn:(UIButton *)button {
@@ -120,7 +160,7 @@
     
     self.segmentVC = [[SegmentNaviVC alloc] init];
     self.segmentVC.segmentNaviDelegate = self;
-    [self.segmentVC setBarViewWidth:self.view.frame.size.width-60];
+    [self.segmentVC setBarViewWidth:self.view.frame.size.width-80];
     
     [self segmentNaviDataDoLoad];
 
@@ -129,13 +169,12 @@
     [self.view addSubview:self.segmentVC.view];
     
     self.channelsButton = [ViewConstructor constructDefaultButton:[UIButton class] withFrame:CGRectMake(self.segmentVC.segmentBar.frame.size.width+2, 5, self.view.frame.size.width - self.segmentVC.segmentBar.frame.size.width-4, self.segmentVC.segmentBar.frame.size.height-10)];
-    self.channelsButton.layer.borderWidth = 1.0f;
+    self.channelsButton.layer.borderWidth = 0.0f;
     self.channelsButton.layer.borderColor = [UIColor colorWithRed:219/255.0 green:219/255.0 blue:219/255.0 alpha:0.5].CGColor;
     [self.channelsButton addTarget:self action:@selector(clickChannelsBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.channelsButton setTitle:NSLocalizedString(@"更多", nil) forState:UIControlStateNormal];
-    self.channelsButton.titleLabel.font = [UIFont systemFontOfSize:15];
+    self.channelsButton.titleLabel.font = [UIFont systemFontOfSize:18];
     [self.channelsButton setTintColor:[UIColor colorWithRed:181/255.0 green:224/255.0 blue:239/255.0 alpha:1]];
-    self.channelsButton.backgroundColor = [UIColor colorWithRed:117/255.0 green:226/255.0 blue:255/255.0 alpha:0.5];
     [self.view addSubview:self.channelsButton];
 }
 
@@ -219,12 +258,6 @@
     else {
         tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     }
-//    if(numOfRow == 0) {
-//        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    }
-//    else {
-//        tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-//    }
 
     return numOfRow;
 }
@@ -238,7 +271,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     NewsModel *news = [self getNewsWithTag:tableView.tag andRow:indexPath.row];
-    SegmentPageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCellIdentifier]; //[tableView dequeueReusableCellWithIdentifier:kTableCellIdentifier forIndexPath:indexPath];//
+    SegmentPageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableCellIdentifier];
     
     if(cell == nil) {
         cell = [[SegmentPageTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kTableCellIdentifier];
@@ -273,7 +306,7 @@
         cell.textLabel.textColor = [UIColor blackColor];
     }
     NSURL *imageUrl = [NSURL URLWithString:news.picUrl];
-    [cell.imageView sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"NewsDefaultIcon.jpg"] options:SDWebImageProgressiveDownload];
+    [cell.imageView sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"NewsDefaultIcon.png"] options:SDWebImageProgressiveDownload];
 
     return cell;
 }
@@ -430,6 +463,9 @@
         };
     }
     else {
+        if(self.segmentVC.needReset) {
+            [self.segmentVC resetIndex];
+        }
         [self cleanDatas];
         [self newsTypeListParser:response.responseData];
         __weak NewsVC *blockSelf = self;
@@ -463,18 +499,22 @@
     dispatch_block_t block = NULL;
     if(response.status != 0) {
         block = ^(){
-            [GVPopViewManager showDialogWithTitle:NSLocalizedString(@"获取新闻列表失败！", nil)];
+            [GVPopViewManager showDialogWithTitle:NSLocalizedString(@"栏目提交失败！", nil)];
+            
         };
+        
     }
     else {
         __weak NewsVC *blockSelf = self;
+        self.segmentVC.needReset = YES;
         block = ^(){
+            [blockSelf.segmentVC resetIndex];
             [blockSelf.controller newsTypeListRequest:[User sharedUser].accessToken];
         };
+        
     }
     
     [self mainThreadAsync:block];
-
 }
 
 #pragma mark News interface method

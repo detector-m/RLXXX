@@ -195,8 +195,6 @@ static RLSocialShareKit *_shareKit = nil;
     switch (type) {
         case kRLSocialShareKitTypeWeChatSession:
         case kRLSocialShareKitTypeWeChatTimeline: {
-            
-            
             SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
             req.bText = NO;
             req.message = [self weChatMessageToShare:messageToShare];
@@ -215,10 +213,10 @@ static RLSocialShareKit *_shareKit = nil;
             authRequest.scope = @"all";
             
             WBSendMessageToWeiboRequest *request = [WBSendMessageToWeiboRequest requestWithMessage:[self sinaWeiboMessageToShare:messageToShare] authInfo:authRequest access_token:self.shareAppInfo.appAccessToken];
-            request.userInfo = @{@"ShareMessageFrom": @"SendMessageToWeiboViewController",
-                                 @"Other_Info_1": [NSNumber numberWithInt:123],
-                                 @"Other_Info_2": @[@"obj1", @"obj2"],
-                                 @"Other_Info_3": @{@"key1": @"obj1", @"key2": @"obj2"}};
+//            request.userInfo = @{@"ShareMessageFrom": @"SendMessageToWeiboViewController",
+//                                 @"Other_Info_1": [NSNumber numberWithInt:123],
+//                                 @"Other_Info_2": @[@"obj1", @"obj2"],
+//                                 @"Other_Info_3": @{@"key1": @"obj1", @"key2": @"obj2"}};
             //    request.shouldOpenWeiboAppInstallPageIfNotInstalled = NO;
             [WeiboSDK sendRequest:request];
         }
@@ -247,6 +245,7 @@ static RLSocialShareKit *_shareKit = nil;
     
     message.mediaObject = ext;
     message.mediaTagName = @"WeChat_ShareLink";
+    message.messageExt = messageToShare.abstract;
     
     return message;
 }
@@ -271,7 +270,7 @@ static RLSocialShareKit *_shareKit = nil;
 #endif
     
     WBMessageObject *message = [WBMessageObject message];
-    
+//    WBImageObject *imageObject = [WBImageObject object];
     WBWebpageObject *webpage = [WBWebpageObject object];
     webpage.objectID = @"SinaWeibo_ShareLink";
     webpage.title = messageToShare.title;
@@ -279,6 +278,9 @@ static RLSocialShareKit *_shareKit = nil;
     webpage.thumbnailData = messageToShare.thumbData;
     webpage.webpageUrl = messageToShare.url;
     message.mediaObject = webpage;
+    message.text = messageToShare.abstract;
+//    imageObject.imageData = messageToShare.imageData;
+//    message.imageObject = imageObject;
 
     return message;
 }
@@ -286,58 +288,64 @@ static RLSocialShareKit *_shareKit = nil;
 #pragma mark - WeChatDelegates 
 -(void) onReq:(BaseReq*)req
 {
-    if([req isKindOfClass:[GetMessageFromWXReq class]])
-    {
-        GetMessageFromWXReq *temp = (GetMessageFromWXReq *)req;
-        
-        // 微信请求App提供内容， 需要app提供内容后使用sendRsp返回
-        NSString *strTitle = [NSString stringWithFormat:@"微信请求App提供内容"];
-        NSString *strMsg = [NSString stringWithFormat:@"openID: %@", temp.openID];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        alert.tag = 1000;
-        [alert show];
+    if([req isKindOfClass:[GetMessageFromWXReq class]]) {
+#if 0
+//        GetMessageFromWXReq *temp = (GetMessageFromWXReq *)req;
+//        
+//        // 微信请求App提供内容， 需要app提供内容后使用sendRsp返回
+//        NSString *strTitle = [NSString stringWithFormat:@"微信请求App提供内容"];
+//        NSString *strMsg = [NSString stringWithFormat:@"openID: %@", temp.openID];
+//        
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//        alert.tag = 1000;
+//        [alert show];
+#endif
     }
     else if([req isKindOfClass:[ShowMessageFromWXReq class]])
     {
-        ShowMessageFromWXReq* temp = (ShowMessageFromWXReq*)req;
-        WXMediaMessage *msg = temp.message;
-        
-        //显示微信传过来的内容
-        WXAppExtendObject *obj = msg.mediaObject;
-        
-        NSString *strTitle = [NSString stringWithFormat:@"微信请求App显示内容"];
-        NSString *strMsg = [NSString stringWithFormat:@"openID: %@, 标题：%@ \n内容：%@ \n附带信息：%@ \n缩略图:%lu bytes\n附加消息:%@\n", temp.openID, msg.title, msg.description, obj.extInfo, (unsigned long)msg.thumbData.length, msg.messageExt];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+#if 0
+//        ShowMessageFromWXReq* temp = (ShowMessageFromWXReq*)req;
+//        WXMediaMessage *msg = temp.message;
+//        
+//        //显示微信传过来的内容
+//        WXAppExtendObject *obj = msg.mediaObject;
+//        
+//        NSString *strTitle = [NSString stringWithFormat:@"微信请求App显示内容"];
+//        NSString *strMsg = [NSString stringWithFormat:@"openID: %@, 标题：%@ \n内容：%@ \n附带信息：%@ \n缩略图:%lu bytes\n附加消息:%@\n", temp.openID, msg.title, msg.description, obj.extInfo, (unsigned long)msg.thumbData.length, msg.messageExt];
+//        
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//        [alert show];
+#endif
     }
     else if([req isKindOfClass:[LaunchFromWXReq class]])
     {
-        LaunchFromWXReq *temp = (LaunchFromWXReq *)req;
-        WXMediaMessage *msg = temp.message;
-        
-        //从微信启动App
-        NSString *strTitle = [NSString stringWithFormat:@"从微信启动"];
-        NSString *strMsg = [NSString stringWithFormat:@"openID: %@, messageExt:%@", temp.openID, msg.messageExt];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+#if 0
+//        LaunchFromWXReq *temp = (LaunchFromWXReq *)req;
+//        WXMediaMessage *msg = temp.message;
+//        
+//        //从微信启动App
+//        NSString *strTitle = [NSString stringWithFormat:@"从微信启动"];
+//        NSString *strMsg = [NSString stringWithFormat:@"openID: %@, messageExt:%@", temp.openID, msg.messageExt];
+//        
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//        [alert show];
+#endif
     }
 }
 
 -(void) onResp:(BaseResp*)resp
 {
-    if([resp isKindOfClass:[SendMessageToWXResp class]])
-    {
+    if([resp isKindOfClass:[SendMessageToWXResp class]]) {
+#if 0
 //        NSString *strTitle = [NSString stringWithFormat:@"发送媒体消息结果"];
 //        NSString *strMsg = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
 //        
 //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
 //        [alert show];
+#endif
     }
-    else if([resp isKindOfClass:[SendAuthResp class]])
-    {
+    else if([resp isKindOfClass:[SendAuthResp class]]) {
+#if 0
 //        SendAuthResp *temp = (SendAuthResp*)resp;
 //        
 //        NSString *strTitle = [NSString stringWithFormat:@"Auth结果"];
@@ -345,9 +353,10 @@ static RLSocialShareKit *_shareKit = nil;
 //        
 //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
 //        [alert show];
+#endif
     }
-    else if ([resp isKindOfClass:[AddCardToWXCardPackageResp class]])
-    {
+    else if ([resp isKindOfClass:[AddCardToWXCardPackageResp class]]) {
+#if 0
 //        AddCardToWXCardPackageResp* temp = (AddCardToWXCardPackageResp*)resp;
 //        NSMutableString* cardStr = [[NSMutableString alloc] init];
 //        for (WXCardItem* cardItem in temp.cardAry) {
@@ -355,6 +364,7 @@ static RLSocialShareKit *_shareKit = nil;
 //        }
 //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"add card resp" message:cardStr delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
 //        [alert show];
+#endif
     }
 }
 
@@ -369,6 +379,7 @@ static RLSocialShareKit *_shareKit = nil;
 {
     if ([response isKindOfClass:WBSendMessageToWeiboResponse.class])
  {
+#if 0
         NSString *title = NSLocalizedString(@"发送结果", nil);
         NSString *message = [NSString stringWithFormat:@"%@: %d\n%@: %@\n%@: %@", NSLocalizedString(@"响应状态", nil), (int)response.statusCode, NSLocalizedString(@"响应UserInfo数据", nil), response.userInfo, NSLocalizedString(@"原请求UserInfo数据", nil),response.requestUserInfo];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"确定", nil) otherButtonTitles:nil];
@@ -383,9 +394,11 @@ static RLSocialShareKit *_shareKit = nil;
 //            self.wbCurrentUserID = userID;
 //        }
         [alert show];
+#endif
     }
     else if ([response isKindOfClass:WBAuthorizeResponse.class])
     {
+#if 0
         NSString *title = NSLocalizedString(@"认证结果", nil);
         NSString *message = [NSString stringWithFormat:@"%@: %d\nresponse.userId: %@\nresponse.accessToken: %@\n%@: %@\n%@: %@", NSLocalizedString(@"响应状态", nil), (int)response.statusCode,[(WBAuthorizeResponse *)response userID], [(WBAuthorizeResponse *)response accessToken],  NSLocalizedString(@"响应UserInfo数据", nil), response.userInfo, NSLocalizedString(@"原请求UserInfo数据", nil), response.requestUserInfo];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"确定", nil) otherButtonTitles:nil];
@@ -393,7 +406,7 @@ static RLSocialShareKit *_shareKit = nil;
         self.shareAppInfo.appAccessToken = [(WBAuthorizeResponse *)response accessToken];
         self.shareAppInfo.appUserId = [(WBAuthorizeResponse *)response userID];
         [alert show];
-
+#endif
     }
 }
 

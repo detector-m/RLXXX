@@ -125,6 +125,7 @@
 
 - (void)sendMessageToTargetApp:(RLShareMessageModel *)message {
     message.imageData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"58" ofType:@"png"]];
+    message.thumbData = message.imageData;
     [[RLSocialShareKit sharedShareKit] sendMessageToTargetApp:message];
 }
 

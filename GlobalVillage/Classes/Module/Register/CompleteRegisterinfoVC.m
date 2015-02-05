@@ -152,8 +152,13 @@
 //    UIImage *image = [self.pickPicBtn imageForState:UIControlStateNormal];
     
 //    [User sharedUser].pic = UIImagePNGRepresentation(image);
+    NSString *text = [self.nameTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if(text.length == 0) {
+        [GVPopViewManager showDialogWithTitle:NSLocalizedString(@"昵称填写有误！", nil)];
+        return;
+    }
     [User sharedUser].gender = self.gender;
-    [User sharedUser].nickname = self.nameTF.text;
+    [User sharedUser].nickname = text;
     
     ChooseDQNumberVC *vc = [[ChooseDQNumberVC alloc] init];
     [ChangeVCController pushViewControllerByNavigationController:self.navigationController pushVC:vc];

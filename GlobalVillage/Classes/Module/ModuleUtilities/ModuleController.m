@@ -36,6 +36,10 @@
     [GVRequestManager removeAllRequestForKey:NSStringFromClass([self class])];
 }
 
+- (void)dealloc {
+    [self removeAllRequest];
+}
+
 
 #pragma mark - RLRequestDelegate
 - (void)requestLoading:(RLRequest *)reqeust {

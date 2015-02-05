@@ -15,12 +15,15 @@
 
 #define kChannelsViewTitleViewHeight 40.0f
 
+@class NewsChannelsVC;
 @interface NewsChannelsView : UIView
 @property (nonatomic, readonly, strong) ChannelsTitleView *titleView;
 @property (nonatomic, readonly, strong) UIScrollView *channelsView;
 
 @property (nonatomic, readonly, strong) SubscribeChannelsView *subscribeChannelsView;
 @property (nonatomic, readonly, strong) UnsubscribeChannelsView *unsubscribeChannelsView;
+
+@property (nonatomic, weak) NewsChannelsVC *belongVC;
 
 - (instancetype)initWithFrame:(CGRect)frame andVC:(NewsVC *)newsVC;
 @end

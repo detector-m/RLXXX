@@ -9,9 +9,9 @@
 	<key>WeChatRedirectURI</key>
 	<string>http://www.dqcc.com.cn</string>
 	<key>SinaWeiboAppKey</key>
-	<string>2045436852</string>
+	<string>2111299879</string>
 	<key>SinaWeiboSecret</key>
-	<string></string>
+	<string>2f361ce369ff804ba23cc9b8dfbb34f8</string>
 	<key>SinaWeiboRedirectURI</key>
 	<string>http://www.dqcc.com.cn</string>
 </dict>

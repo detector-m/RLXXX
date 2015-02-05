@@ -29,5 +29,10 @@
 @property (nonatomic, readonly, strong) SegmentBar *segmentBar;
 @property (nonatomic, readonly, strong) SegmentsTableView *segmentsTableView;
 
+@property (nonatomic, assign) BOOL needReset;
+
+- (void)cleanData;
 - (void)reloadData;
+
+- (void)resetIndex;
 @end

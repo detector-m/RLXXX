@@ -119,7 +119,7 @@
         cell.textLabel.textColor = [UIColor blackColor];
     }
     NSURL *imageUrl = [NSURL URLWithString:news.picUrl];
-    [cell.imageView sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"NewsDefaultIcon.jpg"] options:SDWebImageProgressiveDownload];
+    [cell.imageView sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"NewsDefaultIcon.png"] options:SDWebImageProgressiveDownload];
     
     return cell;
 }
