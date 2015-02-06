@@ -124,6 +124,8 @@
     self.navigationTitleButton = button;
     [button setImage:image forState:UIControlStateNormal];
     self.navigationItem.titleView = button;
+    [self.navigationTitleButton addTarget:self action:@selector(clickNavigationTitleBtn:) forControlEvents:UIControlEventTouchUpInside];
+
 
 //    self.navigationTitleButton = [ViewConstructor constructDefaultButton:[UIButton class] withFrame:CGRectMake((self.view.frame.size.width-120)/2.0, 2, 120, 40)];
 //    self.navigationTitleButton.layer.borderWidth = 0.0f;

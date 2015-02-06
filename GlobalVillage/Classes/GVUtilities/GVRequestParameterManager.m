@@ -167,7 +167,7 @@
                                cityValue:(NSString *)cityValue
                           longitudeValue:(NSString *)longitudeValue
                            latitudeValue:(NSString *)latitudeValue
-                       /*headPortraitValue:(NSData *)headPortraitValue*/ {
+                       headPortraitValue:(NSString *)headPortraitValue {
     NSMutableDictionary *retDic = nil;
     
     if(nicknameValue==nil ||
@@ -191,9 +191,9 @@
     [retDic setObject:cityValue forKey:dRegisteredCityField];
     [retDic setObject:longitudeValue forKey:dLongitudeField];
     [retDic setObject:latitudeValue forKey:dLatitudeField];
-//    if(headPortraitValue != nil) {
-//        [retDic setObject:headPortraitValue forKey:dHeadPortraitField];
-//    }
+    if(headPortraitValue != nil) {
+        [retDic setObject:headPortraitValue forKey:dHeadPortraitField];
+    }
     
     if(thirdidValue != nil) {
         [retDic setObject:thirdidValue forKey:dThirdIdField];

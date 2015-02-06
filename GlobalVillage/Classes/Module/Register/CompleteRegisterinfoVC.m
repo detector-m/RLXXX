@@ -152,6 +152,11 @@
 //    UIImage *image = [self.pickPicBtn imageForState:UIControlStateNormal];
     
 //    [User sharedUser].pic = UIImagePNGRepresentation(image);
+    User *user = [User sharedUser];
+    if(user.picUrl.length == 0) {
+        [GVPopViewManager showDialogWithTitle:NSLocalizedString(@"头像未设置！请设置头像。", nil)];
+        return;
+    }
     NSString *text = [self.nameTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     if(text.length == 0) {
         [GVPopViewManager showDialogWithTitle:NSLocalizedString(@"昵称填写有误！", nil)];

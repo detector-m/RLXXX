@@ -67,9 +67,9 @@
 }
 
 //用户注册功能
-- (void)requestRegist:(NSString *)dqNumber phoneNumber:(NSString *)phoneNumber password:(NSString *)password gender:(NSInteger)gender nickname:(NSString *)nickname location:(UserLocation *)location {
+- (void)requestRegist:(NSString *)dqNumber phoneNumber:(NSString *)phoneNumber password:(NSString *)password gender:(NSInteger)gender nickname:(NSString *)nickname location:(UserLocation *)location headPortrait:(NSString *)headPortrait {
     
-    NSMutableDictionary *parameters = [GVRequestParameterManager registParameter:nickname chikyugoValue:dqNumber thirdidValue:nil passwordValue:password mobileNumValue:phoneNumber sexValue:[RLTypecast integerToString:gender] cityValue:location.city longitudeValue:[RLTypecast doubleToString:location.longitude] latitudeValue:[RLTypecast doubleToString:location.latitude]];
+    NSMutableDictionary *parameters = [GVRequestParameterManager registParameter:nickname chikyugoValue:dqNumber thirdidValue:nil passwordValue:password mobileNumValue:phoneNumber sexValue:[RLTypecast integerToString:gender] cityValue:location.city longitudeValue:[RLTypecast doubleToString:location.longitude] latitudeValue:[RLTypecast doubleToString:location.latitude] headPortraitValue:headPortrait];
     
     if(!parameters) {
         DLog(@"mobileAuthCodeDic error!");

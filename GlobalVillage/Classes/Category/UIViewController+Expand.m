@@ -55,9 +55,12 @@ const CGFloat getFixHeight()
     CGFloat height = frame.size.height - (navigationFrame.size.height +
                                           statusFrame.size.height +
                                           tabBarFrame.size.height);
-    CGFloat originY = self.navigationController.navigationBarHidden ? statusFrame.size.height : 0;
-    if(self.navigationController == nil)
+    
+    CGFloat originY = 0.0f;
+    if(self.navigationController == nil || self.navigationController.navigationBarHidden) {
         originY = statusFrame.size.height;
+    }
+
     frame = CGRectMake(frame.origin.x, frame.origin.y + originY, frame.size.width, height);
     self.view.frame = frame;
 }

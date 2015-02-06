@@ -40,7 +40,7 @@
                                cityValue:(NSString *)cityValue
                           longitudeValue:(NSString *)longitudeValue
                            latitudeValue:(NSString *)latitudeValue
-                       /*headPortraitValue:(NSData *)headPortraitValue*/;
+                       headPortraitValue:(NSString *)headPortraitValue;
 //用户登录参数列表
 + (NSMutableDictionary *)loginParameter:(NSString *)userAccountValue
                           passwordValue:(NSString *)passwordValue

@@ -134,7 +134,7 @@
     
     User *user = [User sharedUser];
     user.password = ((UITextField *)self.passwordInputView.textInputView).text;
-    [self.controller requestRegist:user.dqNumber phoneNumber:user.phone password:user.password gender:user.gender nickname:user.nickname location:user.location /*pic:user.pic*/];
+    [self.controller requestRegist:user.dqNumber phoneNumber:user.phone password:user.password gender:user.gender nickname:user.nickname location:user.location headPortrait:user.picUrl];
     
     [GVPopViewManager showActivityWithTitle:NSLocalizedString(@"正在注册...", nil)];
 }

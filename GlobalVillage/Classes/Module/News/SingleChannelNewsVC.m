@@ -65,7 +65,13 @@
     }
     RefreshView *refreshView = [[RefreshView alloc] initWithStyle:kRefreshViewStyleTableView];
     [refreshView setDelegates:self];
-    refreshView.frame = self.view.frame;
+    CGRect frame = self.view.frame;
+//    if(frame.origin.y > 0) {
+//        NSString *test = [NSString stringWithFormat:@"%f, %f, %f, %f", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height];
+//        [GVPopViewManager showDialogWithTitle:test];
+//    }
+    frame.origin.x = frame.origin.y = 0;
+    refreshView.frame = frame;
     ((RefreshTableView *)refreshView.refreshTargetView).showsVerticalScrollIndicator = NO;
     ((RefreshTableView *)refreshView.refreshTargetView).rowHeight = kNewsCellHeight;
     ((RefreshTableView *)refreshView.refreshTargetView).tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
