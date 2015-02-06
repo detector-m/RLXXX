@@ -38,6 +38,8 @@
 		96123DC71A70F2380053CA1C /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 96123DB61A70F2380053CA1C /* UIImageView+WebCache.m */; };
 		96123DC81A70F2380053CA1C /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 96123DB81A70F2380053CA1C /* UIView+WebCacheOperation.m */; };
 		96123DCB1A710B880053CA1C /* NewsDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 96123DCA1A710B880053CA1C /* NewsDetailVC.m */; };
+		961246CF1A8457640080A979 /* MoreChannels.png in Resources */ = {isa = PBXBuildFile; fileRef = 961246CD1A8457640080A979 /* MoreChannels.png */; };
+		961246D01A8457640080A979 /* MoreChannels@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 961246CE1A8457640080A979 /* MoreChannels@2x.png */; };
 		9647315A1A7C77ED00604904 /* ImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 964731591A7C77ED00604904 /* ImageController.m */; };
 		9647315D1A7F0EEE00604904 /* 58.png in Resources */ = {isa = PBXBuildFile; fileRef = 9647315C1A7F0EEE00604904 /* 58.png */; };
 		964731641A7F8CAA00604904 /* ChannelsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 964731631A7F8CAA00604904 /* ChannelsButton.m */; };
@@ -243,6 +245,8 @@
 		96123DB81A70F2380053CA1C /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		96123DC91A710B880053CA1C /* NewsDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDetailVC.h; sourceTree = "<group>"; };
 		96123DCA1A710B880053CA1C /* NewsDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDetailVC.m; sourceTree = "<group>"; };
+		961246CD1A8457640080A979 /* MoreChannels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MoreChannels.png; sourceTree = "<group>"; };
+		961246CE1A8457640080A979 /* MoreChannels@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MoreChannels@2x.png"; sourceTree = "<group>"; };
 		964731581A7C77ED00604904 /* ImageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageController.h; sourceTree = "<group>"; };
 		964731591A7C77ED00604904 /* ImageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageController.m; sourceTree = "<group>"; };
 		9647315C1A7F0EEE00604904 /* 58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 58.png; sourceTree = "<group>"; };
@@ -769,6 +773,8 @@
 		96D8FFB51A7A1D4B0041C8D8 /* News */ = {
 			isa = PBXGroup;
 			children = (
+				961246CD1A8457640080A979 /* MoreChannels.png */,
+				961246CE1A8457640080A979 /* MoreChannels@2x.png */,
 				964731671A80539300604904 /* ChannelDelete@2x.png */,
 				964731651A80534F00604904 /* ChannelDelete.png */,
 				964731731A80D52F00604904 /* NewsDefaultIcon.png */,
@@ -1340,6 +1346,7 @@
 				96DEED301A69E3E600C045DF /* Localizable.strings in Resources */,
 				96DEED051A69330B00C045DF /* Main.storyboard in Resources */,
 				96DEED9D1A6C9C3200C045DF /* PicDefault.png in Resources */,
+				961246D01A8457640080A979 /* MoreChannels@2x.png in Resources */,
 				96A98F641A7B729300EE8B6A /* check_icon.png in Resources */,
 				96C1C0671A766A47003E7C07 /* TCZone.png in Resources */,
 				964731761A80D52F00604904 /* NewsDefaultIcon@2x.png in Resources */,
@@ -1349,6 +1356,7 @@
 				96C1C0621A766A47003E7C07 /* QQ@2x.png in Resources */,
 				96123D961A70E1570053CA1C /* blueArrow.png in Resources */,
 				96A98F661A7B729300EE8B6A /* uncheck_icon.png in Resources */,
+				961246CF1A8457640080A979 /* MoreChannels.png in Resources */,
 				96DEED241A69399E00C045DF /* InfoPlist.strings in Resources */,
 				96DEED0A1A69330B00C045DF /* LaunchScreen.xib in Resources */,
 				96DEED071A69330B00C045DF /* Images.xcassets in Resources */,
