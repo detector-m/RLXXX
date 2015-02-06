@@ -117,15 +117,19 @@
 }
 
 - (void)navigationTitleButtonDoLoad {
-//    UIImage *image = [UIImage imageNamed:@"NewsTitle.png"];
+    UIImage *image = [UIImage imageNamed:@"NewsTitle.png"];
 
-//    UIButton *button = [ViewConstructor constructDefaultButton:[UIButton class] withFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
-    self.navigationTitleButton = [ViewConstructor constructDefaultButton:[UIButton class] withFrame:CGRectMake((self.view.frame.size.width-120)/2.0, 2, 120, 40)];
+    UIButton *button = [ViewConstructor constructDefaultButton:[UIButton class] withFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
+    button.layer.borderWidth = .0f;
+    self.navigationTitleButton = button;
+    [button setImage:image forState:UIControlStateNormal];
+    self.navigationItem.titleView = button;
 
-    self.navigationTitleButton.layer.borderWidth = 0.0f;
-//    [button setImage:image forState:UIControlStateNormal];
-    [self.navigationTitleButton addTarget:self action:@selector(clickNavigationTitleBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.navigationController.navigationBar addSubview:self.navigationTitleButton];
+//    self.navigationTitleButton = [ViewConstructor constructDefaultButton:[UIButton class] withFrame:CGRectMake((self.view.frame.size.width-120)/2.0, 2, 120, 40)];
+//    self.navigationTitleButton.layer.borderWidth = 0.0f;
+    
+//    [self.navigationTitleButton addTarget:self action:@selector(clickNavigationTitleBtn:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.navigationController.navigationBar addSubview:self.navigationTitleButton];
 }
 
 - (void)clickNavigationTitleBtn:(UIButton *)button {
@@ -160,7 +164,7 @@
     
     self.segmentVC = [[SegmentNaviVC alloc] init];
     self.segmentVC.segmentNaviDelegate = self;
-    [self.segmentVC setBarViewWidth:self.view.frame.size.width-80];
+    [self.segmentVC setBarViewWidth:self.view.frame.size.width-44];
     
     [self segmentNaviDataDoLoad];
 
@@ -170,10 +174,10 @@
     
     self.channelsButton = [ViewConstructor constructDefaultButton:[UIButton class] withFrame:CGRectMake(self.segmentVC.segmentBar.frame.size.width+2, 5, self.view.frame.size.width - self.segmentVC.segmentBar.frame.size.width-4, self.segmentVC.segmentBar.frame.size.height-10)];
     self.channelsButton.layer.borderWidth = 0.0f;
-    self.channelsButton.layer.borderColor = [UIColor colorWithRed:219/255.0 green:219/255.0 blue:219/255.0 alpha:0.5].CGColor;
     [self.channelsButton addTarget:self action:@selector(clickChannelsBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.channelsButton setTitle:NSLocalizedString(@"更多", nil) forState:UIControlStateNormal];
-    self.channelsButton.titleLabel.font = [UIFont systemFontOfSize:18];
+//    [self.channelsButton setTitle:NSLocalizedString(@"更多", nil) forState:UIControlStateNormal];
+//    self.channelsButton.titleLabel.font = [UIFont systemFontOfSize:18];
+    [self.channelsButton setImage:[UIImage imageNamed:@"MoreChannels.png"] forState:UIControlStateNormal];
     [self.channelsButton setTintColor:[UIColor colorWithRed:181/255.0 green:224/255.0 blue:239/255.0 alpha:1]];
     [self.view addSubview:self.channelsButton];
 }
