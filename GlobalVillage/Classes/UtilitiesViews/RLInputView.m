@@ -31,17 +31,20 @@
             UITextField *tmp ;
             self.textInputView = [[UITextField alloc] initWithFrame:CGRectMake(widthOffset, 1, frame.size.width*0.7-2, frame.size.height-2)];
             tmp = (UITextField *)self.textInputView;
+            tmp.borderStyle = UITextBorderStyleRoundedRect;
             tmp.clearButtonMode = UITextFieldViewModeAlways;
+            tmp.keyboardType = UIKeyboardTypeDefault;
             
             tmp.font = [UIFont systemFontOfSize:16];
         }
         else {
             self.textInputView = [[UITextView alloc] initWithFrame:CGRectMake(widthOffset, 1, frame.size.width*0.7-2, frame.size.height-2)];
+            self.textInputView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+            self.textInputView.layer.cornerRadius = 6.0f;
+            self.textInputView.layer.borderWidth = 0.5f;
         }
         [self addSubview:self.textInputView];
-        self.textInputView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-        self.textInputView.layer.cornerRadius = 6.0f;
-        self.textInputView.layer.borderWidth = 0.5f;
+        
         
         self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureAction)];
         [self addGestureRecognizer:self.tapGesture];

@@ -16,6 +16,7 @@
 
 #import "TestViewController.h"
 #import "CompleteRegisterinfoVC.h"
+#import "PasswordSettingVC.h"
 
 @interface AppDelegate ()
 @property (nonatomic, readwrite, strong) RLLocationManager *locationManager;
@@ -40,6 +41,7 @@
 //    NewsVC *vc = [[NewsVC alloc] init];
 //    TestViewController *vc = [[TestViewController alloc] init];
 //    CompleteRegisterinfoVC *vc = [[CompleteRegisterinfoVC alloc] init];
+//    PasswordSettingVC *vc = [[PasswordSettingVC alloc] init];
     RLBaseNavigationController *nav = [[RLBaseNavigationController alloc] initWithRootViewController:vc];
     self.window.rootViewController = nav;
 }

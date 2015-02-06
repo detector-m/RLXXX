@@ -53,6 +53,7 @@
     self.accountTF = [[RLTextField alloc] initWithFrame:CGRectMake(15, 30, self.view.bounds.size.width-30, 40)];
     self.accountTF.placeholder = NSLocalizedString(@"地球号/手机号", nil);
     self.accountTF.keyboardType = UIKeyboardTypeNumberPad;
+//    DLog(@"%@", [RLFileOperation userLoginInfo]);
     self.accountTF.text = [[RLFileOperation userLoginInfo] objectForKey:@"kUsername"];
 //    self.accountTF.delegate = self;
     self.accountTF.returnKeyType = UIReturnKeyDone;
@@ -100,6 +101,8 @@
     [GVPopViewManager showActivityWithTitle:NSLocalizedString(@"登录中。。。", nil)];
 }
 - (void)clickRegisterBtn:(UIButton *)button {
+    [self endEditing];
+
     RegisterVC *vc = [[RegisterVC alloc] init];
     [ChangeVCController pushViewControllerByNavigationController:self.navigationController pushVC:vc];
 }

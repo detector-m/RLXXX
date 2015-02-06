@@ -248,8 +248,8 @@ typedef NS_ENUM(NSUInteger, ChargeType) {
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         //    [self deselectItem];
     self.selectedDQNumber = [self.freeDQNumbers objectAtIndex:indexPath.row];
-    NSString *str = [NSString stringWithFormat:@"请牢记该地球号：%@", self.selectedDQNumber];
-    [GVPopViewManager showDialogWithTitle:NSLocalizedString(str, nil)];
+//    NSString *str = [NSString stringWithFormat:@"请牢记该地球号：%@", self.selectedDQNumber];
+//    [GVPopViewManager showDialogWithTitle:NSLocalizedString(str, nil)];
 }
 
 - (void)deselectItem {

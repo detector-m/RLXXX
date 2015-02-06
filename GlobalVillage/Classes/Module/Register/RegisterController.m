@@ -159,6 +159,8 @@ didFailWithError:(NSError *)error {
             }
             break;
         case kRequestTypeRegister:
+            response.responseData = result;
+            response.responseData = [self parseRegisterResponseData:result];
             if([delegate respondsToSelector:@selector(registerResponse:)]) {
                 [delegate registerResponse:response];
             }
@@ -201,5 +203,12 @@ didFailWithError:(NSError *)error {
     return array;
 }
 
-//- ()
+- (NSString *)parseRegisterResponseData:(id)result {
+    if(result == nil || ![result isKindOfClass:[NSDictionary class]])
+        return nil;
+    NSDictionary *dic = (NSDictionary *)result;
+    DLog(@"%@", result);
+    [[User sharedUser] fillLoginData:[dic objectForKey:RespondFieldMemberKey] andToken:[dic objectForKey:RespondFieldTokenKey]];
+    return @"OK";
+}
 @end

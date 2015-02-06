@@ -73,6 +73,7 @@
     self.passwordInputView = [[RLInputView alloc] initWithInputViewStyle:kRLInputViewStyleTextField andFrame:CGRectMake(10, 75, frame.size.width-20, 40)];
     [self.passwordInputView regulateFrameOrigin];
     self.passwordInputView.title.text = NSLocalizedString(@"密码", nil);
+    ((UITextField *)self.passwordInputView.textInputView).placeholder = NSLocalizedString(@"请输入密码", nil);
     ((UITextField *)self.passwordInputView.textInputView).secureTextEntry = YES;
     [self.view addSubview:self.passwordInputView];
     
@@ -80,6 +81,7 @@
     [self.checkInputView regulateFrameOrigin];
     self.checkInputView.title.text = NSLocalizedString(@"密码确认", nil);
     ((UITextField *)self.checkInputView.textInputView).secureTextEntry = YES;
+    ((UITextField *)self.checkInputView.textInputView).placeholder = NSLocalizedString(@"请确认密码", nil);
     [self.view addSubview:self.checkInputView];
     
 //    UILabel *passwordLB = [ViewConstructor constructDefaultLabel:[UILabel class] withFrame:CGRectMake(15, 75, 100, 40)];
