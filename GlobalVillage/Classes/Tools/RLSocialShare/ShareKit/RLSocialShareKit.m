@@ -236,7 +236,12 @@ static RLSocialShareKit *_shareKit = nil;
         return nil;
     }
     WXMediaMessage *message = [WXMediaMessage message];
-    message.title = messageToShare.title;
+    if(messageToShare.appType == kRLSocialShareKitTypeWeChatSession) {
+        message.title = messageToShare.title;
+    }
+    else {
+        message.title = messageToShare.abstract;
+    }
     message.description = messageToShare.abstract;
     [message setThumbImage:[UIImage imageWithData:messageToShare.imageData]];
     
