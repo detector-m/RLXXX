@@ -12,7 +12,9 @@
 #import "RLTextField.h"
 
 #import "RegisterVC.h"
-#import "NewsVC.h"
+//#import "NewsVC.h"
+#import "MainVC.h"
+#import "ForgetPWVC.h"
 
 #import "RLFileOperation.h"
 #import "LoginController.h"
@@ -52,7 +54,7 @@
 - (void)textFieldsDoLoad {
     self.accountTF = [[RLTextField alloc] initWithFrame:CGRectMake(15, 30, self.view.bounds.size.width-30, 40)];
     self.accountTF.placeholder = NSLocalizedString(@"地球号/手机号", nil);
-    self.accountTF.keyboardType = UIKeyboardTypeNumberPad;
+//    self.accountTF.keyboardType = UIKeyboardTypeDefault;
 //    DLog(@"%@", [RLFileOperation userLoginInfo]);
     self.accountTF.text = [[RLFileOperation userLoginInfo] objectForKey:@"kUsername"];
 //    self.accountTF.delegate = self;
@@ -79,12 +81,13 @@
     [registerBtn addTarget:self action:@selector(clickRegisterBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:registerBtn];
     
-//    UIButton *forgetPasswordBtn = (RLButton *)[ViewConstructor constructDefaultButton:[RLButton class] withFrame:CGRectMake(self.view.bounds.size.width-120, 210, 100, 30)];
-//    forgetPasswordBtn.backgroundColor = [UIColor clearColor];
-//    [forgetPasswordBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-//    [forgetPasswordBtn setTitle:NSLocalizedString(@"忘记密码？", nil) forState:UIControlStateNormal];
-//    [forgetPasswordBtn addTarget:self action:@selector(clickForgetPasswordBtn:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:forgetPasswordBtn];
+    UIButton *forgetPasswordBtn = (RLButton *)[ViewConstructor constructDefaultButton:[RLButton class] withFrame:CGRectMake(self.view.bounds.size.width-120, 210, 100, 30)];
+    forgetPasswordBtn.layer.borderWidth = .0f;
+    forgetPasswordBtn.backgroundColor = [UIColor clearColor];
+    [forgetPasswordBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [forgetPasswordBtn setTitle:NSLocalizedString(@"忘记密码？", nil) forState:UIControlStateNormal];
+    [forgetPasswordBtn addTarget:self action:@selector(clickForgetPasswordBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:forgetPasswordBtn];
 }
 
 - (void)clickLoginBtn:(UIButton *)button {
@@ -107,7 +110,8 @@
     [ChangeVCController pushViewControllerByNavigationController:self.navigationController pushVC:vc];
 }
 - (void)clickForgetPasswordBtn:(UIButton *)button {
-    
+    ForgetPWVC *vc = [[ForgetPWVC alloc] init];
+    [ChangeVCController pushViewControllerByNavigationController:self.navigationController pushVC:vc];
 }
 
 #pragma mark - LoginControllerDelegate
@@ -125,7 +129,8 @@
 //        [ChangeVCController changeMainRootViewController:[NewsVC class]];
         [RLFileOperation storeLoginInfo:user.dqNumber pwd:user.password date:nil plateforme:@"local" openKey:nil];
         block = ^(){
-            NewsVC *vc = [[NewsVC alloc] init];
+//            NewsVC *vc = [[NewsVC alloc] init];
+            MainVC *vc = [[MainVC alloc] init];
             [ChangeVCController pushViewControllerByNavigationController:self.navigationController pushVC:vc];
         };
     }

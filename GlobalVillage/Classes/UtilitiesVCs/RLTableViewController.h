@@ -11,4 +11,5 @@
 
 @interface RLTableViewController : RLBaseViewController <UITableViewDataSource, UITableViewDelegate>
 
+- (void)deselectRow:(UITableView *)tableView;
 @end

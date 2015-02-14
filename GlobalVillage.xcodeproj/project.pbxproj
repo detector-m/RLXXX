@@ -40,6 +40,29 @@
 		96123DCB1A710B880053CA1C /* NewsDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 96123DCA1A710B880053CA1C /* NewsDetailVC.m */; };
 		961246CF1A8457640080A979 /* MoreChannels.png in Resources */ = {isa = PBXBuildFile; fileRef = 961246CD1A8457640080A979 /* MoreChannels.png */; };
 		961246D01A8457640080A979 /* MoreChannels@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 961246CE1A8457640080A979 /* MoreChannels@2x.png */; };
+		9612473E1A88AB070080A979 /* RLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9612473D1A88AB070080A979 /* RLTabBarController.m */; };
+		961247421A88AB560080A979 /* MainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 961247411A88AB560080A979 /* MainVC.m */; };
+		961247581A88AB790080A979 /* MineTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 961247451A88AB790080A979 /* MineTableVC.m */; };
+		961247591A88AB790080A979 /* MineVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 961247471A88AB790080A979 /* MineVC.m */; };
+		9612475A1A88AB790080A979 /* ProfileCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9612474A1A88AB790080A979 /* ProfileCommonCell.m */; };
+		9612475B1A88AB790080A979 /* ProfileConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9612474B1A88AB790080A979 /* ProfileConfig.plist */; };
+		9612475C1A88AB790080A979 /* ProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9612474D1A88AB790080A979 /* ProfileModel.m */; };
+		9612475D1A88AB790080A979 /* ProfileModifyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9612474F1A88AB790080A979 /* ProfileModifyVC.m */; };
+		9612475E1A88AB790080A979 /* ProfileTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 961247511A88AB790080A979 /* ProfileTitleCell.m */; };
+		9612475F1A88AB790080A979 /* ProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 961247531A88AB790080A979 /* ProfileVC.m */; };
+		961247601A88AB790080A979 /* SettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 961247561A88AB790080A979 /* SettingsVC.m */; };
+		961247641A88C52B0080A979 /* ProfileBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 961247631A88C52B0080A979 /* ProfileBaseVC.m */; };
+		961247671A88C6200080A979 /* BirthdaySettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 961247661A88C6200080A979 /* BirthdaySettingVC.m */; };
+		9612476A1A88CEDA0080A979 /* GenderSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 961247691A88CEDA0080A979 /* GenderSettingVC.m */; };
+		9612476D1A88D3670080A979 /* MineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9612476C1A88D3670080A979 /* MineController.m */; };
+		961247741A899F890080A979 /* PasswordSetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 961247731A899F890080A979 /* PasswordSetVC.m */; };
+		9612477A1A89ABA20080A979 /* ForgetPWVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 961247771A89ABA20080A979 /* ForgetPWVC.m */; };
+		9612477B1A89ABA20080A979 /* ResetPWVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 961247791A89ABA20080A979 /* ResetPWVC.m */; };
+		9612477E1A89D9AC0080A979 /* ForgetPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9612477D1A89D9AC0080A979 /* ForgetPasswordController.m */; };
+		961247811A8A0A050080A979 /* News.png in Resources */ = {isa = PBXBuildFile; fileRef = 961247801A8A0A050080A979 /* News.png */; };
+		961247831A8A0BB00080A979 /* News@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 961247821A8A0BB00080A979 /* News@2x.png */; };
+		961247861A8A277D0080A979 /* Mine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 961247841A8A277D0080A979 /* Mine@2x.png */; };
+		961247891A8A2A5A0080A979 /* Mine.png in Resources */ = {isa = PBXBuildFile; fileRef = 961247881A8A2A5A0080A979 /* Mine.png */; };
 		9647315A1A7C77ED00604904 /* ImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 964731591A7C77ED00604904 /* ImageController.m */; };
 		9647315D1A7F0EEE00604904 /* 58.png in Resources */ = {isa = PBXBuildFile; fileRef = 9647315C1A7F0EEE00604904 /* 58.png */; };
 		964731641A7F8CAA00604904 /* ChannelsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 964731631A7F8CAA00604904 /* ChannelsButton.m */; };
@@ -247,6 +270,47 @@
 		96123DCA1A710B880053CA1C /* NewsDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDetailVC.m; sourceTree = "<group>"; };
 		961246CD1A8457640080A979 /* MoreChannels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MoreChannels.png; sourceTree = "<group>"; };
 		961246CE1A8457640080A979 /* MoreChannels@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MoreChannels@2x.png"; sourceTree = "<group>"; };
+		9612473C1A88AB070080A979 /* RLTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLTabBarController.h; sourceTree = "<group>"; };
+		9612473D1A88AB070080A979 /* RLTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLTabBarController.m; sourceTree = "<group>"; };
+		961247401A88AB560080A979 /* MainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainVC.h; sourceTree = "<group>"; };
+		961247411A88AB560080A979 /* MainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainVC.m; sourceTree = "<group>"; };
+		961247441A88AB790080A979 /* MineTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineTableVC.h; sourceTree = "<group>"; };
+		961247451A88AB790080A979 /* MineTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineTableVC.m; sourceTree = "<group>"; };
+		961247461A88AB790080A979 /* MineVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineVC.h; sourceTree = "<group>"; };
+		961247471A88AB790080A979 /* MineVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineVC.m; sourceTree = "<group>"; };
+		961247491A88AB790080A979 /* ProfileCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCommonCell.h; sourceTree = "<group>"; };
+		9612474A1A88AB790080A979 /* ProfileCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCommonCell.m; sourceTree = "<group>"; };
+		9612474B1A88AB790080A979 /* ProfileConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ProfileConfig.plist; sourceTree = "<group>"; };
+		9612474C1A88AB790080A979 /* ProfileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileModel.h; sourceTree = "<group>"; };
+		9612474D1A88AB790080A979 /* ProfileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileModel.m; sourceTree = "<group>"; };
+		9612474E1A88AB790080A979 /* ProfileModifyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileModifyVC.h; path = ../ProfileModifyVC.h; sourceTree = "<group>"; };
+		9612474F1A88AB790080A979 /* ProfileModifyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileModifyVC.m; path = ../ProfileModifyVC.m; sourceTree = "<group>"; };
+		961247501A88AB790080A979 /* ProfileTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTitleCell.h; sourceTree = "<group>"; };
+		961247511A88AB790080A979 /* ProfileTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTitleCell.m; sourceTree = "<group>"; };
+		961247521A88AB790080A979 /* ProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileVC.h; sourceTree = "<group>"; };
+		961247531A88AB790080A979 /* ProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileVC.m; sourceTree = "<group>"; };
+		961247551A88AB790080A979 /* SettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsVC.h; sourceTree = "<group>"; };
+		961247561A88AB790080A979 /* SettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsVC.m; sourceTree = "<group>"; };
+		961247621A88C52B0080A979 /* ProfileBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileBaseVC.h; path = ../ProfileBaseVC.h; sourceTree = "<group>"; };
+		961247631A88C52B0080A979 /* ProfileBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileBaseVC.m; path = ../ProfileBaseVC.m; sourceTree = "<group>"; };
+		961247651A88C6200080A979 /* BirthdaySettingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirthdaySettingVC.h; sourceTree = "<group>"; };
+		961247661A88C6200080A979 /* BirthdaySettingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirthdaySettingVC.m; sourceTree = "<group>"; };
+		961247681A88CEDA0080A979 /* GenderSettingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenderSettingVC.h; sourceTree = "<group>"; };
+		961247691A88CEDA0080A979 /* GenderSettingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenderSettingVC.m; sourceTree = "<group>"; };
+		9612476B1A88D3670080A979 /* MineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineController.h; sourceTree = "<group>"; };
+		9612476C1A88D3670080A979 /* MineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineController.m; sourceTree = "<group>"; };
+		961247721A899F890080A979 /* PasswordSetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordSetVC.h; sourceTree = "<group>"; };
+		961247731A899F890080A979 /* PasswordSetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordSetVC.m; sourceTree = "<group>"; };
+		961247761A89ABA20080A979 /* ForgetPWVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPWVC.h; sourceTree = "<group>"; };
+		961247771A89ABA20080A979 /* ForgetPWVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPWVC.m; sourceTree = "<group>"; };
+		961247781A89ABA20080A979 /* ResetPWVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPWVC.h; sourceTree = "<group>"; };
+		961247791A89ABA20080A979 /* ResetPWVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPWVC.m; sourceTree = "<group>"; };
+		9612477C1A89D9AC0080A979 /* ForgetPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordController.h; sourceTree = "<group>"; };
+		9612477D1A89D9AC0080A979 /* ForgetPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordController.m; sourceTree = "<group>"; };
+		961247801A8A0A050080A979 /* News.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = News.png; sourceTree = "<group>"; };
+		961247821A8A0BB00080A979 /* News@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "News@2x.png"; sourceTree = "<group>"; };
+		961247841A8A277D0080A979 /* Mine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Mine@2x.png"; sourceTree = "<group>"; };
+		961247881A8A2A5A0080A979 /* Mine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mine.png; sourceTree = "<group>"; };
 		964731581A7C77ED00604904 /* ImageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageController.h; sourceTree = "<group>"; };
 		964731591A7C77ED00604904 /* ImageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageController.m; sourceTree = "<group>"; };
 		9647315C1A7F0EEE00604904 /* 58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 58.png; sourceTree = "<group>"; };
@@ -632,6 +696,105 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		9612473F1A88AB560080A979 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				961247401A88AB560080A979 /* MainVC.h */,
+				961247411A88AB560080A979 /* MainVC.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		961247431A88AB790080A979 /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				961247441A88AB790080A979 /* MineTableVC.h */,
+				961247451A88AB790080A979 /* MineTableVC.m */,
+				961247461A88AB790080A979 /* MineVC.h */,
+				961247471A88AB790080A979 /* MineVC.m */,
+				9612476B1A88D3670080A979 /* MineController.h */,
+				9612476C1A88D3670080A979 /* MineController.m */,
+				961247481A88AB790080A979 /* Profiles */,
+				961247541A88AB790080A979 /* Settings */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		961247481A88AB790080A979 /* Profiles */ = {
+			isa = PBXGroup;
+			children = (
+				961247491A88AB790080A979 /* ProfileCommonCell.h */,
+				9612474A1A88AB790080A979 /* ProfileCommonCell.m */,
+				9612474B1A88AB790080A979 /* ProfileConfig.plist */,
+				9612474C1A88AB790080A979 /* ProfileModel.h */,
+				9612474D1A88AB790080A979 /* ProfileModel.m */,
+				961247501A88AB790080A979 /* ProfileTitleCell.h */,
+				961247511A88AB790080A979 /* ProfileTitleCell.m */,
+				961247521A88AB790080A979 /* ProfileVC.h */,
+				961247531A88AB790080A979 /* ProfileVC.m */,
+				961247611A88C4710080A979 /* SubVCs */,
+			);
+			path = Profiles;
+			sourceTree = "<group>";
+		};
+		961247541A88AB790080A979 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				961247551A88AB790080A979 /* SettingsVC.h */,
+				961247561A88AB790080A979 /* SettingsVC.m */,
+				961247711A899F730080A979 /* SubVCs */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		961247611A88C4710080A979 /* SubVCs */ = {
+			isa = PBXGroup;
+			children = (
+				961247621A88C52B0080A979 /* ProfileBaseVC.h */,
+				961247631A88C52B0080A979 /* ProfileBaseVC.m */,
+				9612474E1A88AB790080A979 /* ProfileModifyVC.h */,
+				9612474F1A88AB790080A979 /* ProfileModifyVC.m */,
+				961247651A88C6200080A979 /* BirthdaySettingVC.h */,
+				961247661A88C6200080A979 /* BirthdaySettingVC.m */,
+				961247681A88CEDA0080A979 /* GenderSettingVC.h */,
+				961247691A88CEDA0080A979 /* GenderSettingVC.m */,
+			);
+			path = SubVCs;
+			sourceTree = "<group>";
+		};
+		961247711A899F730080A979 /* SubVCs */ = {
+			isa = PBXGroup;
+			children = (
+				961247721A899F890080A979 /* PasswordSetVC.h */,
+				961247731A899F890080A979 /* PasswordSetVC.m */,
+			);
+			path = SubVCs;
+			sourceTree = "<group>";
+		};
+		961247751A89AB020080A979 /* ForgetPassword */ = {
+			isa = PBXGroup;
+			children = (
+				9612477C1A89D9AC0080A979 /* ForgetPasswordController.h */,
+				9612477D1A89D9AC0080A979 /* ForgetPasswordController.m */,
+				961247761A89ABA20080A979 /* ForgetPWVC.h */,
+				961247771A89ABA20080A979 /* ForgetPWVC.m */,
+				961247781A89ABA20080A979 /* ResetPWVC.h */,
+				961247791A89ABA20080A979 /* ResetPWVC.m */,
+			);
+			path = ForgetPassword;
+			sourceTree = "<group>";
+		};
+		9612477F1A8A0A050080A979 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				961247881A8A2A5A0080A979 /* Mine.png */,
+				961247841A8A277D0080A979 /* Mine@2x.png */,
+				961247801A8A0A050080A979 /* News.png */,
+				961247821A8A0BB00080A979 /* News@2x.png */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		9647315B1A7F0EEE00604904 /* ShareIcon */ = {
 			isa = PBXGroup;
 			children = (
@@ -944,11 +1107,14 @@
 		96DEED361A69E53000C045DF /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				961247431A88AB790080A979 /* Mine */,
+				9612473F1A88AB560080A979 /* Main */,
 				96123D5B1A70C8510053CA1C /* Model */,
 				96123D571A70C83F0053CA1C /* ModuleUtilities */,
 				96DEEE221A6FA20D00C045DF /* News */,
 				96DEED371A69E53000C045DF /* Login */,
 				96DEED381A69E53000C045DF /* Register */,
+				961247751A89AB020080A979 /* ForgetPassword */,
 				96DEED391A69E53000C045DF /* Submodule */,
 			);
 			path = Module;
@@ -1023,6 +1189,8 @@
 				96DEEE2A1A6FA86800C045DF /* RLTableViewController.m */,
 				96DEEE2C1A6FA8A200C045DF /* RLTableAndCollectionViewController.h */,
 				96DEEE2D1A6FA8A200C045DF /* RLTableAndCollectionViewController.m */,
+				9612473C1A88AB070080A979 /* RLTabBarController.h */,
+				9612473D1A88AB070080A979 /* RLTabBarController.m */,
 				96DEEDB41A6CE09000C045DF /* RLImageCropViewController.h */,
 				96DEEDB51A6CE09000C045DF /* RLImageCropViewController.m */,
 				96DEEDB71A6CE45100C045DF /* RLPickerViewController.h */,
@@ -1122,6 +1290,7 @@
 		96DEED7B1A6A502300C045DF /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				9612477F1A8A0A050080A979 /* Main */,
 				9647315B1A7F0EEE00604904 /* ShareIcon */,
 				96D8FFB51A7A1D4B0041C8D8 /* News */,
 				96DEED9A1A6C9C3200C045DF /* RegisterImages */,
@@ -1348,10 +1517,13 @@
 				96DEED9D1A6C9C3200C045DF /* PicDefault.png in Resources */,
 				961246D01A8457640080A979 /* MoreChannels@2x.png in Resources */,
 				96A98F641A7B729300EE8B6A /* check_icon.png in Resources */,
+				961247861A8A277D0080A979 /* Mine@2x.png in Resources */,
 				96C1C0671A766A47003E7C07 /* TCZone.png in Resources */,
+				961247811A8A0A050080A979 /* News.png in Resources */,
 				964731761A80D52F00604904 /* NewsDefaultIcon@2x.png in Resources */,
 				96C1C0681A766A47003E7C07 /* TCZone@2x.png in Resources */,
 				96C1C0691A766A47003E7C07 /* WeChat.png in Resources */,
+				9612475B1A88AB790080A979 /* ProfileConfig.plist in Resources */,
 				96C1C0791A771B31003E7C07 /* read_me.txt in Resources */,
 				96C1C0621A766A47003E7C07 /* QQ@2x.png in Resources */,
 				96123D961A70E1570053CA1C /* blueArrow.png in Resources */,
@@ -1371,6 +1543,8 @@
 				96C1C0651A766A47003E7C07 /* TCWeibo.png in Resources */,
 				96C1C0641A766A47003E7C07 /* SinaWeibo@2x.png in Resources */,
 				96DEED9E1A6C9C3200C045DF /* PicDefault@2x.png in Resources */,
+				961247891A8A2A5A0080A979 /* Mine.png in Resources */,
+				961247831A8A0BB00080A979 /* News@2x.png in Resources */,
 				964731661A80534F00604904 /* ChannelDelete.png in Resources */,
 				96A98F671A7B729300EE8B6A /* uncheck_icon@2x.png in Resources */,
 				96D8FFBB1A7A21BC0041C8D8 /* NewsTitle@2x.png in Resources */,
@@ -1406,8 +1580,10 @@
 				96C1BFBB1A76289A003E7C07 /* RLActivityShare.m in Sources */,
 				96DEED771A6A3FFD00C045DF /* RegisterVC.m in Sources */,
 				96DEED541A69EDC600C045DF /* RLBaseNavigationController.m in Sources */,
+				9612475E1A88AB790080A979 /* ProfileTitleCell.m in Sources */,
 				96123DBD1A70F2380053CA1C /* SDWebImageDecoder.m in Sources */,
 				96C1C0531A764D95003E7C07 /* RLSinaWeiboActivity.m in Sources */,
+				961247601A88AB790080A979 /* SettingsVC.m in Sources */,
 				96DEBFBC1A7377920014EA9D /* RLImage.m in Sources */,
 				96123D841A70E0860053CA1C /* SegmentContentsView.m in Sources */,
 				96DEED711A6A259800C045DF /* RLTextField.m in Sources */,
@@ -1425,6 +1601,7 @@
 				96A98F5F1A7A497700EE8B6A /* RLUtilitiesMethods.m in Sources */,
 				96DEEDE11A6D10AB00C045DF /* RLReachabilityChecker.m in Sources */,
 				96DEEDB01A6CD9A600C045DF /* RLInputView.m in Sources */,
+				961247421A88AB560080A979 /* MainVC.m in Sources */,
 				96DEEE0A1A6E305900C045DF /* GVPopViewManager.m in Sources */,
 				9682CA4F1A83577100097D7C /* NewsCell.m in Sources */,
 				96DEEDE01A6D10AB00C045DF /* Reachability.m in Sources */,
@@ -1438,12 +1615,14 @@
 				96D8FFAB1A78A0400041C8D8 /* SegmentContent.m in Sources */,
 				96123DBA1A70F2380053CA1C /* NSData+ImageContentType.m in Sources */,
 				96DEEE6A1A709E1600C045DF /* NewsTypeModel.m in Sources */,
+				961247641A88C52B0080A979 /* ProfileBaseVC.m in Sources */,
 				964731641A7F8CAA00604904 /* ChannelsButton.m in Sources */,
 				96DEECFC1A69330B00C045DF /* main.m in Sources */,
 				96DEEDDE1A6D10AB00C045DF /* SBJsonWriter.m in Sources */,
 				96DEED6B1A6A256600C045DF /* RLLabel.m in Sources */,
 				96123D941A70E0C40053CA1C /* RefreshView.m in Sources */,
 				96DEEDA11A6CA05D00C045DF /* RLBaseCollectionViewController.m in Sources */,
+				961247671A88C6200080A979 /* BirthdaySettingVC.m in Sources */,
 				96D8FFA81A78A02C0041C8D8 /* SegmentItem.m in Sources */,
 				96DEEDB61A6CE09000C045DF /* RLImageCropViewController.m in Sources */,
 				96DEEE341A6FAA1600C045DF /* RLConstVariable.m in Sources */,
@@ -1452,6 +1631,8 @@
 				9647316E1A805BBC00604904 /* RLTableModel.m in Sources */,
 				96DEED961A6A5FB700C045DF /* CompleteRegisterinfoVC.m in Sources */,
 				96123DC51A70F2380053CA1C /* UIImage+WebP.m in Sources */,
+				961247741A899F890080A979 /* PasswordSetVC.m in Sources */,
+				9612475F1A88AB790080A979 /* ProfileVC.m in Sources */,
 				96DEED991A6C898F00C045DF /* RLRadioButton.m in Sources */,
 				9647316B1A805A2400604904 /* SingleChannelNewsVC.m in Sources */,
 				96DEED931A6A5B6A00C045DF /* PhoneAuthCodeVC.m in Sources */,
@@ -1459,6 +1640,7 @@
 				96C1BFC11A76396F003E7C07 /* RLActivity.m in Sources */,
 				96DEBFBE1A7377920014EA9D /* RLTypecast.m in Sources */,
 				96C1C0A01A7793BA003E7C07 /* NewsChannelsVC.m in Sources */,
+				9612477B1A89ABA20080A979 /* ResetPWVC.m in Sources */,
 				96DEED7A1A6A4BA600C045DF /* ChangeVCController.m in Sources */,
 				96DEBFBD1A7377920014EA9D /* RLTextSize.m in Sources */,
 				96123DCB1A710B880053CA1C /* NewsDetailVC.m in Sources */,
@@ -1467,13 +1649,18 @@
 				96DEEDB91A6CE45100C045DF /* RLPickerViewController.m in Sources */,
 				96123DBB1A70F2380053CA1C /* SDImageCache.m in Sources */,
 				96C1C08E1A776F5C003E7C07 /* ChannelsTitleView.m in Sources */,
+				9612477E1A89D9AC0080A979 /* ForgetPasswordController.m in Sources */,
 				96123D931A70E0C40053CA1C /* RefreshTableView.m in Sources */,
 				96123DC21A70F2380053CA1C /* UIButton+WebCache.m in Sources */,
 				96DEED681A6A242500C045DF /* DejalActivityView.m in Sources */,
+				9612475A1A88AB790080A979 /* ProfileCommonCell.m in Sources */,
 				96123DC31A70F2380053CA1C /* UIImage+GIF.m in Sources */,
 				964731721A80B90F00604904 /* RLFileOperation.m in Sources */,
 				96DEEDFD1A6E1B2300C045DF /* GVResponse.m in Sources */,
+				9612476D1A88D3670080A979 /* MineController.m in Sources */,
+				9612473E1A88AB070080A979 /* RLTabBarController.m in Sources */,
 				96DEEDDB1A6D10AB00C045DF /* SBJSON.m in Sources */,
+				9612477A1A89ABA20080A979 /* ForgetPWVC.m in Sources */,
 				96DEEDA41A6CA36500C045DF /* ChooseDQNumberVC.m in Sources */,
 				96123DB91A70F2380053CA1C /* MKAnnotationView+WebCache.m in Sources */,
 				96123DC11A70F2380053CA1C /* SDWebImagePrefetcher.m in Sources */,
@@ -1483,15 +1670,20 @@
 				96DEEE281A6FA40F00C045DF /* NewsVC.m in Sources */,
 				96123DC81A70F2380053CA1C /* UIView+WebCacheOperation.m in Sources */,
 				96C1C0721A766ABB003E7C07 /* RLWeChatTimeLineActivity.m in Sources */,
+				961247591A88AB790080A979 /* MineVC.m in Sources */,
 				96DEEDEB1A6D23AA00C045DF /* GVRequestManager.m in Sources */,
 				96123DC41A70F2380053CA1C /* UIImage+MultiFormat.m in Sources */,
 				96DEEE071A6E2D7100C045DF /* URBAlertView.m in Sources */,
 				96123DBF1A70F2380053CA1C /* SDWebImageDownloaderOperation.m in Sources */,
+				9612475C1A88AB790080A979 /* ProfileModel.m in Sources */,
+				961247581A88AB790080A979 /* MineTableVC.m in Sources */,
 				96DEEE0E1A6E35F800C045DF /* User.m in Sources */,
 				96DEEE6D1A709F9C00C045DF /* NewsBaseModel.m in Sources */,
+				9612475D1A88AB790080A979 /* ProfileModifyVC.m in Sources */,
 				96C1C0971A7779E0003E7C07 /* SubscribeChannelsView.m in Sources */,
 				96DEBFBB1A7377920014EA9D /* RLColor.m in Sources */,
 				96123DBE1A70F2380053CA1C /* SDWebImageDownloader.m in Sources */,
+				9612476A1A88CEDA0080A979 /* GenderSettingVC.m in Sources */,
 				96DEEDFA1A6E09FD00C045DF /* RegisterController.m in Sources */,
 				9665D42C1A738DF700E851CB /* RLSocialShareKit.m in Sources */,
 				96DEED511A69ED9E00C045DF /* RLBaseViewController.m in Sources */,
@@ -1588,6 +1780,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

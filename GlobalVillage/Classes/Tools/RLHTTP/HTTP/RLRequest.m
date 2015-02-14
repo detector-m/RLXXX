@@ -163,8 +163,10 @@ static const NSTimeInterval kTimeoutInterval = 180.0;
     jsonParser = nil;
     
     if(result == nil){
-        if([responseString hasSuffix:@"</html>"] || [responseString hasPrefix:@"<html"]) {
-            *error = [self formError:GeneralErrorCode userInfo:@{@"errorInfo":responseString}];;
+        NSString *text = [responseString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+
+        if([text hasSuffix:@"</html>"] || [text hasPrefix:@"<html>"]) {
+            *error = [self formError:GeneralErrorCode userInfo:@{@"errorInfo":text}];
             
             return nil;
         }

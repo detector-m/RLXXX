@@ -13,7 +13,8 @@ static NSString *kDefaultHttpMethod = @"POST";
 static NSString *kRestserverBaseURL = @"http://www.dqcc.com.cn/mobile";
 //static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn/mobile/api/";
 //http://www.dqcc.com.cn/mobile/api/v20/
-static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn/mobile/api/v20";
+//static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn/mobile/api/v20";
+static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn:7080/mobile/api/v20";
 //static NSString *kRestserverApiURL = @"http://192.168.10.104:8080/mobile/api/v20";
 
 
@@ -137,6 +138,21 @@ static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn/mobile/api/v20";
     return [self requestWithPageName:pageName parameters:parameters httpMethod:kDefaultHttpMethod delegate:(id<RLRequestDelegate>)delegate];
 }
 
+//回密码接口
++ (RLRequest *)requestFindPassword:(NSMutableDictionary *)parameters
+                       andDelegate:(id<RLRequestDelegate>)delegate {
+    NSString *pageName = @"/member/findPassword.jhtml";
+    
+    return [self requestWithPageName:pageName parameters:parameters httpMethod:kDefaultHttpMethod delegate:(id<RLRequestDelegate>)delegate];
+}
+//密码修改接口
++ (RLRequest *)requestResetPassword:(NSMutableDictionary *)parameters
+                        andDelegate:(id<RLRequestDelegate>)delegate {
+    NSString *pageName = @"/member/editPassword.jhtml";
+    
+    return [self requestWithPageName:pageName parameters:parameters httpMethod:kDefaultHttpMethod delegate:(id<RLRequestDelegate>)delegate];
+}
+
 //获取新闻类型列表
 + (RLRequest *)requestNewsTypeList:(NSMutableDictionary *)parameters
                        andDelegate:(id<RLRequestDelegate>)delegate {
@@ -167,6 +183,23 @@ static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn/mobile/api/v20";
 + (RLRequest *)requestForStoreList:(NSMutableDictionary *)parameters
                        andDelegate:(id<RLRequestDelegate>)delegate {
     NSString *pageName = @"storeList.jhtml";
+    
+    return [self requestWithPageName:pageName parameters:parameters httpMethod:kDefaultHttpMethod delegate:delegate];
+}
+
+////////////////////
+//用户资料修改
++ (RLRequest *)requestUpdateUserInfo:(NSMutableDictionary *)parameters
+                         andDelegate:(id<RLRequestDelegate>)delegate {
+    NSString *pageName = @"/member/updateUserInfo.jhtml";
+    
+    return [self requestWithPageName:pageName parameters:parameters httpMethod:kDefaultHttpMethod delegate:delegate];
+}
+
+//获取用户资料详情接口
++ (RLRequest *)requestFindMemberInfo:(NSMutableDictionary *)parameters
+                         andDelegate:(id<RLRequestDelegate>)delegate {
+    NSString *pageName = @"/member/findMemberInfo.jhtml";
     
     return [self requestWithPageName:pageName parameters:parameters httpMethod:kDefaultHttpMethod delegate:delegate];
 }
@@ -220,6 +253,15 @@ static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn/mobile/api/v20";
         case kRequestTypeLogin:
             request = [self requestLogin:parameters andDelegate:delegate];
             break;
+        
+        /////////////
+        case kRequestTypeFindPassword:
+            request = [self requestFindPassword:parameters andDelegate:delegate];
+            break;
+        case kRequestTypeResetPassword:
+            request = [self requestResetPassword:parameters andDelegate:delegate];
+            break;
+            
         case kRequestTypeNewsTypeList:
             request = [self requestNewsTypeList:parameters andDelegate:delegate];
             break;
@@ -229,6 +271,15 @@ static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn/mobile/api/v20";
         case kRequestTypeSubscribeNewsChannels:
             request = [self requestSubscribeNewsChannels:parameters andDelegate:delegate];
             break;
+            
+        //////////
+        case kRequestTypeUpdateUserInfo:
+            request = [self requestUpdateUserInfo:parameters andDelegate:delegate];
+            break;
+        case kRequestTypeFindMemberInfo:
+            request = [self requestFindMemberInfo:parameters andDelegate:delegate];
+            break;
+            
         default:
             break;
     }

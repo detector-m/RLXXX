@@ -149,9 +149,6 @@
 - (void)clickCompleteBtn:(UIButton *)button {
     [self endEditing];
     
-//    UIImage *image = [self.pickPicBtn imageForState:UIControlStateNormal];
-    
-//    [User sharedUser].pic = UIImagePNGRepresentation(image);
     User *user = [User sharedUser];
     if(user.picUrl.length == 0) {
         [GVPopViewManager showDialogWithTitle:NSLocalizedString(@"头像未设置！请设置头像。", nil)];
@@ -224,33 +221,11 @@
         };
     }
     else {
-//        __weak CompleteRegisterinfoVC *blockSelf = self;
         [GVPopViewManager removeActivity];
         User *user = [User sharedUser];
         user.picUrl = response.responseData;
-
-//        [self.controller downloadImageRequest:user.picUrl imageScale:@"1" accessToken:user.accessToken];
     }
     
     [self mainThreadAsync:block];
 }
-
-- (void)downloadImageResponse:(GVResponse *)response {
-    dispatch_block_t block = NULL;
-    if(response == nil || response.status != 0) {
-        block = ^(){
-            [GVPopViewManager showDialogWithTitle:NSLocalizedString(@"获取头像失败！", nil)];
-        };
-    }
-    else {
-        [GVPopViewManager removeActivity];
-//        User *user = [User sharedUser];
-//        user.picUrl = response.responseData;
-
-        [User sharedUser].pic = response.responseData;
-    }
-    
-    [self mainThreadAsync:block];
-}
-
 @end

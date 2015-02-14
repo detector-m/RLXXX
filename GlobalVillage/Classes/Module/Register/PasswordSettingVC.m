@@ -14,7 +14,8 @@
 #import "RLFileOperation.h"
 
 #import "RLBaseNavigationController.h"
-#import "NewsVC.h"
+//#import "NewsVC.h"
+#import "MainVC.h"
 
 @interface PasswordSettingVC () <RegisterControllerDelegate>
 @property (nonatomic, readwrite, strong) RLInputView *passwordInputView;
@@ -84,28 +85,6 @@
     ((UITextField *)self.checkInputView.textInputView).placeholder = NSLocalizedString(@"请确认密码", nil);
     [self.view addSubview:self.checkInputView];
     
-//    UILabel *passwordLB = [ViewConstructor constructDefaultLabel:[UILabel class] withFrame:CGRectMake(15, 75, 100, 40)];
-//    [passwordLB regulateFrameOrigin];
-//    passwordLB.textAlignment = NSTextAlignmentLeft;
-//    passwordLB.text = NSLocalizedString(@"密码", nil);
-//    [self.view addSubview:passwordLB];
-//    
-//    self.passwordTF = [ViewConstructor constructDefaultTextField:[UITextField class] withFrame:CGRectMake(105, 75, 185+15, 40)];
-//    [self.passwordTF regulateFrameOrigin];
-//    self.passwordTF.secureTextEntry = YES;
-//    [self.view addSubview:self.passwordTF];
-//    
-//    UILabel *checkPasswordLB = [ViewConstructor constructDefaultLabel:[UILabel class] withFrame:CGRectMake(15, 135, 100, 40)];
-//    [checkPasswordLB regulateFrameOrigin];
-//    checkPasswordLB.textAlignment = NSTextAlignmentLeft;
-//    checkPasswordLB.text = NSLocalizedString(@"密码确认", nil);
-//    [self.view addSubview:checkPasswordLB];
-//    
-//    self.checkPasswordTF = [ViewConstructor constructDefaultTextField:[UITextField class] withFrame:CGRectMake(105, 135, 185+15, 40)];
-//    [self.checkPasswordTF regulateFrameOrigin];
-//    self.checkPasswordTF.secureTextEntry = YES;
-//    [self.view addSubview:self.checkPasswordTF];
-    
     UIButton *confirmBtn = [ViewConstructor constructDefaultButton:[UIButton class] withFrame:CGRectMake(80, 190, 160, 40)];
     [confirmBtn regulateFrameOrigin];
     [confirmBtn setTitle:NSLocalizedString(@"确定", nil) forState:UIControlStateNormal];
@@ -163,7 +142,8 @@
         [RLFileOperation storeLoginInfo:user.dqNumber pwd:user.password date:nil plateforme:@"local" openKey:nil];
         block = ^() {
 //            [ChangeVCController changeMainRootViewController:[NewsVC class]];
-            NewsVC *vc = [[NewsVC alloc] init];
+//            NewsVC *vc = [[NewsVC alloc] init];
+            MainVC *vc = [[MainVC alloc] init];
             [ChangeVCController pushViewControllerByNavigationControllerFromRootViewController:self.navigationController pushVC:vc];
         };
     }

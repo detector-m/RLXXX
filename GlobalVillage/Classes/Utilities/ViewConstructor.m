@@ -62,4 +62,9 @@
     
     return textField;
 }
+
++ (UITableViewCell *)constructCell:(Class)theClass withIdentifier:(NSString *)identifier withTableView:(UITableView *)tableView {
+    [tableView registerClass:[theClass class] forCellReuseIdentifier:identifier];
+    return [tableView dequeueReusableCellWithIdentifier:identifier];
+}
 @end

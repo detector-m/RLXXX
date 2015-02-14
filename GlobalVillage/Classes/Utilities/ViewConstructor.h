@@ -15,4 +15,7 @@
 + (UILabel *)constructDefaultLabel:(Class)theClass withFrame:(CGRect)frame;
 + (UIButton *)constructDefaultButton:(Class)theClass withFrame:(CGRect)frame;
 + (UITextField *)constructDefaultTextField:(Class)theClass withFrame:(CGRect)frame;
+
++ (UITableViewCell *)constructCell:(Class)theClass withIdentifier:(NSString *)identifier withTableView:(UITableView *)tableView;
+
 @end

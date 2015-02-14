@@ -48,6 +48,16 @@
                         longtitudeValue:(NSString *)longitudeValue
                               cityValue:(NSString *)cityValue
                            thirdIdValue:(NSString *)thirdIdValue;
+
+//回密码接口参数
++ (NSMutableDictionary *)findPasswordParameter:(NSString *)mobileNumberValue
+                               authcodeValue:(NSString *)authcodeValue
+                            newPasswordValue:(NSString *)newPasswordValue;
+//密码修改接口参数
++ (NSMutableDictionary *)resetPasswordParameter:(NSString *)oldPasswordValue
+                             newPasswordValue:(NSString *)newPasswordValue
+                             accessTokenValue:(NSString *)accessTokenValue;
+
 //获取新闻类型列表参数列表
 + (NSMutableDictionary *)newsTypeListParameter:(NSString *)accessTokenValue;
 
@@ -69,4 +79,18 @@
                               pageSizeValue:(NSString *)pageSizeValue
                               currPageValue:(NSString *)currPageSizeValue
                            accessTokenValue:(NSString *)accessTokenValue;
+
+////////////////////
+//用户资料修改
++ (NSMutableDictionary *)UpdateUserInfoParameter:(NSString *)nicknameValue
+                                        sexValue:(NSString *)sexValue
+                                       cityValue:(NSString *)cityValue
+                               headPortraitValue:(NSString *)headPortraitValue
+                                        ageValue:(NSString *)ageValue
+                                  signatureValue:(NSString *)signatureValue
+                                accessTokenValue:(NSString *)accessTokenValue;
+
+//获取用户资料详情接口
++ (NSMutableDictionary *)FindMemberInfoParameter:(NSString *)gidValue
+                                accessTokenValue:(NSString *)accessTokenValue;
 @end

@@ -94,12 +94,15 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationTitleButton.enabled = YES;
+    self.tabBarController.navigationItem.titleView = self.navigationTitleButton;
     [self.navigationItem setHidesBackButton:YES animated:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.navigationTitleButton.enabled = NO;
+    [self.tabBarController.navigationItem.titleView removeFromSuperview];
+    self.tabBarController.navigationItem.titleView = nil;
     [self.navigationItem setHidesBackButton:NO animated:NO];
 }
 
@@ -109,7 +112,7 @@
     [self dataDoLoad];
     
     [self navigationTitleButtonDoLoad];
-    self.title = NSLocalizedString(@"地球村新闻", nil);
+//    self.title = NSLocalizedString(@"地球村新闻", nil);
     
     self.controller.accessToken = [User sharedUser].accessToken;
     
@@ -123,7 +126,8 @@
     button.layer.borderWidth = .0f;
     self.navigationTitleButton = button;
     [button setImage:image forState:UIControlStateNormal];
-    self.navigationItem.titleView = button;
+    self.tabBarController.navigationItem.titleView = button;
+//    self.navigationItem.titleView = button;
     [self.navigationTitleButton addTarget:self action:@selector(clickNavigationTitleBtn:) forControlEvents:UIControlEventTouchUpInside];
 
 

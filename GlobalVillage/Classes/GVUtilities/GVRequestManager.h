@@ -29,12 +29,20 @@ typedef NS_ENUM(NSInteger, RequestType) {
     
     kRequestTypeLogin,
     
+    //
+    kRequestTypeFindPassword,
+    kRequestTypeResetPassword,
+    
     kRequestTypeNewsTypeList,
     kRequestTypeNewsList,
     
     kRequestTypeSubscribeNewsChannels,
     
     kRequestTypeStoreList,
+    
+    //////////////
+    kRequestTypeUpdateUserInfo,
+    kRequestTypeFindMemberInfo,
 };
 
 @interface GVRequestManager : NSObject
@@ -72,6 +80,13 @@ typedef NS_ENUM(NSInteger, RequestType) {
 + (RLRequest *)requestLogin:(NSMutableDictionary *)parameters
                 andDelegate:(id<RLRequestDelegate>)delegate;
 
+//回密码接口
++ (RLRequest *)requestFindPassword:(NSMutableDictionary *)parameters
+                       andDelegate:(id<RLRequestDelegate>)delegate;
+//密码修改接口
++ (RLRequest *)requestResetPassword:(NSMutableDictionary *)parameters
+                        andDelegate:(id<RLRequestDelegate>)delegate;
+
 //获取新闻类型列表
 + (RLRequest *)requestNewsTypeList:(NSMutableDictionary *)parameters
                        andDelegate:(id<RLRequestDelegate>)delegate;
@@ -89,4 +104,13 @@ typedef NS_ENUM(NSInteger, RequestType) {
                        andDelegate:(id<RLRequestDelegate>)delegate;
 
 + (RLRequest *)requestWithType:(RequestType)type subTag:(NSInteger)subTag parameters:(NSMutableDictionary *)parameters keyClass:(NSString *)keyClass andDelegate:(id<RLRequestDelegate>)delegate;
+
+////////////////////
+//用户资料修改
++ (RLRequest *)requestUpdateUserInfo:(NSMutableDictionary *)parameters
+                         andDelegate:(id<RLRequestDelegate>)delegate;
+
+//获取用户资料详情接口
++ (RLRequest *)requestFindMemberInfo:(NSMutableDictionary *)parameters
+                         andDelegate:(id<RLRequestDelegate>)delegate;
 @end

@@ -37,7 +37,7 @@
 
 //是否是地球号
 - (BOOL)isChikyugo {
-    NSString *regexString = @"^\\d{6,8}$";
+    NSString *regexString = @"^[a-zA-Z0-9]{6,10}$";
     
     return [self isMatched:regexString];
 }

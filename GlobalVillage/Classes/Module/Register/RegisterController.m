@@ -86,13 +86,6 @@ didFailWithError:(NSError *)error {
     [GVPopViewManager removeActivity];
     [[RLRequestMgr shared] removeRequestForKey:NSStringFromClass(self.class) request:request];
     
-//    id<RegisterControllerDelegate> delegate = (id<RegisterControllerDelegate>)self.delegate;
-//    if([delegate respondsToSelector:@selector(request:didLoadFailed:)]) {
-//        [delegate request:request didLoadFailed:error];
-//        
-//        return;
-//    }
-    
     dispatch_block_t block = NULL;
     block = ^() {
         [GVPopViewManager showDialogWithTitle:@"网络有问题"];
@@ -103,16 +96,6 @@ didFailWithError:(NSError *)error {
 - (void)request:(RLRequest *)request
         didLoad:(id)result {
     [GVPopViewManager removeActivity];
-    
-//    if(response && response.status != 0) {
-//        if(self.delegate && [self.delegate respondsToSelector:@selector(request:didLoadFailed:)]) {
-//            NSDictionary *error = [self constructResponseErrorWithResponse:response];
-//            [self.delegate request:request didLoadFailed:error];
-//            
-//            return;
-//        }
-//    }
-    
     [self responseWithType:request.tag result:result];
     
     [[RLRequestMgr shared] removeRequestForKey:NSStringFromClass(self.class) request:request];

@@ -36,9 +36,15 @@
 #define dSexField       @"sex"
 #define dHeadPortraitField  @"headPortrait"
 
+#define dAgeField @"age"
+#define dSignatureField @"signature"
+
 #define dThirdIdField   @"thirdId"
 
 #define dAccessTokenField @"accessToken"
+
+#define dNewPasswordField @"newPassward"
+#define dOldPasswordField @"oldPassward"
 
 #define dIDField    @"id"
 #define dCurrSizeField @"currSize"
@@ -144,13 +150,14 @@
 + (NSMutableDictionary *)downloadImageParameter:(NSString *)imageUrlValue
                                  imageScaleVale:(NSString *)scaleValue
                                     accessToken:(NSString *)accessTokenValue {
-    if(imageUrlValue.length == 0 || accessTokenValue.length == 0) {
+    if(accessTokenValue.length == 0) {
         return nil;
     }
     NSMutableDictionary *retDic = nil;
     retDic = [NSMutableDictionary dictionary];
-    
-    [retDic setObject:imageUrlValue forKey:dDownloadImageNameField];
+    if(imageUrlValue) {
+        [retDic setObject:imageUrlValue forKey:dDownloadImageNameField];
+    }
     [retDic setObject:scaleValue forKey:dDownloadImageScaleField];
     [retDic setObject:accessTokenValue forKey:dAccessTokenField];
     
@@ -239,6 +246,42 @@
     return retDic;
 }
 
+///////
+//找回回密码接口参数
++ (NSMutableDictionary *)findPasswordParameter:(NSString *)mobileNumberValue
+                               authcodeValue:(NSString *)authcodeValue
+                            newPasswordValue:(NSString *)newPasswordValue {
+    if(mobileNumberValue.length == 0)
+        return nil;
+    
+    NSMutableDictionary *retDic = nil;
+    retDic = [NSMutableDictionary dictionary];
+    [retDic setObject:mobileNumberValue forKey:dMobileNumField];
+    if(authcodeValue) {
+        [retDic setObject:authcodeValue forKey:dMobileAuthCodeField];
+    }
+    [retDic setObject:newPasswordValue forKey:dNewPasswordField];
+    
+    return retDic;
+}
+//密码修改接口参数
++ (NSMutableDictionary *)resetPasswordParameter:(NSString *)oldPasswordValue
+                             newPasswordValue:(NSString *)newPasswordValue
+                             accessTokenValue:(NSString *)accessTokenValue {
+    if(accessTokenValue.length == 0) {
+        return nil;
+    }
+    
+    NSMutableDictionary *retDic = nil;
+    retDic = [NSMutableDictionary dictionary];
+    [retDic setObject:oldPasswordValue forKey:dOldPasswordField];
+    [retDic setObject:newPasswordValue forKey:dNewPasswordField];
+    [retDic setObject:accessTokenValue forKey:dAccessTokenField];
+    
+    return retDic;
+}
+
+//新闻类型列表
 + (NSMutableDictionary *)newsTypeListParameter:(NSString *)accessTokenValue {
     NSMutableDictionary *retDic = nil;
     
@@ -318,4 +361,57 @@
     return  retDic;
 }
 
+////////////////////
+//用户资料修改
++ (NSMutableDictionary *)UpdateUserInfoParameter:(NSString *)nicknameValue
+                                        sexValue:(NSString *)sexValue
+                                       cityValue:(NSString *)cityValue
+                               headPortraitValue:(NSString *)headPortraitValue
+                                        ageValue:(NSString *)ageValue
+                                  signatureValue:(NSString *)signatureValue
+                                accessTokenValue:(NSString *)accessTokenValue {
+    if(accessTokenValue.length == 0)
+        return nil;
+    
+    NSMutableDictionary *retDic = nil;
+    retDic = [NSMutableDictionary dictionary];
+    
+    if(sexValue.length > 0) {
+        [retDic setObject:sexValue forKey:dSexField];
+    }
+    if(cityValue.length > 0) {
+        [retDic setObject:cityValue forKey:dCityField];
+    }
+    if(headPortraitValue.length > 0) {
+        [retDic setObject:headPortraitValue forKey:dHeadPortraitField];
+    }
+    if(ageValue.length > 0) {
+        [retDic setObject:ageValue forKey:dAgeField];
+    }
+    if(signatureValue.length > 0) {
+        [retDic setObject:signatureValue forKey:dSignatureField];
+    }
+    
+    [retDic setObject:accessTokenValue forKey:dAccessTokenField];
+    
+    return retDic;
+}
+
+//获取用户资料详情接口
++ (NSMutableDictionary *)FindMemberInfoParameter:(NSString *)gidValue
+                                accessTokenValue:(NSString *)accessTokenValue {
+    if(accessTokenValue.length == 0)
+        return nil;
+    
+    NSMutableDictionary *retDic = nil;
+    retDic = [NSMutableDictionary dictionary];
+    
+    if(gidValue.length > 0) {
+//        [retDic setObject:gidValue forKey:<#(id<NSCopying>)#>]
+    }
+    
+    [retDic setObject:accessTokenValue forKey:dAccessTokenField];
+    
+    return retDic;
+}
 @end

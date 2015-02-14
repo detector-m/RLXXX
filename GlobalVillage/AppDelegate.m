@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "RLBaseNavigationController.h"
 #import "NormalLoginVC.h"
+
+#import "MainVC.h"
 #import "NewsVC.h"
 
 #import "RLLocationManager.h"
@@ -42,6 +44,7 @@
 //    TestViewController *vc = [[TestViewController alloc] init];
 //    CompleteRegisterinfoVC *vc = [[CompleteRegisterinfoVC alloc] init];
 //    PasswordSettingVC *vc = [[PasswordSettingVC alloc] init];
+//    MainVC *vc = [[MainVC alloc] init];
     RLBaseNavigationController *nav = [[RLBaseNavigationController alloc] initWithRootViewController:vc];
     self.window.rootViewController = nav;
 }
