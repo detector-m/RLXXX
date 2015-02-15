@@ -49,6 +49,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self dataDoLoad];
 }
 
 - (void)modifyInputViewDoLoadWithStyle:(RLInputViewStyle)style {
@@ -64,32 +65,37 @@
 }
 
 - (void)clickCommitBtn:(UIBarButtonItem *)item {
-   
+    [self endEditing];
     if([self.modifyInputView.textInputView isKindOfClass:[UITextField class]]) {
         NSString *text = ((UITextField *)self.modifyInputView.textInputView).text;
         text = [text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        if(text == 0) {
+        if(text.length == 0) {
             [GVPopViewManager showDialogWithTitle:NSLocalizedString(@"昵称输入有误！", nil)];
             return;
         }
 
         [self.controller updateUserInfoRequest:text sex:nil city:nil headPortrait:nil age:nil signature:nil accessToken:[User sharedUser].accessToken];
+        
+        [GVPopViewManager showActivityForView:self.view];
     }
     else {
         NSString *text = ((UITextView *)self.modifyInputView.textInputView).text;
         text = [text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        if(text == 0) {
+        if(text.length == 0) {
             [GVPopViewManager showDialogWithTitle:NSLocalizedString(@"个性签名输入有误！", nil)];
             return;
         }
 
         [self.controller updateUserInfoRequest:nil sex:nil city:nil headPortrait:nil age:nil signature:text accessToken:[User sharedUser].accessToken];
+        [GVPopViewManager showActivityForView:self.view];
     }
 }
 
 #pragma mark - response delegates
 - (void)updateUserInfoResponse:(GVResponse *)response {
     dispatch_block_t block = NULL;
+    [GVPopViewManager removeActivity];
+
     if(response == nil || response.status != 0) {
         block = ^(){
             [GVPopViewManager showDialogWithTitle:NSLocalizedString(@"更新头像失败！", nil)];
@@ -104,8 +110,11 @@
         else {
             user.signature = ((UITextView *)self.modifyInputView.textInputView).text;
         }
+        __weak ProfileModifyVC *weakSelf = self;
         block = ^(){
-        
+            [weakSelf.superVC reloadData];
+            [ChangeVCController popViewControllerByNavigationController:weakSelf.navigationController];
+            [GVPopViewManager showDialogWithTitle:NSLocalizedString(@"修改成功", nil)];
         };
     }
     

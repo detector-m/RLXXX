@@ -12,7 +12,7 @@
 
 static NSString *kUserAgent = @"RLRequestConnect";
 static const NSString *kStringBoundary = @"3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f";
-static const NSTimeInterval kTimeoutInterval = 180.0;
+static const NSTimeInterval kTimeoutInterval = 100.0f;//180.0;
 
 @interface RLRequest ()
 

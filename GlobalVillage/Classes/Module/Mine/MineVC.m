@@ -101,8 +101,6 @@
         }
             break;
         case 1: {
-            SettingsVC *vc = [[SettingsVC alloc] init];
-            [ChangeVCController pushViewControllerByNavigationController:self.tabBarController.navigationController pushVC:vc];
         }
             break;
             

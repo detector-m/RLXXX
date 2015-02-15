@@ -37,11 +37,19 @@ static NSString * const kUserLogin = @"UserLoginKey";
 
 + (NSDictionary *)userLoginInfo {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    DLog(@"%@", [userDefaults objectForKey:kUserLogin]);
     return [userDefaults objectForKey:kUserLogin];
 }
 
++ (BOOL)isLogined {
+    return [[[self userLoginInfo] objectForKey:@"logined"] boolValue];
+}
+
 + (BOOL)storeLoginInfo:(NSString *)name pwd:(NSString *)pwd date:(NSDate *)date plateforme:(NSString *)plateforme openKey:(NSString *)openKey {
-    [self setUserLoginInfo:[self constructUserLoginInfo:name pwd:pwd date:date plateforme:plateforme openKey:openKey]];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:[self constructUserLoginInfo:name pwd:pwd date:date plateforme:plateforme openKey:openKey]];
+    [dic setObject:[NSNumber numberWithBool:YES] forKey:@"logined"];
+    
+    [self setUserLoginInfo:dic];
     
     return YES;
 }

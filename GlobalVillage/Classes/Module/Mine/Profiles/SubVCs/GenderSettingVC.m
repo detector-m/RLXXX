@@ -99,21 +99,25 @@
         return;
     }
     
-    
+    [self.controller updateUserInfoRequest:nil sex:[RLTypecast integerToString:self.gender] city:nil headPortrait:nil age:nil signature:nil accessToken:[User sharedUser].accessToken];
 }
 
 - (void)updateUserInfoResponse:(GVResponse *)response {
     dispatch_block_t block = NULL;
+    [GVPopViewManager removeActivity];
     if(response == nil || response.status != 0) {
         block = ^(){
             [GVPopViewManager showDialogWithTitle:NSLocalizedString(@"更新性别失败！", nil)];
         };
     }
     else {
-        [GVPopViewManager removeActivity];
         User *user = [User sharedUser];
+        user.gender = self.gender;
+        __weak GenderSettingVC *weakSelf = self;
         block = ^(){
-            
+            [weakSelf.superVC reloadData];
+            [ChangeVCController popViewControllerByNavigationController:weakSelf.navigationController];
+            [GVPopViewManager showDialogWithTitle:NSLocalizedString(@"修改成功", nil)];
         };
     }
     

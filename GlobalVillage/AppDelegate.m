@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "RLBaseNavigationController.h"
 #import "NormalLoginVC.h"
+#import "RLFileOperation.h"
 
 #import "MainVC.h"
 #import "NewsVC.h"
@@ -49,6 +50,18 @@
     self.window.rootViewController = nav;
 }
 
+- (void)setupMainViewController {
+    if([RLFileOperation isLogined]) {
+        NormalLoginVC *vc = (NormalLoginVC *)[(UINavigationController *)self.window.rootViewController topViewController];
+        if([vc isKindOfClass:[NormalLoginVC class]]) {
+            [[User sharedUser] getAccountInfo];
+            [vc login];
+            MainVC *vc = [[MainVC alloc] init];
+            [ChangeVCController pushViewControllerByNavigationController:(UINavigationController *)self.window.rootViewController pushVC:vc animated:NO];
+        }
+    }
+}
+
 - (void)startLocationManager {
     if(self.locationManager == nil) {
         self.locationManager = [[RLLocationManager alloc] init];
@@ -61,6 +74,8 @@
     
     [self setupWindow];
     [self setupRootViewController];
+    
+//    [self setupMainViewController];
     
 //    [self test];
     
@@ -89,13 +104,11 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     return [[RLSocialShareKit sharedShareKit] handleOpenURL:url];
 }
 
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
-{
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     return [[RLSocialShareKit sharedShareKit] handleOpenURL:url];
 }
 

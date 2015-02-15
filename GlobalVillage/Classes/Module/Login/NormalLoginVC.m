@@ -38,14 +38,20 @@
     self.controller.delegate = self;
 }
 
+- (instancetype)init {
+    if(self = [super init]) {
+        [self dataDoLoad];
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = NSLocalizedString(@"登录", nil);
     
     self.navigationItem.backBarButtonItem = nil;
-
-    [self dataDoLoad];
     
     [self textFieldsDoLoad];
     [self buttonsDoLoad];
@@ -98,11 +104,20 @@
         
         return;
     }
-    
-    User *user = [User sharedUser];
-    [self.controller loginRequest:self.accountTF.text password:self.passworldTF.text location:user.location thirdOpenKey:nil loginType:kLoginTypeLocal];
+    [self loginWithAccount:self.accountTF.text password:self.passworldTF.text];
     [GVPopViewManager showActivityWithTitle:NSLocalizedString(@"登录中。。。", nil)];
 }
+
+- (void)login {
+    User *user = [User sharedUser];
+    [self.controller loginRequest:user.account password:user.password location:user.location thirdOpenKey:nil loginType:kLoginTypeLocal];
+}
+
+- (void)loginWithAccount:(NSString *)account password:(NSString *)password {
+    User *user = [User sharedUser];
+    [self.controller loginRequest:account password:password location:user.location thirdOpenKey:nil loginType:kLoginTypeLocal];
+}
+
 - (void)clickRegisterBtn:(UIButton *)button {
     [self endEditing];
 
@@ -119,19 +134,24 @@
     dispatch_block_t block = NULL;
     if(response.status != 0) {
         block = ^(){
-            [GVPopViewManager showDialogWithTitle:NSLocalizedString(@"用户名或密码错误！", nil)];
+            [GVPopViewManager showDialogWithTitle:NSLocalizedString(@"登录失败！\r\n 用户名或密码错误！", nil)];
         };
     }
     else {
-//        [GVPopViewManager showDialogWithTitle:@"登录成功！"];
-        User *user = [User sharedUser];
-        [user setAccount:user.phone andPassword:self.passworldTF.text];
-//        [ChangeVCController changeMainRootViewController:[NewsVC class]];
-        [RLFileOperation storeLoginInfo:user.dqNumber pwd:user.password date:nil plateforme:@"local" openKey:nil];
+//        User *user = [User sharedUser];
+//        [user setAccount:user.phone andPassword:self.passworldTF.text];
+////        [ChangeVCController changeMainRootViewController:[NewsVC class]];
+//        [RLFileOperation storeLoginInfo:user.dqNumber pwd:user.password date:nil plateforme:@"local" openKey:nil];
         block = ^(){
-//            NewsVC *vc = [[NewsVC alloc] init];
-            MainVC *vc = [[MainVC alloc] init];
-            [ChangeVCController pushViewControllerByNavigationController:self.navigationController pushVC:vc];
+            User *user = [User sharedUser];
+            if(![[(UINavigationController *)[UIApplication sharedApplication].keyWindow.rootViewController visibleViewController] isKindOfClass:[MainVC class]]) {
+                [user setAccount:user.phone andPassword:self.passworldTF.text];
+
+                MainVC *vc = [[MainVC alloc] init];
+                [ChangeVCController pushViewControllerByNavigationController:self.navigationController pushVC:vc];
+            }
+        
+            [RLFileOperation storeLoginInfo:user.dqNumber pwd:user.password date:nil plateforme:@"local" openKey:nil];
         };
     }
     

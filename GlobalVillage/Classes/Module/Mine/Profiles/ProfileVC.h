@@ -13,4 +13,5 @@
 
 @interface ProfileVC : RLPickerViewController <UITableViewDataSource, UITableViewDelegate>
 
+- (void)reloadData;
 @end

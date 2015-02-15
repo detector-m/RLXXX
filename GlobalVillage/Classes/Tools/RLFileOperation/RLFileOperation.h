@@ -14,6 +14,8 @@
 + (void)removeUserLoginInfo;
 + (NSDictionary *)userLoginInfo;
 
++ (BOOL)isLogined;
+
 + (BOOL)storeLoginInfo:(NSString *)name pwd:(NSString *)pwd date:(NSDate *)date plateforme:(NSString *)plateforme openKey:(NSString *)openKey;
 
 @end

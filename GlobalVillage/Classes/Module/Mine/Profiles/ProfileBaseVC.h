@@ -7,7 +7,9 @@
 //
 
 #import "RLBaseViewController.h"
+#import "ProfileVC.h"
 
 @interface ProfileBaseVC : RLBaseViewController
+@property (nonatomic, weak) ProfileVC *superVC;
 - (void)clickCommitBtn:(UIBarButtonItem *)item;
 @end

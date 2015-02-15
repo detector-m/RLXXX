@@ -9,6 +9,7 @@
 #import "GVPopViewManager.h"
 #import "URBAlertView.h"
 #import "DejalActivityView.h"
+#import "RLReachabilityChecker.h"
 
 @implementation GVPopViewManager
 + (void)showDialogWithTitle:(NSString *)title subtitle:(NSString *)subtitle andButtonTitle:(NSString *)btnTitle {
@@ -34,6 +35,9 @@
 
 static DejalActivityView *activityView = nil;
 + (void)showActivityWithTitle:(NSString *)title {
+    if(![[self class] checkReachability]) {
+        return;
+    }
     dispatch_block_t block = ^(){
         [DejalBezelActivityView removeView];
         activityView = nil;
@@ -47,6 +51,9 @@ static DejalActivityView *activityView = nil;
 //    activityView.showNetworkActivityIndicator = YES;
 }
 + (void)showActivity {
+    if(![[self class] checkReachability]) {
+        return;
+    }
     dispatch_block_t block = ^(){
         [DejalBezelActivityView removeView];
         activityView = nil;
@@ -62,6 +69,9 @@ static DejalActivityView *activityView = nil;
 }
 
 + (void)showActivityWithTitle:(NSString *)title forView:(UIView *)view {
+    if(![[self class] checkReachability]) {
+        return;
+    }
     dispatch_block_t block = ^(){
         [DejalBezelActivityView removeView];
         activityView = nil;
@@ -71,6 +81,10 @@ static DejalActivityView *activityView = nil;
     dispatch_async(dispatch_get_main_queue(), block);
 }
 + (void)showActivityForView:(UIView *)view {
+    if(![[self class] checkReachability]) {
+        return;
+    }
+    
     dispatch_block_t block = ^(){
         [DejalBezelActivityView removeView];
         activityView = nil;
@@ -88,5 +102,16 @@ static DejalActivityView *activityView = nil;
     };
     
     dispatch_async(dispatch_get_main_queue(), block);
+}
+
++ (BOOL)checkReachability {
+    if(![RLReachabilityChecker isReachability]) {
+        DLog(@"没有网络");
+        
+        [[self class] showDialogWithTitle:NSLocalizedString(@"没有网络", nil)];
+        return NO;
+    }
+    
+    return YES;
 }
 @end

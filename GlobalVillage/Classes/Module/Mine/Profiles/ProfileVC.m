@@ -95,6 +95,10 @@
     [self.view addSubview:self.tableView];
 }
 
+- (void)reloadData {
+    [self.tableView reloadData];
+}
+
 #pragma mark - UITableViewDelegate & UITableViewDataSource
 #define kMineSections 1
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -119,8 +123,12 @@
         cell.textLabel.text = user.nickname;
         cell.detailTextLabel.text = user.dqNumber;
 //        ((ProfileTitleCell *)cell).subTextLabel.text = [self.tableModel.datas objectAtIndex:indexPath.row];
-        
-        [((ProfileTitleCell *)cell).imageButton setImage:[UIImage imageNamed:@"PicDefault.png"] forState:UIControlStateNormal];
+        if(user.pic) {
+            self.updatePicImage = [UIImage imageWithData:user.pic];
+        }
+        else {
+            [((ProfileTitleCell *)cell).imageButton setImage:[UIImage imageNamed:@"PicDefault.png"] forState:UIControlStateNormal];
+        }
         [((ProfileTitleCell *)cell).imageButton removeTarget:self action:@selector(clickPicBtn:) forControlEvents:UIControlEventTouchUpInside];
         
         [((ProfileTitleCell *)cell).imageButton addTarget:self action:@selector(clickPicBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -182,6 +190,7 @@
     switch (indexPath.row) {
         case 0: {
             ProfileModifyVC *vc = [[ProfileModifyVC alloc] initWithStyle:kRLInputViewStyleTextField];
+            vc.superVC = self;
             vc.title = NSLocalizedString(@"昵称", nil);
             vc.modifyInputView.title.text = NSLocalizedString(@"昵称", nil);
             ((UITextField *)vc.modifyInputView.textInputView).text = user.nickname;
@@ -190,17 +199,20 @@
             break;
         case 1: {
             GenderSettingVC *vc = [[GenderSettingVC alloc] init];
+            vc.superVC = self;
             vc.gender = [User sharedUser].gender;
             [ChangeVCController pushViewControllerByNavigationController:self.navigationController pushVC:vc];
         }
             break;
         case 2: {
             BirthdaySettingVC *vc = [[BirthdaySettingVC alloc] init];
+            vc.superVC = self;
             [ChangeVCController pushViewControllerByNavigationController:self.navigationController pushVC:vc];
         }
             break;
         case 3: {
             ProfileModifyVC *vc = [[ProfileModifyVC alloc] initWithStyle:kRLInputViewStyleTextView];
+            vc.superVC = self;
             vc.title = NSLocalizedString(@"个性签名", nil);
             vc.modifyInputView.title.text = NSLocalizedString(@"个性签名", nil);
             ((UITextField *)vc.modifyInputView.textInputView).text = user.signature;

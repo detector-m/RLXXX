@@ -8,6 +8,7 @@
 
 #import "User.h"
 #import "RLTypecast.h"
+#import "RLFileOperation.h"
 
 static User *_userInstance = nil;
 
@@ -32,6 +33,7 @@ static User *_userInstance = nil;
 - (void)dataClear {
     self.account = nil;
     self.password = nil;
+    self.logined = NO;
     self.accessToken = nil;
     
     self.easemobUserAccount = nil;
@@ -64,12 +66,21 @@ static User *_userInstance = nil;
     self.password = password;
 }
 
+- (void)getAccountInfo {
+    NSDictionary *dic = [RLFileOperation userLoginInfo];
+    
+    self.account = [dic objectForKey:@"kUsername"];
+    self.password = [dic objectForKey:@"kUserPwd"];
+}
+
 - (void)fillLoginData:(NSArray *)loginData andToken:(NSString *)accessToken {
     if(loginData == nil)
         return;
     
     DLog(@"%@", loginData);
     NSDictionary *loginDic = [loginData firstObject];
+    
+    self.logined = [RLFileOperation isLogined];
     
     self.nickname = [loginDic objectForKey:RespondFieldMemberNameKey];
     self.dqNumber = [loginDic objectForKey:RespondFieldGuestChikyugoKey];

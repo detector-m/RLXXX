@@ -9,5 +9,5 @@
 #import "RLBaseViewController.h"
 
 @interface NormalLoginVC : RLBaseViewController
-
+- (void)login;
 @end

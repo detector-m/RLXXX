@@ -376,6 +376,9 @@
     NSMutableDictionary *retDic = nil;
     retDic = [NSMutableDictionary dictionary];
     
+    if(nicknameValue.length > 0) {
+        [retDic setObject:nicknameValue forKey:dMemberNameField];
+    }
     if(sexValue.length > 0) {
         [retDic setObject:sexValue forKey:dSexField];
     }
