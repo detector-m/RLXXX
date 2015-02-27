@@ -30,7 +30,7 @@
 }
 
 - (BOOL)isMobileAuthCode {
-    NSString *regexString = @"^[0-9]{4}$";
+    NSString *regexString = @"^[a-zA-Z0-9]{4,8}$";
     
     return [self isMatched:regexString];
 }
