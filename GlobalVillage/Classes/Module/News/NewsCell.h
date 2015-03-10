@@ -15,4 +15,6 @@
 @property (nonatomic, readonly) UIImageView *thumbView;
 @property (nonatomic, readonly) UILabel *title;
 @property (nonatomic, readonly) UILabel *abstract;
+
+@property (nonatomic, readwrite) BOOL needThumbview;
 @end

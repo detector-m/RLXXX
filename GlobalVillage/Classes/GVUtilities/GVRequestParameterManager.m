@@ -335,6 +335,34 @@
     return retDic;
 }
 
+////////////////////
+//获取附近的人接口
++ (NSMutableDictionary *)nearbyPersonParameter:(NSString *)longitudeValue
+                                 latitudeValue:(NSString *)latitudeValue
+                                   radiusValue:(NSString *)radiusValue
+                                 pageSizeValue:(NSString *)pageSizeValue
+                              currentPageValue:(NSString *)currentPageValue
+                              accessTokenValue:(NSString *)accessTokenValue {
+    NSMutableDictionary *retDic = nil;
+    if(longitudeValue == nil || latitudeValue == nil ||
+       pageSizeValue == nil || currentPageValue == nil ||
+       accessTokenValue == nil)
+        return nil;
+    
+    retDic = [NSMutableDictionary dictionary];
+    if(radiusValue != nil) {
+        [retDic setObject:radiusValue forKey:dRadiusField];
+    }
+    [retDic setObject:longitudeValue forKey:dLongitudeField];
+    [retDic setObject:latitudeValue forKey:dLatitudeField];
+    [retDic setObject:pageSizeValue forKey:dPageSizeField];
+    [retDic setObject:currentPageValue forKey:dCurrPageField];
+    [retDic setObject:accessTokenValue forKey:dAccessTokenField];
+    
+    return  retDic;
+}
+////////////////////
+
 //获取商家列表参数列表
 + (NSMutableDictionary *)storeListParameter:(NSString *)radiusValue
                              longitudeValue:(NSString *)longitudeValue

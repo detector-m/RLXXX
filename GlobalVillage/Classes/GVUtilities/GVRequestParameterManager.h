@@ -72,6 +72,16 @@
                            unsubscribeNewsChannelsValue:(NSString *)unsubscribeNewsChannelsValue
                                        accessTokenValue:(NSString *)accessTokenValue;
 
+////////////////////
+//获取附近的人接口
++ (NSMutableDictionary *)nearbyPersonParameter:(NSString *)longitudeValue
+                                 latitudeValue:(NSString *)latitudeValue
+                                   radiusValue:(NSString *)radiusValue
+                                 pageSizeValue:(NSString *)pageSizeValue
+                              currentPageValue:(NSString *)currentPageValue
+                              accessTokenValue:(NSString *)accessTokenValue;
+////////////////////
+
 //获取商家列表参数列表
 + (NSMutableDictionary *)storeListParameter:(NSString *)radiusValue
                              longitudeValue:(NSString *)longitudeValue

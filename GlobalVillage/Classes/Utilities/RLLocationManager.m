@@ -36,9 +36,13 @@
         self.locManager.delegate = self;
         self.locManager.desiredAccuracy = kCLLocationAccuracyBest;
         self.locManager.distanceFilter = 5.0f;
-        [self startUpdatingLocation];
+//        [self startUpdatingLocation];
         
         self.geocoder = [[CLGeocoder alloc] init];
+        
+        if([[UIDevice currentDevice] systemVersion].floatValue >= 8.0) {
+            [self.locManager requestWhenInUseAuthorization];
+        }
     }
     
     return self;

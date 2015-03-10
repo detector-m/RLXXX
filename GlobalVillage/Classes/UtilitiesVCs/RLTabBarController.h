@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "UIViewController+Expand.h"
 
-@interface RLTabBarController : UITabBarController
+@interface RLTabBarController : UITabBarController <UITabBarControllerDelegate>
 
 @end

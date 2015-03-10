@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.delegate = self;
     [self screenFixView];
     [self setBarBackItem];
     [self setupForDismissKeyboard];

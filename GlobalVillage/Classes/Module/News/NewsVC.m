@@ -8,7 +8,7 @@
 
 #import "NewsVC.h"
 #import "SegmentNaviVC.h"
-#import "SegmentPageTableViewCell.h"
+//#import "SegmentPageTableViewCell.h"
 #import "RefreshView.h"
 #import "RLColor.h"
 #import "RLUtilitiesMethods.h"
@@ -84,12 +84,6 @@
     [self.segments removeAllObjects];
 //    [self.segmentVC.segments removeAllObjects];
 }
-
-//- (BOOL)navigationShouldPopOnBackButton {
-//
-//    [self.navigationController popViewControllerAnimated:YES];
-//    return YES;
-//}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -330,8 +324,13 @@
         cell.textLabel.textColor = [UIColor blackColor];
     }
     
-    NSURL *imageUrl = [NSURL URLWithString:news.picUrl];
-    [cell.thumbView sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"NewsDefaultIcon.png"] options:SDWebImageProgressiveDownload];
+    if(news.picUrl) {
+        NSURL *imageUrl = [NSURL URLWithString:news.picUrl];
+        [cell.thumbView sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"NewsDefaultIcon.png"] options:SDWebImageProgressiveDownload];
+    }
+    else {
+        cell.needThumbview = NO;
+    }
 #endif
 
     return cell;

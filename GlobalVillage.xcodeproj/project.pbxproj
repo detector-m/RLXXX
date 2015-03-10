@@ -83,6 +83,18 @@
 		96A98F661A7B729300EE8B6A /* uncheck_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A98F621A7B729300EE8B6A /* uncheck_icon.png */; };
 		96A98F671A7B729300EE8B6A /* uncheck_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A98F631A7B729300EE8B6A /* uncheck_icon@2x.png */; };
 		96BD786D1AA0006C00CAF7A4 /* PasswordSetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BD786C1AA0006C00CAF7A4 /* PasswordSetVC.m */; };
+		96BD78751AA593E500CAF7A4 /* SocialContactVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BD78741AA593E500CAF7A4 /* SocialContactVC.m */; };
+		96BD78791AA6E3E800CAF7A4 /* SocialContactController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BD78781AA6E3E800CAF7A4 /* SocialContactController.m */; };
+		96BD787C1AA6EC1000CAF7A4 /* SocialContactSegmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BD787B1AA6EC1000CAF7A4 /* SocialContactSegmentModel.m */; };
+		96BD787F1AA6F1A200CAF7A4 /* SessionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BD787E1AA6F1A200CAF7A4 /* SessionCell.m */; };
+		96BD78861AA9425100CAF7A4 /* ChineseString.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BD78831AA9425100CAF7A4 /* ChineseString.m */; };
+		96BD78871AA9425100CAF7A4 /* pinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BD78841AA9425100CAF7A4 /* pinyin.m */; };
+		96BD788A1AA97FB600CAF7A4 /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BD78891AA97FB600CAF7A4 /* FriendCell.m */; };
+		96BD788D1AA9A6AA00CAF7A4 /* SearchStrangerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BD788C1AA9A6AA00CAF7A4 /* SearchStrangerVC.m */; };
+		96BD78901AA9A97700CAF7A4 /* NearbyPersonVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BD788F1AA9A97700CAF7A4 /* NearbyPersonVC.m */; };
+		96BD78931AAA930C00CAF7A4 /* NearbyPersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BD78921AAA930C00CAF7A4 /* NearbyPersonCell.m */; };
+		96BD78961AAA963300CAF7A4 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BD78951AAA963300CAF7A4 /* Person.m */; };
+		96BD78991AAD3F8E00CAF7A4 /* AddFriendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96BD78981AAD3F8E00CAF7A4 /* AddFriendController.m */; };
 		96C1BFB41A75E89F003E7C07 /* RLShareAppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C1BFB31A75E89F003E7C07 /* RLShareAppModel.m */; };
 		96C1BFB71A761F45003E7C07 /* RLShareMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C1BFB61A761F45003E7C07 /* RLShareMessageModel.m */; };
 		96C1BFBB1A76289A003E7C07 /* RLActivityShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C1BFBA1A76289A003E7C07 /* RLActivityShare.m */; };
@@ -349,6 +361,30 @@
 		96A98F631A7B729300EE8B6A /* uncheck_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "uncheck_icon@2x.png"; sourceTree = "<group>"; };
 		96BD786B1AA0006C00CAF7A4 /* PasswordSetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordSetVC.h; sourceTree = "<group>"; };
 		96BD786C1AA0006C00CAF7A4 /* PasswordSetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordSetVC.m; sourceTree = "<group>"; };
+		96BD78731AA593E500CAF7A4 /* SocialContactVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialContactVC.h; sourceTree = "<group>"; };
+		96BD78741AA593E500CAF7A4 /* SocialContactVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialContactVC.m; sourceTree = "<group>"; };
+		96BD78771AA6E3E800CAF7A4 /* SocialContactController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialContactController.h; sourceTree = "<group>"; };
+		96BD78781AA6E3E800CAF7A4 /* SocialContactController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialContactController.m; sourceTree = "<group>"; };
+		96BD787A1AA6EC1000CAF7A4 /* SocialContactSegmentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialContactSegmentModel.h; sourceTree = "<group>"; };
+		96BD787B1AA6EC1000CAF7A4 /* SocialContactSegmentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialContactSegmentModel.m; sourceTree = "<group>"; };
+		96BD787D1AA6F1A200CAF7A4 /* SessionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionCell.h; sourceTree = "<group>"; };
+		96BD787E1AA6F1A200CAF7A4 /* SessionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionCell.m; sourceTree = "<group>"; };
+		96BD78821AA9425100CAF7A4 /* ChineseString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseString.h; sourceTree = "<group>"; };
+		96BD78831AA9425100CAF7A4 /* ChineseString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseString.m; sourceTree = "<group>"; };
+		96BD78841AA9425100CAF7A4 /* pinyin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pinyin.m; sourceTree = "<group>"; };
+		96BD78851AA9425100CAF7A4 /* pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pinyin.h; sourceTree = "<group>"; };
+		96BD78881AA97FB600CAF7A4 /* FriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendCell.h; sourceTree = "<group>"; };
+		96BD78891AA97FB600CAF7A4 /* FriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendCell.m; sourceTree = "<group>"; };
+		96BD788B1AA9A6AA00CAF7A4 /* SearchStrangerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchStrangerVC.h; sourceTree = "<group>"; };
+		96BD788C1AA9A6AA00CAF7A4 /* SearchStrangerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchStrangerVC.m; sourceTree = "<group>"; };
+		96BD788E1AA9A97700CAF7A4 /* NearbyPersonVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyPersonVC.h; sourceTree = "<group>"; };
+		96BD788F1AA9A97700CAF7A4 /* NearbyPersonVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyPersonVC.m; sourceTree = "<group>"; };
+		96BD78911AAA930C00CAF7A4 /* NearbyPersonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyPersonCell.h; sourceTree = "<group>"; };
+		96BD78921AAA930C00CAF7A4 /* NearbyPersonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyPersonCell.m; sourceTree = "<group>"; };
+		96BD78941AAA963300CAF7A4 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		96BD78951AAA963300CAF7A4 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		96BD78971AAD3F8E00CAF7A4 /* AddFriendController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendController.h; sourceTree = "<group>"; };
+		96BD78981AAD3F8E00CAF7A4 /* AddFriendController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendController.m; sourceTree = "<group>"; };
 		96C1BFB21A75E89F003E7C07 /* RLShareAppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLShareAppModel.h; sourceTree = "<group>"; };
 		96C1BFB31A75E89F003E7C07 /* RLShareAppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RLShareAppModel.m; sourceTree = "<group>"; };
 		96C1BFB51A761F45003E7C07 /* RLShareMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLShareMessageModel.h; sourceTree = "<group>"; };
@@ -853,6 +889,92 @@
 			path = SinaWeiboSDK;
 			sourceTree = "<group>";
 		};
+		96BD786E1AA5928F00CAF7A4 /* SocialContact */ = {
+			isa = PBXGroup;
+			children = (
+				96BD78761AA6E3A400CAF7A4 /* Model */,
+				96BD78731AA593E500CAF7A4 /* SocialContactVC.h */,
+				96BD78741AA593E500CAF7A4 /* SocialContactVC.m */,
+				96BD78771AA6E3E800CAF7A4 /* SocialContactController.h */,
+				96BD78781AA6E3E800CAF7A4 /* SocialContactController.m */,
+				96BD786F1AA5932100CAF7A4 /* AddFriend */,
+				96BD78701AA5932100CAF7A4 /* Circle */,
+				96BD78711AA5932100CAF7A4 /* Friend */,
+				96BD78721AA5932100CAF7A4 /* Session */,
+			);
+			path = SocialContact;
+			sourceTree = "<group>";
+		};
+		96BD786F1AA5932100CAF7A4 /* AddFriend */ = {
+			isa = PBXGroup;
+			children = (
+				96BD78971AAD3F8E00CAF7A4 /* AddFriendController.h */,
+				96BD78981AAD3F8E00CAF7A4 /* AddFriendController.m */,
+				96BD788B1AA9A6AA00CAF7A4 /* SearchStrangerVC.h */,
+				96BD788C1AA9A6AA00CAF7A4 /* SearchStrangerVC.m */,
+				96BD788E1AA9A97700CAF7A4 /* NearbyPersonVC.h */,
+				96BD788F1AA9A97700CAF7A4 /* NearbyPersonVC.m */,
+				96BD78911AAA930C00CAF7A4 /* NearbyPersonCell.h */,
+				96BD78921AAA930C00CAF7A4 /* NearbyPersonCell.m */,
+			);
+			path = AddFriend;
+			sourceTree = "<group>";
+		};
+		96BD78701AA5932100CAF7A4 /* Circle */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Circle;
+			sourceTree = "<group>";
+		};
+		96BD78711AA5932100CAF7A4 /* Friend */ = {
+			isa = PBXGroup;
+			children = (
+				96BD78881AA97FB600CAF7A4 /* FriendCell.h */,
+				96BD78891AA97FB600CAF7A4 /* FriendCell.m */,
+			);
+			path = Friend;
+			sourceTree = "<group>";
+		};
+		96BD78721AA5932100CAF7A4 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				96BD787D1AA6F1A200CAF7A4 /* SessionCell.h */,
+				96BD787E1AA6F1A200CAF7A4 /* SessionCell.m */,
+			);
+			path = Session;
+			sourceTree = "<group>";
+		};
+		96BD78761AA6E3A400CAF7A4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				96BD78941AAA963300CAF7A4 /* Person.h */,
+				96BD78951AAA963300CAF7A4 /* Person.m */,
+				96BD787A1AA6EC1000CAF7A4 /* SocialContactSegmentModel.h */,
+				96BD787B1AA6EC1000CAF7A4 /* SocialContactSegmentModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		96BD78801AA9420200CAF7A4 /* Third */ = {
+			isa = PBXGroup;
+			children = (
+				96BD78811AA9425100CAF7A4 /* ChineseSort */,
+			);
+			path = Third;
+			sourceTree = "<group>";
+		};
+		96BD78811AA9425100CAF7A4 /* ChineseSort */ = {
+			isa = PBXGroup;
+			children = (
+				96BD78821AA9425100CAF7A4 /* ChineseString.h */,
+				96BD78831AA9425100CAF7A4 /* ChineseString.m */,
+				96BD78841AA9425100CAF7A4 /* pinyin.m */,
+				96BD78851AA9425100CAF7A4 /* pinyin.h */,
+			);
+			path = ChineseSort;
+			sourceTree = "<group>";
+		};
 		96C1BFB81A76285A003E7C07 /* ActivityShare */ = {
 			isa = PBXGroup;
 			children = (
@@ -1107,6 +1229,8 @@
 		96DEED361A69E53000C045DF /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				96BD78801AA9420200CAF7A4 /* Third */,
+				96BD786E1AA5928F00CAF7A4 /* SocialContact */,
 				961247431A88AB790080A979 /* Mine */,
 				9612473F1A88AB560080A979 /* Main */,
 				96123D5B1A70C8510053CA1C /* Model */,
@@ -1568,11 +1692,13 @@
 			files = (
 				96DEEE641A709DD900C045DF /* NewsModel.m in Sources */,
 				96DEEDE81A6D1F1900C045DF /* RLRequestMgr.m in Sources */,
+				96BD788D1AA9A6AA00CAF7A4 /* SearchStrangerVC.m in Sources */,
 				96123D5E1A70C8600053CA1C /* SegmentModel.m in Sources */,
 				96DEEE031A6E2C3800C045DF /* NSString+Regex.m in Sources */,
 				96DEEDAD1A6CD59000C045DF /* PasswordSettingVC.m in Sources */,
 				96DEEE111A6E38CD00C045DF /* UserBase.m in Sources */,
 				96DEEE251A6FA3F300C045DF /* NewsController.m in Sources */,
+				96BD787C1AA6EC1000CAF7A4 /* SocialContactSegmentModel.m in Sources */,
 				96DEEDDC1A6D10AB00C045DF /* SBJsonBase.m in Sources */,
 				96D8FFA51A789FFB0041C8D8 /* Segment.m in Sources */,
 				96123D881A70E0860053CA1C /* SegmentPageTableViewCell.m in Sources */,
@@ -1613,6 +1739,8 @@
 				96D8FFB41A79BFFF0041C8D8 /* SegmentsTableView.m in Sources */,
 				96C1BFBE1A762ED1003E7C07 /* TestViewController.m in Sources */,
 				96D8FFAB1A78A0400041C8D8 /* SegmentContent.m in Sources */,
+				96BD787F1AA6F1A200CAF7A4 /* SessionCell.m in Sources */,
+				96BD78751AA593E500CAF7A4 /* SocialContactVC.m in Sources */,
 				96123DBA1A70F2380053CA1C /* NSData+ImageContentType.m in Sources */,
 				96DEEE6A1A709E1600C045DF /* NewsTypeModel.m in Sources */,
 				961247641A88C52B0080A979 /* ProfileBaseVC.m in Sources */,
@@ -1633,6 +1761,8 @@
 				96123DC51A70F2380053CA1C /* UIImage+WebP.m in Sources */,
 				9612475F1A88AB790080A979 /* ProfileVC.m in Sources */,
 				96DEED991A6C898F00C045DF /* RLRadioButton.m in Sources */,
+				96BD78931AAA930C00CAF7A4 /* NearbyPersonCell.m in Sources */,
+				96BD78961AAA963300CAF7A4 /* Person.m in Sources */,
 				9647316B1A805A2400604904 /* SingleChannelNewsVC.m in Sources */,
 				96DEED931A6A5B6A00C045DF /* PhoneAuthCodeVC.m in Sources */,
 				96123D811A70E0860053CA1C /* EGORefreshTableHeaderView.m in Sources */,
@@ -1643,6 +1773,7 @@
 				96DEED7A1A6A4BA600C045DF /* ChangeVCController.m in Sources */,
 				96DEBFBD1A7377920014EA9D /* RLTextSize.m in Sources */,
 				96123DCB1A710B880053CA1C /* NewsDetailVC.m in Sources */,
+				96BD78901AA9A97700CAF7A4 /* NearbyPersonVC.m in Sources */,
 				96123D851A70E0860053CA1C /* SegmentNaviVC.m in Sources */,
 				96123D871A70E0860053CA1C /* SegmentPageTableView.m in Sources */,
 				96DEEDB91A6CE45100C045DF /* RLPickerViewController.m in Sources */,
@@ -1654,13 +1785,17 @@
 				96DEED681A6A242500C045DF /* DejalActivityView.m in Sources */,
 				9612475A1A88AB790080A979 /* ProfileCommonCell.m in Sources */,
 				96123DC31A70F2380053CA1C /* UIImage+GIF.m in Sources */,
+				96BD78791AA6E3E800CAF7A4 /* SocialContactController.m in Sources */,
 				964731721A80B90F00604904 /* RLFileOperation.m in Sources */,
 				96DEEDFD1A6E1B2300C045DF /* GVResponse.m in Sources */,
 				96BD786D1AA0006C00CAF7A4 /* PasswordSetVC.m in Sources */,
 				9612476D1A88D3670080A979 /* MineController.m in Sources */,
 				9612473E1A88AB070080A979 /* RLTabBarController.m in Sources */,
 				96DEEDDB1A6D10AB00C045DF /* SBJSON.m in Sources */,
+				96BD788A1AA97FB600CAF7A4 /* FriendCell.m in Sources */,
+				96BD78861AA9425100CAF7A4 /* ChineseString.m in Sources */,
 				9612477A1A89ABA20080A979 /* ForgetPWVC.m in Sources */,
+				96BD78871AA9425100CAF7A4 /* pinyin.m in Sources */,
 				96DEEDA41A6CA36500C045DF /* ChooseDQNumberVC.m in Sources */,
 				96123DB91A70F2380053CA1C /* MKAnnotationView+WebCache.m in Sources */,
 				96123DC11A70F2380053CA1C /* SDWebImagePrefetcher.m in Sources */,
@@ -1700,6 +1835,7 @@
 				96C1C06F1A766A83003E7C07 /* RLWeChatSessionActivity.m in Sources */,
 				96DEEDA71A6CAFE800C045DF /* DQNumberCell.m in Sources */,
 				96DEEDDA1A6D10AB00C045DF /* NSString+SBJSON.m in Sources */,
+				96BD78991AAD3F8E00CAF7A4 /* AddFriendController.m in Sources */,
 				96123DC01A70F2380053CA1C /* SDWebImageManager.m in Sources */,
 				96D8FFB11A78A4700041C8D8 /* SegmentBar.m in Sources */,
 			);

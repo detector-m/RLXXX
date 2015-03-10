@@ -23,15 +23,15 @@
     self.tableView = nil;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.tabBarController.navigationItem.title = NSLocalizedString(NSLocalizedString(@"我的", nil), nil);
-}
+//- (void)viewWillAppear:(BOOL)animated {
+//    [super viewWillAppear:animated];
+//    self.tabBarController.navigationItem.title = NSLocalizedString(NSLocalizedString(@"我的", nil), nil);
+//}
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    self.tabBarController.navigationItem.title = @"";
-}
+//- (void)viewWillDisappear:(BOOL)animated {
+//    [super viewWillDisappear:animated];
+//    self.tabBarController.navigationItem.title = @"";
+//}
 
 - (void)dataDoClean {
     self.tableModel = nil;

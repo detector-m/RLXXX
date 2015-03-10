@@ -15,7 +15,15 @@
     self.title = [dic objectForKey:RespondFieldTitleKey];
     self.abstract = [dic objectForKey:RespondFieldNewsAbstractKey];
     self.readNum = [[dic objectForKey:RespondFieldReadNumKey] integerValue];
-    self.picUrl = [dic objectForKey:RespondFieldPicListStringKey];//[(NSArray *)[dic objectForKey:RespondFieldPicListStringKey] objectAtIndex:0];
+    self.picUrl = [self urlString:[dic objectForKey:RespondFieldPicListStringKey]];//[dic objectForKey:RespondFieldPicListStringKey];//[(NSArray *)[dic objectForKey:RespondFieldPicListStringKey] objectAtIndex:0];
     self.detailUrl = [dic objectForKey:RespondFieldNewsURLKey];
+}
+
+- (NSString *)urlString:(NSString *)string {
+    if([string hasSuffix:@"null"]) {
+        return nil;
+    }
+    
+    return string;
 }
 @end

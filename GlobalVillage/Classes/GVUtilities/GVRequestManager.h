@@ -29,7 +29,7 @@ typedef NS_ENUM(NSInteger, RequestType) {
     
     kRequestTypeLogin,
     
-    //
+    /*news*/
     kRequestTypeFindPassword,
     kRequestTypeResetPassword,
     
@@ -38,6 +38,11 @@ typedef NS_ENUM(NSInteger, RequestType) {
     
     kRequestTypeSubscribeNewsChannels,
     
+    /*social*/
+    
+    kRequestTypeNearbyPerson,
+    
+    /*business*/
     kRequestTypeStoreList,
     
     //////////////
@@ -98,7 +103,13 @@ typedef NS_ENUM(NSInteger, RequestType) {
 //订阅/取消订阅新闻栏目接口
 + (RLRequest *)requestSubscribeNewsChannels:(NSMutableDictionary *)parameters
                                 andDelegate:(id<RLRequestDelegate>)delegate;
+////////////////////
+//获取附近的人接口
++ (RLRequest *)requestNearbyPerson:(NSMutableDictionary *)parameters
+                       andDelegate:(id<RLRequestDelegate>)delegate;
 
+
+////////////////////
 //获取商家列表
 + (RLRequest *)requestForStoreList:(NSMutableDictionary *)parameters
                        andDelegate:(id<RLRequestDelegate>)delegate;

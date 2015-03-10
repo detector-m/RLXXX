@@ -179,6 +179,18 @@ static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn:7080/mobile/api/v2
     return [self requestWithPageName:pageName parameters:parameters httpMethod:kDefaultHttpMethod delegate:delegate];
 }
 
+////////////////////
+//获取附近的人接口
++ (RLRequest *)requestNearbyPerson:(NSMutableDictionary *)parameters
+                       andDelegate:(id<RLRequestDelegate>)delegate {
+    NSString *pageName = @"/member/nearMemberby.jhtml";
+
+    return [self requestWithPageName:pageName parameters:parameters httpMethod:kDefaultHttpMethod delegate:delegate];
+}
+
+
+////////////////////
+
 //获取商家列表
 + (RLRequest *)requestForStoreList:(NSMutableDictionary *)parameters
                        andDelegate:(id<RLRequestDelegate>)delegate {
@@ -271,6 +283,12 @@ static NSString *kRestserverApiURL = @"http://www.dqcc.com.cn:7080/mobile/api/v2
         case kRequestTypeSubscribeNewsChannels:
             request = [self requestSubscribeNewsChannels:parameters andDelegate:delegate];
             break;
+            
+        //////////////
+        case kRequestTypeNearbyPerson:
+            request = [self requestNearbyPerson:parameters andDelegate:delegate];
+            break;
+        //////////////
             
         //////////
         case kRequestTypeUpdateUserInfo:

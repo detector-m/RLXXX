@@ -9,6 +9,7 @@
 #import "MainVC.h"
 
 #import "NewsVC.h"
+#import "SocialContactVC.h"
 #import "MineVC.h"
 
 @interface MainVC ()
@@ -31,19 +32,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     [self subVCsDoLoad];
 }
 
 - (void)subVCsDoLoad {
     NewsVC *newsVC = [[NewsVC alloc] init];
-    newsVC.tabBarItem.title = NSLocalizedString(@"地球村新闻", nil);
+    newsVC.tabBarItem.title = NSLocalizedString(@"玩转地球", nil);
     [newsVC.tabBarItem setImage:[UIImage imageNamed:@"News.png"]];
+    
+    SocialContactVC *socialContactVC = [[SocialContactVC alloc] init];
+    socialContactVC.tabBarItem.title = NSLocalizedString(@"社交", nil);
+    [socialContactVC.tabBarItem setImage:[UIImage imageNamed:@"Mine.png"]];
     
     MineVC *mineVC = [[MineVC alloc] init];
     mineVC.tabBarItem.title = NSLocalizedString(@"我的", nil);
     [mineVC.tabBarItem setImage:[UIImage imageNamed:@"Mine.png"]];
     
-    self.viewControllers = [NSArray arrayWithObjects:newsVC, mineVC, nil];
+    self.viewControllers = [NSArray arrayWithObjects:newsVC, socialContactVC, mineVC, nil];
+}
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    tabBarController.navigationItem.title = viewController.tabBarItem.title;
 }
 @end

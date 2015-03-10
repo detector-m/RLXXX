@@ -66,6 +66,7 @@
     if(self.locationManager == nil) {
         self.locationManager = [[RLLocationManager alloc] init];
         self.locationManager.location = [User sharedUser].location;
+        [self.locationManager startUpdatingLocation];
     }
 }
 
